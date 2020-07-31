@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
@@ -21,6 +22,40 @@ class FormPatientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
+            ->add('elios',NumberType::class, [
+                'attr' => [
+                    'class' => 'validate',
+                    'min' => '0',
+                    //'max' => '999',
+                 //   'step' => "0.01",
+                    'autocomplete' => 'off'
+                ],
+                'html5' => true,
+              //  'scale' =>2,
+                'required' => false
+            ])
+            ->add('date_diag_acp', DateType::class, [
+                'label' => "Date de diagnostic ACP",
+                'widget' => 'single_text',
+                'html5' => true,
+                'attr' => [
+                    'class' => 'validate',
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+            ->add('id_acp',TextType::class, [
+                'label' => "ID ACP",
+                'attr' => [
+                    'class' => 'validate',
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+           // ->add('tissu_congele')
+
+
             ->add('prenom',TextType::class, [
                 'label' => "Prénom",
                 'attr' => [
@@ -89,7 +124,8 @@ class FormPatientType extends AbstractType
                 'label' => "Chirurgien référent",
                 'attr' => [
                     'class' => "validate",
-                    'autocomplete' => 'off',
+                    'onchange' => 'chirOnChange(event)',
+                    'autocomplete' => 'off'
                 ],
                 'required' => true,
                 'choices' => [
@@ -97,13 +133,24 @@ class FormPatientType extends AbstractType
                     'ASG' => 'ASG',
                     'MG' => 'MG',
                     'EB' => 'EB',
-                    'GB' => 'GB'
+                    'GB' => 'GB',
+                    'Autre' => 'Autre'
                 ]
             ])
-            ->add('age',TextType::class, [
+
+            ->add('autre_chirurgien_referent',TextType::class, [
+                'label' => "Autre",
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+
+            ->add('age',IntegerType::class, [
                 'label' => "Age",
                 'attr' => [
                     'autocomplete' => 'off',
+                    'min' => '0',
                     'readonly' => true ,
                 ],
 
@@ -113,6 +160,7 @@ class FormPatientType extends AbstractType
                 'label' => "IMC",
                 'attr' => [
                     'autocomplete' => 'off',
+                    'min' => '0',
                     'step' => "0.001",
                     'readonly' => true ,
                 ],
@@ -127,7 +175,7 @@ class FormPatientType extends AbstractType
                     'class' => "validate",
                     'autocomplete' => 'off'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     '0' => '0',
                     '1' => '1',
@@ -144,7 +192,7 @@ class FormPatientType extends AbstractType
                     'class' => "validate",
                     'autocomplete' => 'off'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     '0' => '0',
                     '1' => '1',
@@ -162,7 +210,7 @@ class FormPatientType extends AbstractType
                     'class' => 'validate',
                     'autocomplete' => 'off'
                 ],
-                'required' => true
+                'required' => false
             ])
             ->add('mode_obt_his_pre_ope',ChoiceType::class, [
                 'label' => "Mode d'obtension de l'His pré opératoire",
@@ -171,7 +219,7 @@ class FormPatientType extends AbstractType
                     'autocomplete' => 'off',
                     'onchange' => 'modeHistoOnChange(event)'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     'ponction' => 'ponction',
                     'TDM' => 'TDM',
@@ -198,7 +246,7 @@ class FormPatientType extends AbstractType
                     'autocomplete' => 'off',
                     'onchange' => 'histoOnChange(event)'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     'thymome A' => 'thymome A ',
                     'thymome AB' => 'thymome AB',
@@ -228,7 +276,7 @@ class FormPatientType extends AbstractType
                     'class' => "validate",
                     'autocomplete' => 'off'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     'myasthénie' => 'myasthénie',
                     'tumeur médiastinale loge thymique' => 'tumeur médiastinale loge thymique'
@@ -243,7 +291,7 @@ class FormPatientType extends AbstractType
                     'autocomplete' => 'off',
                     'onchange' => 'consNeuOnChange(event)'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     'Oui' => 'Oui',
                     'Non' => 'Non',
@@ -275,7 +323,7 @@ class FormPatientType extends AbstractType
                     'autocomplete' => 'off',
                     'onchange' => 'traiFondOnChange(event)'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     'mestinon' => 'mestinon',
                     'cortisone' => 'cortisone',
@@ -296,7 +344,7 @@ class FormPatientType extends AbstractType
                     'class' => "validate",
                     'autocomplete' => 'off'
                 ],
-                'required' => true,
+                'required' => false,
                 'choices' => [
                     'Oui' => 'Oui',
                     'Non' => 'Non'
@@ -356,8 +404,23 @@ class FormPatientType extends AbstractType
                 'html5' => true,
                 'required' => false
             ])
-            ->add('chimio_pre_op')
-            ->add('reponse_chimio_pre_op')
+
+
+            ->add('chimio_pre_op',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('reponse_chimio_pre_op',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
 
 
             ->add('tnm_t',ChoiceType::class, [
@@ -399,7 +462,7 @@ class FormPatientType extends AbstractType
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
-                    'onchange' => 'nOnChange(event)'
+                    'onchange' => 'mOnChange(event)'
                 ],
                 'required' => false,
                 'choices' => [
@@ -459,9 +522,39 @@ class FormPatientType extends AbstractType
             ])
 
 
-            ->add('stade_masaoka_pre_op')
-            ->add('maladi_auto_imm_assoc')
-            ->add('syndrome_paraneo')
+            ->add('stade_masaoka_pre_op',ChoiceType::class, [
+                'label' => "Stade Masaoka pre op",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+
+                ],
+                'required' => false,
+                'choices' => [
+                    'I' => 'I',
+                    'II' => 'II',
+                    'IIIa' => 'IIIa',
+                    'IIIb' => 'IIIb',
+                    'IVa' => 'IVa',
+                    'IVb' => 'IVb',
+                ]
+            ])
+
+
+            ->add('maladi_auto_imm_assoc',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+            ->add('syndrome_paraneo',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
 
 
 
@@ -495,7 +588,13 @@ class FormPatientType extends AbstractType
             ])
 
 
-            ->add('rcp_rythmique')
+            ->add('rcp_rythmique',TextType::class, [
+                'label' => 'RCP rythmique',
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
 
 
             ->add('chir_date_ope', DateType::class, [
@@ -605,6 +704,101 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
 
+            ->add('reste_riques',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('chir_txt_libre',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('vcs',CheckboxType::class, [
+                'label' => "VCS",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('hta',CheckboxType::class, [
+                'label' => "HTA",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('tvi',CheckboxType::class, [
+                'label' => "TVI",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('od',CheckboxType::class, [
+                'label' => "OD",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('aorte',CheckboxType::class, [
+                'label' => "Aorte",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('pericard',CheckboxType::class, [
+                'label' => "péricarde",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('phreniqued',CheckboxType::class, [
+                'label' => "Phrénique droit",
+                'mapped' => true,
+                'required' => false
+            ])
+
+            ->add('phreniqueg',CheckboxType::class, [
+                'label' => "Phrénique gauche",
+                'mapped' => true,
+                'required' => false
+            ])
+
+
+            ->add('wedge',CheckboxType::class, [
+                'label' => "Wedge",
+                'mapped' => true,
+                'required' => false
+            ])
+
+
+            ->add('lobectomie',CheckboxType::class, [
+                'label' => "Lobectomie",
+                'mapped' => true,
+                'required' => false
+            ])
+
+
+            ->add('pneug',CheckboxType::class, [
+                'label' => "Pneumonectomie gauche",
+                'mapped' => true,
+                'required' => false
+            ])
+
+
+            ->add('pneud',CheckboxType::class, [
+                'label' => "Pneumonectomie droit",
+                'mapped' => true,
+                'required' => false
+            ])
+
+
+
             ->add('chir_duree',NumberType::class, [
                 'label' => 'Durée' ,
                 'attr' => [
@@ -691,34 +885,322 @@ class FormPatientType extends AbstractType
                 ]
             ])
 
+            ->add('anapath_post_op',ChoiceType::class, [
+                'label' => "Anapath post op",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+                    'onchange' => 'histopOnChange(event)'
+                ],
+                'required' => false,
+                'choices' => [
+                    'thymome A' => 'thymome A ',
+                    'thymome AB' => 'thymome AB',
+                    'thymome B1' => 'thymome B1',
+                    'thymome B2' => 'thymome B2',
+                    'thymome B3' => 'thymome B3',
+                    'thymome rare' => 'thymome rare',
+                    'pièce anapath' => 'piece anapath',
+                    'carcinoïde' => 'carcinoïde',
+                    'carcinoide typique' => 'carcinoide typique',
+                    'carcinoide atypique' => 'carcinoide atypique',
+                    'Autre' => 'Autre',
 
-            ->add('anapath_post_op')
-            ->add('pre_op_x_tnm')
-            ->add('post_tnm_t')
-            ->add('post_tnm_n')
-            ->add('post_tnm_m')
-            ->add('post_tnm_stade_ctnm')
-            ->add('rea_usc_post_op')
-            ->add('post_op_suites')
-            ->add('post_op_duree_drainage')
-            ->add('pre_op_duree_rea')
-            ->add('post_op_date_sortie')
-            ->add('chimio_post_op')
-            ->add('radiotherapie_post_op')
-            ->add('date_der_nouvelles')
-            ->add('suivi_myasthenie')
-            ->add('score_mya_post_op')
-            ->add('recidive')
-            ->add('date_recidive')
-            ->add('localisation_recidive')
-            ->add('traitement_rechute_recidive')
-            ->add('num_acp')
-            ->add('deces')
-            ->add('cause_deces')
-            ->add('elios')
-            ->add('date_diag_acp')
-            ->add('id_acp')
-            ->add('tissu_congele')
+                ]
+            ])
+
+            ->add('autre_anapath_post_op',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('post_tnm_t',ChoiceType::class, [
+        'label' => "T ",
+        'attr' => [
+            'class' => "validate",
+            'autocomplete' => 'off',
+            'onchange' => 'tpOnChange(event)'
+        ],
+        'required' => false,
+        'choices' => [
+            'T1a' => 'T1a',
+            'T1b' => 'T1b',
+            'T2' => 'T2',
+            'T3' => 'T3',
+            'T4' => 'T4',
+            'Autre' => 'Autre'
+                ]
+            ])
+
+            ->add('autre_post_tnm_t',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('post_tnm_n',ChoiceType::class, [
+                'label' => "N ",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+                    'onchange' => 'npOnChange(event)'
+                ],
+                'required' => false,
+                'choices' => [
+                    'N0' => 'N0',
+                    'N1' => 'N1',
+                    'N2' => 'N2',
+                    'Autre' => 'Autre'
+                ]
+            ])
+
+            ->add('autre_post_tnm_n',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('post_tnm_m',ChoiceType::class, [
+                'label' => "M",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+                    'onchange' => 'mpOnChange(event)'
+                ],
+                'required' => false,
+                'choices' => [
+                    'M0' => 'M0',
+                    'M1a' => 'M1a',
+                    'M1b' => 'M1b',
+                    'Autre' => 'Autre'
+                ]
+            ])
+
+            ->add('autre_post_tnm_m',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('post_tnm_stade_ctnm',ChoiceType::class, [
+                'label' => "Stade cTNM",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+                    'onchange' => 'stadepOnChange(event)'
+                ],
+                'required' => false,
+                'choices' => [
+                    'I' => 'I',
+                    'II' => 'II',
+                    'IIIA' => 'IIIA',
+                    'IIIB' => 'IIIB',
+                    'IVA' => 'IVA',
+                    'IVB' => 'IVB',
+                    'Autre' => 'Autre'
+                ]
+            ])
+
+            ->add('autre_post_tnm_stade_ctnm',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('rea_usc_post_op',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('duree_rean',NumberType::class, [
+                'label' => 'Durée de réanimation',
+                'attr' => [
+                    'class' => 'validate',
+                    'min' => '0',
+                    'max' => '360',
+                  //  'step' => "0.01",
+                    'autocomplete' => 'off'
+                ],
+                'html5' => true,
+             //   'scale' =>2,
+                'required' => false
+            ])
+
+            ->add('autre_post_op_suites',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('post_op_duree_drainage',NumberType::class, [
+                'label' => 'Durée de drainage',
+                'attr' => [
+                    'class' => 'validate',
+                    'min' => '0',
+                    'max' => '360',
+                    //  'step' => "0.01",
+                    'autocomplete' => 'off'
+                ],
+                'html5' => true,
+                //   'scale' =>2,
+                'required' => false
+            ])
+
+           // ->add('pre_op_duree_rea')
+            ->add('post_op_date_sortie', DateType::class, [
+               'label' => "Date de sortie",
+               'widget' => 'single_text',
+               'html5' => true,
+               'attr' => [
+                   'class' => 'validate',
+                   'autocomplete' => 'off',
+               ],
+               'required' => false
+           ])
+
+            ->add('chimio_post_op',TextareaType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "254"
+                ],
+                'required' => false
+            ])
+
+            ->add('radiotherapie_post_op',TextareaType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "254"
+                ],
+                'required' => false
+            ])
+
+            ->add('date_der_nouvelles', DateType::class, [
+                'label' => "Date de dernières nouvelles",
+                'widget' => 'single_text',
+                'html5' => true,
+                'attr' => [
+                    'class' => 'validate',
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('suivi_myasthenie',TextareaType::class, [
+                'label' => 'Suivi myasthénie ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "1000"
+                ],
+                'required' => false
+            ])
+
+            ->add('score_mya_post_op',NumberType::class, [
+                'label' => 'Score myasthénique post opératoire',
+                'attr' => [
+                    'class' => 'validate',
+                    'min' => '0',
+                    'max' => '360',
+                    //  'step' => "0.01",
+                    'autocomplete' => 'off'
+                ],
+                'html5' => true,
+                //   'scale' =>2,
+                'required' => false
+            ])
+
+
+
+            //->add('recidive')
+            ->add('date_recidive', DateType::class, [
+                'label' => "Date ",
+                'widget' => 'single_text',
+                'html5' => true,
+                'attr' => [
+                    'class' => 'validate',
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+            ->add('localisation_recidive',TextareaType::class, [
+                'label' => 'Localisation',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "255"
+                ],
+                'required' => false
+            ])
+            ->add('traitement_rechute_recidive',TextareaType::class, [
+                'label' => 'Traitement de la rechute',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "1000"
+                ],
+                'required' => false
+            ])
+
+
+            ->add('num_acp',TextType::class, [
+                'label' => 'N°ACP ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'data-length' => "100"
+                ],
+                'required' => false
+            ])
+
+            //->add('deces')
+            ->add('cause_deces',TextareaType::class, [
+                'label' => 'Cause du décès ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "1000"
+                ],
+                'required' => false
+            ])
+/*
+            ->add('file_anapath_post_op',FileType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'btn',
+                ],
+                'required' => false
+            ])
+
+*/
+          /*  ->add('file_chirurgie',FileType::class, [
+                'label' => 'Cause du décès ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'class' => 'materialize-textarea',
+                    'data-length' => "1000"
+                ],
+                'required' => false
+            ])*/
+
         ;
     }
 

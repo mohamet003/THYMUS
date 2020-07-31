@@ -11,7 +11,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12 m6 l6">
-                            <h5 class="breadcrumbs-title"><span>Form Elements</span></h5>
+                            <h5 class="breadcrumbs-title"><span>Formulaire THYMUS</span></h5>
                         </div>
 
                     </div>
@@ -20,11 +20,11 @@
             {{ form_start(form) }}
             <div class="col s12">
                 <div class="container">
-                    <!-- Input Fields -->
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
                                 <div class="card-content">
+
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -51,21 +51,37 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col s12 m3">
+                                            <div class="col s12 m4">
+                                                <fieldset>
+                                                    <legend>
+                                                        Chirurgien référent
+                                                    </legend>
+                                                    <div class="row">
+                                                        <div class="col s12 m6">
+                                                            {{ form_row(form.chirurgien_referent) }}
+                                                        </div>
+                                                        <div class="col s12 m6">
+                                                            {{ form_row(form.autre_chirurgien_referent) }}
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                            </div>
+                                            <div class="col s12 m2" style="margin-top: 27px;">
                                                 {{ form_row(form.poids) }}
                                                 <span class="helper-text orange-text">En Kg</span>
                                             </div>
-                                            <div class="col s12 m3">
+                                            <div class="col s12 m2" style="margin-top: 27px;">
                                                 {{ form_row(form.taille) }}
                                                 <span class="helper-text orange-text">En cm</span>
                                             </div>
-                                            <div class="col s12 m3">
-                                                {{ form_row(form.age) }}
-                                                <span class="helper-text orange-text">En années</span>
-                                            </div>
-                                            <div class="col s12 m3">
+                                            <div class="col s12 m2" style="margin-top: 27px;">
                                                 {{ form_row(form.imc) }}
                                                 <span class="helper-text orange-text">En kg/m²</span>
+                                            </div>
+                                            <div class="col s12 m2" style="margin-top: 27px;">
+                                                {{ form_row(form.age) }}
+                                                <span class="helper-text orange-text">En années</span>
                                             </div>
                                         </div>
                                     </div>
@@ -76,7 +92,57 @@
                         </div>
                     </div>
 
-                    <!-- Prefilling Text Inputs -->
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                            <!--    <h4 class="card-title">Caractéristiques initiales du patient</h4>  -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="view-input-fields75">
+                                        <div class="row">
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.elios) }}
+                                            </div>
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.date_diag_acp) }}
+                                            </div>
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.id_acp) }}
+                                            </div>
+                                            <div class="col s12 m3">
+                                                Tissu congelé 
+                                                <div class="switch" style="margin-left: 10px; display: inline;">
+                                                    <label>
+                                                        Non
+                                                        <input id="tissus" name="tissus" autocomplete="off" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        Oui
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                     <div class="row">
                         <div class="col s12">
                             <div id="prefilling-text" class="card card-tabs">
@@ -114,30 +180,23 @@
                                                     <legend>Comorbidités</legend>
                                                 <div class="col s12 m3">
 
-                                                    <br>
-                                                        <p>
-                                                            <label>
-                                                                <input value="AVC" autocomplete="off" type="checkbox"/>
-                                                                <span>AVC</span>
-                                                            </label>
-                                                        </p>
-                                                    <p>
+                                                    {{ form_row(form.vcs )}}
+
                                                         <label>
-                                                            <input value="obésité" autocomplete="off" type="checkbox"/>
+                                                            <input value="obésité" name="obe" autocomplete="off" type="checkbox"/>
                                                             <span>Obésité</span>
                                                         </label>
-                                                    </p>
 
                                                     <p>
                                                         <label>
-                                                            <input value="HTA" autocomplete="off" type="checkbox"/>
+                                                            <input value="HTA" name="HTA" autocomplete="off" type="checkbox"/>
                                                             <span>HTA</span>
                                                         </label>
                                                     </p>
 
                                                     <p>
                                                         <label>
-                                                            <input value="Dyslipidémie" autocomplete="off" type="checkbox"/>
+                                                            <input value="Dyslipidémie" name="dys" autocomplete="off" type="checkbox"/>
                                                             <span>Dyslipidémie</span>
                                                         </label>
                                                     </p>
@@ -147,14 +206,14 @@
                                                     <br>
                                                     <p>
                                                         <label>
-                                                            <input value="Diabète" autocomplete="off" type="checkbox"/>
+                                                            <input value="Diabète" autocomplete="off" name="diabete" type="checkbox"/>
                                                             <span>Diabète</span>
                                                         </label>
                                                     </p>
 
                                                     <p>
                                                         <label>
-                                                            <input value="Insuffisance rénale chronique" autocomplete="off" type="checkbox"/>
+                                                            <input value="Insuffisance rénale chronique" name="cchronique" autocomplete="off" type="checkbox"/>
                                                             <span>Insuffisance rénale chronique</span>
                                                         </label>
 
@@ -162,7 +221,7 @@
 
                                                     <p>
                                                         <label>
-                                                            <input value="Maladie thrombo-embolique veineuse" autocomplete="off" type="checkbox"/>
+                                                            <input value="Maladie thrombo-embolique veineuse" name="eveineuse" autocomplete="off" type="checkbox"/>
                                                             <span>Maladie thrombo-embolique veineuse</span>
                                                         </label>
                                                     </p>
@@ -172,19 +231,19 @@
                                                 <div class="col s12 m3">
                                                     <p>
                                                         <label>
-                                                            <input value="Cancer" id="cancer_chec" autocomplete="off" type="checkbox"/>
+                                                            <input value="Cancer" name="cancer_chec" id="cancer_chec" autocomplete="off" type="checkbox"/>
                                                             <span>Cancer</span>
                                                         </label>
                                                     </p>
-                                                    <input id="cancer" autocomplete="off" disabled type="text"/>
+                                                    <input id="cancer" name="cancer" autocomplete="off" disabled type="text"/>
 
                                                     <p>
                                                         <label>
-                                                            <input value="Cardiopathie" id="cardiopathie_chec" autocomplete="off" type="checkbox"/>
+                                                            <input value="Cardiopathie" id="cardiopathie_chec" name="cardiopathie_chec" autocomplete="off" type="checkbox"/>
                                                             <span>Cardiopathie</span>
                                                         </label>
                                                     </p>
-                                                    <input id="cardiopathie" autocomplete="off" disabled type="text"/>
+                                                    <input id="cardiopathie" name="cardiopathie" autocomplete="off" disabled type="text"/>
 
 
                                                 </div>
@@ -192,13 +251,13 @@
                                                     <div class="col s12 m3">
                                                         <p>
                                                             <label>
-                                                                <input value="Tabagisme" id="tabagisme_chec" autocomplete="off" type="checkbox"/>
+                                                                <input value="Tabagisme" id="tabagisme_chec" name="tabagisme_chec" autocomplete="off" type="checkbox"/>
                                                                 <span>Tabagisme</span>
                                                             </label>
                                                         </p>
-                                                        <input id="tabagisme" autocomplete="off" disabled type="text"/>
-                                                        <label for="reste">Autres... </label>
-                                                        <input id="reste" autocomplete="off" type="text"/>
+                                                        <input id="tabagisme" name="tabagisme" autocomplete="off" disabled type="text"/>
+
+                                                        {{ form_row(form.reste_riques ) }}
                                                     </div>
                                                 </fieldset>
                                                 </div>
@@ -239,6 +298,7 @@
                                 </div>
                             </div>
                         </div>
+
 
 
                     <div class="row">
@@ -326,42 +386,42 @@
                                                         <div class="col s12 m6">
                                                             <p>
                                                                 <label>
-                                                                    <input value="kystique" autocomplete="off" type="checkbox"/>
+                                                                    <input value="kystique" name="kystique" autocomplete="off" type="checkbox"/>
                                                                     <span>kystique</span>
                                                                 </label>
                                                             </p>
 
                                                             <p>
                                                                 <label>
-                                                                    <input value="non kystique" autocomplete="off" type="checkbox"/>
+                                                                    <input value="non kystique" name="nkystique" autocomplete="off" type="checkbox"/>
                                                                     <span>non kystique</span>
                                                                 </label>
                                                             </p>
 
                                                             <p>
                                                                 <label>
-                                                                    <input value="solide" autocomplete="off" type="checkbox"/>
+                                                                    <input value="solide" name="solide" autocomplete="off" type="checkbox"/>
                                                                     <span>solide</span>
                                                                 </label>
                                                             </p>
 
                                                             <p>
                                                                 <label>
-                                                                    <input value="mixte" autocomplete="off" type="checkbox"/>
+                                                                    <input value="mixte" name="mixte" autocomplete="off" type="checkbox"/>
                                                                     <span>mixte</span>
                                                                 </label>
                                                             </p>
 
                                                             <p>
                                                                 <label>
-                                                                    <input value="non réalisé" autocomplete="off" type="checkbox"/>
+                                                                    <input value="non réalisé" name="nonrea" autocomplete="off" type="checkbox"/>
                                                                     <span>non réalisé</span>
                                                                 </label>
                                                             </p>
 
                                                             <p>
                                                                 <label>
-                                                                    <input value="donnée inconnue" autocomplete="off" type="checkbox"/>
+                                                                    <input value="donnée inconnue" name="dinconnue"  autocomplete="off" type="checkbox"/>
                                                                     <span>donnée inconnue</span>
                                                                 </label>
                                                             </p>
@@ -393,6 +453,92 @@
 
 
 
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                                <!--    <h4 class="card-title">Caractéristiques initiales du patient</h4>  -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="view-input-fields75">
+                                        <div class="row">
+                                            <div class="col s12 m3">
+
+                                                <fieldset>
+                                                    <legend>Chimio pré op</legend>
+                                                    <div class="switch" style="margin-left: 10px; display: inline;">
+                                                        <label>
+                                                            Non
+                                                            <input id="chimiopreop" name="chimiopreop" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+
+                                                    {{ form_row(form.chimio_pre_op) }}
+                                                    <div id="divreponse">
+                                                    reponse
+                                                    <div class="switch" style="margin-left: 10px; display: inline;">
+                                                        <label>
+                                                            Non
+                                                            <input id="reponse" name="reponse" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+                                                       {{ form_row(form.reponse_chimio_pre_op) }}</div>
+                                                </fieldset>
+
+                                            </div>
+
+                                            <div class="col s12 m3">
+                                                <br>
+                                                {{ form_row(form.stade_masaoka_pre_op) }}
+                                            </div>
+                                            <div class="col s12 m3">
+                                                Maladie auto immune associée
+                                                <div class="switch" style="margin-left: 10px">
+                                                    <label>
+                                                        Non
+                                                        <input id="immune"  name="immune" autocomplete="off" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        Oui
+                                                    </label>
+                                                </div>
+                                                {{ form_row(form.maladi_auto_imm_assoc) }}
+                                            </div>
+                                            <div class="col s12 m3">
+                                                Syndrome paranéoplasique
+                                                <div class="switch" style="margin-left: 10px;">
+                                                    <label>
+                                                        Non
+                                                        <input id="paraneo" name="paraneo" autocomplete="off" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        Oui
+                                                    </label>
+                                                </div>
+                                                {{ form_row(form.syndrome_paraneo) }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
@@ -402,11 +548,11 @@
                                             <div class="col s12 m6 l10">
                                                 <h4 class="card-title">
                                                         <label>
-                                                            <input autocomplete="off" name="group1" type="radio"/>
+                                                            <input  autocomplete="off" value="cTNM" name="group2" type="radio"/>
                                                             <span>cTNM</span>
                                                         </label>
                                                         <label>
-                                                            <input autocomplete="off"  name="group1" type="radio" />
+                                                            <input autocomplete="off" value="ypTNM"  name="group2" type="radio" />
                                                             <span>ypTNM</span>
                                                         </label>
                                                    </h4>
@@ -449,6 +595,7 @@
                     </div>
 
 
+
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
@@ -466,14 +613,35 @@
                                     <div id="view-input-fields_5">
                                         <div class="row">
 
-                                            <div class="col s12 m6">
+                                            <div class="col s12 m4">
                                                 {{ form_row(form.epp) }}
                                             </div>
 
-                                            <div class="col s12 m6">
+                                            <div class="col s12 m4">
                                                 {{ form_row(form.anticorps_anti_rach) }}
                                             </div>
 
+                                            <div class="col s12 m4">
+                                                <fieldset style="margin-top: -45px;">
+                                                    <legend>RCP rythmique</legend>
+                                                    <div class="row">
+                                                        <div class="col s12 m6">
+                                                            <div class="switch" style="margin-left: 10px;margin-top: 20px;">
+                                                                <label>
+                                                                    Non
+                                                                    <input id="rcp_ryth" name="rcp_ryth" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col s12 m6">
+                                                            {{ form_row(form.rcp_rythmique) }}
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -483,6 +651,8 @@
                             </div>
                         </div>
                     </div>
+
+
 
                     <div class="row">
                         <div class="col s12">
@@ -515,19 +685,19 @@
                                             <div class="col s12 m1">
                                                 <p>
                                                     <label>
-                                                        <input value="VCS" autocomplete="off" type="checkbox"/>
+                                                        <input value="VCS" name="VCS" autocomplete="off" type="checkbox"/>
                                                         <span>VCS</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                     <label>
-                                                        <input value="TVI" autocomplete="off" type="checkbox"/>
+                                                        <input value="TVI" name="TVI" autocomplete="off" type="checkbox"/>
                                                         <span>TVI</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                     <label>
-                                                        <input value="OD" autocomplete="off" type="checkbox"/>
+                                                        <input value="OD" name="OD" autocomplete="off" type="checkbox"/>
                                                         <span>OD</span>
                                                     </label>
                                                 </p>
@@ -536,21 +706,21 @@
                                             <div class="col s12 m2">
                                                 <p>
                                                     <label>
-                                                        <input value="OG" autocomplete="off" type="checkbox"/>
+                                                        <input value="OG" name="OG" autocomplete="off" type="checkbox"/>
                                                         <span>OG</span>
                                                     </label>
                                                 </p>
 
                                                 <p>
                                                     <label>
-                                                        <input value="aorte" autocomplete="off" type="checkbox"/>
+                                                        <input value="aorte" name="aorte" autocomplete="off" type="checkbox"/>
                                                         <span>aorte</span>
                                                     </label>
                                                 </p>
 
                                                 <p>
                                                     <label>
-                                                        <input value="AP" autocomplete="off" type="checkbox"/>
+                                                        <input value="AP" name="AP" autocomplete="off" type="checkbox"/>
                                                         <span>AP</span>
                                                     </label>
                                                 </p>
@@ -559,21 +729,21 @@
                                             <div class="col s12 m2">
                                                 <p>
                                                     <label>
-                                                        <input value="péricarde" autocomplete="off" type="checkbox"/>
+                                                        <input value="péricarde"  name="pericarde" autocomplete="off" type="checkbox"/>
                                                         <span>péricarde</span>
                                                     </label>
                                                 </p>
 
                                                 <p>
                                                     <label>
-                                                        <input value="phrénique droit" autocomplete="off" type="checkbox"/>
+                                                        <input value="phrénique droit" name="phreniqued" autocomplete="off" type="checkbox"/>
                                                         <span>phrénique droit</span>
                                                     </label>
                                                 </p>
 
                                                 <p>
                                                     <label>
-                                                        <input value="phrénique gauche" autocomplete="off" type="checkbox"/>
+                                                        <input value="phrénique gauche" name="phreniqueg" autocomplete="off" type="checkbox"/>
                                                         <span>phrénique gauche</span>
                                                     </label>
                                                 </p>
@@ -587,42 +757,39 @@
                                                         <span>wedge</span>
                                                     </label>
                                                 </p>
-                                                <input type="text" id="wedge" autocomplete="off">
+                                                <input type="text" name="wedge" id="wedge" autocomplete="off">
 
                                             </div>
 
                                             <div class="col s12 m2">
                                                 <p>
                                                     <label>
-                                                        <input value="lobectomie" id="lobectomie_chec" autocomplete="off" type="checkbox"/>
+                                                        <input value="lobectomie" id="lobectomie_chec" name="lobectomie_chec" autocomplete="off" type="checkbox"/>
                                                         <span>lobectomie</span>
                                                     </label>
                                                 </p>
-                                                <input type="text" id="lobectomie" autocomplete="off">
+                                                <input type="text" id="lobectomie" name="lobectomie" autocomplete="off">
                                             </div>
 
                                             <div class="col s12 m3">
                                                 <p>
                                                     <label>
-                                                        <input value="pneumonectomie gauche" autocomplete="off" type="checkbox"/>
+                                                        <input value="pneumonectomie gauche" name="pneumonectomieg" autocomplete="off" type="checkbox"/>
                                                         <span>pneumonectomie gauche</span>
                                                     </label>
                                                 </p>
                                                 <p>
                                                     <label>
-                                                        <input value="pneumonectomie droite" autocomplete="off" type="checkbox"/>
+                                                        <input value="pneumonectomie droite" name="pneumonectomied" autocomplete="off" type="checkbox"/>
                                                         <span>pneumonectomie droite</span>
                                                     </label>
                                                 </p>
                                                 <br>
-                                                <label for="txtLibre"> Autre... </label>
-                                                <input type="text" autocomplete="off" id="txtLibre">
+                                                {{ form_row(form.chir_txt_libre) }}
                                             </div>
-
                                             </fieldset>
-
                                         </div>
-
+                                        <br><br>
 
                                         <div class="row">
                                             <div class="col s12 m4">
@@ -641,32 +808,29 @@
 
                                             </div>
                                             <div class="col s12 m2"> {{ form_row(form.insufflation_co2) }} </div>
-                                            <div class="col s12 m3">
+                                            <div class="col s12 m4">
                                             <fieldset>
                                                 <legend>Conversion</legend>
                                                 <div class="row">
-                                                    <div class="col s12 m4">
-                                                        <p>
+                                                    <div class="col s12 m6" style="min-width: 150px">
+
+                                                        <div class="switch" style="margin-top: 10px">
                                                             <label>
-                                                                <input autocomplete="off" name="group1" type="radio"/>
-                                                                <span>Oui</span>
+                                                                Non
+                                                                <input id="conversion" name="conversion" autocomplete="off" type="checkbox">
+                                                                <span class="lever"></span>
+                                                                Oui
                                                             </label>
-                                                        </p>
-                                                        <p>
-                                                            <label>
-                                                                <input autocomplete="off"  name="group1" type="radio" />
-                                                                <span>Non</span>
-                                                            </label>
-                                                        </p>
+                                                        </div>
                                                     </div>
 
-                                                    <div class="col s12 m8" style="margin-top: -15px">
+                                                    <div class="col s12 m6" style="margin-top: -15px">
                                                         {{ form_row(form.conversion) }}
                                                     </div>
                                                 </div>
                                             </fieldset>
                                             </div>
-                                            <div class="col s12 m3">
+                                            <div class="col s12 m2">
                                                 {{ form_row(form.commentaire) }}
 
                                             </div>
@@ -686,6 +850,16 @@
                                         </div>
 
 
+                                        <br>
+
+
+                                        <div class="row">
+                                            <div class="col s12 m4"> {{ form_row(form.chir_drainage) }} </div>
+                                            <div class="col s12 m4"> {{ form_row(form.chir_interv_interac) }} </div>
+                                            <div class="col s12 m4"> {{ form_row(form.qualite_resection) }} </div>
+                                        </div>
+
+
                                     </div>
 
 
@@ -694,6 +868,480 @@
                         </div>
                     </div>
 
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                                <h4 class="card-title">Post opératoire
+
+                                                    <div style="margin-left: 20px;display: inline">
+
+                                                    <label>
+                                                        <input autocomplete="off" value="cTNM" name="group1" type="radio"/>
+                                                        <span>cTNM</span>
+                                                    </label>
+                                                    <label>
+                                                        <input autocomplete="off" value="ypTNM"  name="group1" type="radio" />
+                                                        <span>ypTNM</span>
+                                                    </label>
+
+                                                    </div>
+
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div id="view-input-fields_7">
+
+
+                                        <div class="row">
+
+                                            <div class="col s12 m3">
+                                                <!--
+                                                <div class="row">
+                                                    <div class="col s12 m8"></div>
+
+                                                    <div class="col s12 m4">
+
+                                                        <div class="file-field input-field">
+                                                            <div class="btn">
+                                                                <span>PDF</span>
+                                                                <input name="file" type="file">
+                                                            </div>
+                                                        </div>
+
+                                                <img style="display: inline" class="recent-file" src="../../../app-assets/images/icon/pdf.png" height="40" width="40">
+                                                    </div>
+                                                </div>  -->
+                                                {{ form_row(form.anapath_post_op) }}
+                                                {{ form_row(form.autre_anapath_post_op) }}
+                                            </div>
+                                            <div class="col s12 m2">
+                                                {{ form_row(form.post_tnm_t) }}
+                                                {{ form_row(form.autre_post_tnm_t) }}
+                                            </div>
+                                            <div class="col s12 m2">
+                                                {{ form_row(form.post_tnm_n) }}
+                                                {{ form_row(form.autre_post_tnm_n) }}
+                                            </div>
+                                            <div class="col s12 m2">
+                                                {{ form_row(form.post_tnm_m) }}
+                                                {{ form_row(form.autre_post_tnm_m) }}
+                                            </div>
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.post_tnm_stade_ctnm) }}
+                                                {{ form_row(form.autre_post_tnm_stade_ctnm) }}
+                                            </div>
+
+                                        </div>
+
+                                        <br><br>
+
+                                        <div class="row">
+
+                                            <div class="col s12 m3">
+
+                                                <fieldset>
+
+                                                    <legend>Réanimation/USC post op</legend>
+
+                                                    <div class="row">
+                                                        <div class="col s12 m6" style="min-width: 130px">
+
+                                                            <div class="switch" >
+                                                                <label>
+                                                                    Non
+                                                                    <input id="usc" name="usc" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col s12 m6" style="margin-top: -15px">
+                                                            {{ form_row(form.rea_usc_post_op) }}
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+                                            </div>
+
+                                            <div class="col s12 m2">
+                                                {{ form_row(form.duree_rean) }}
+                                                <span class="helper-text orange-text">En jours</span>
+                                            </div>
+
+
+                                            <div class="col s12 m7">
+
+                                                <fieldset>
+
+                                                    <legend>Suites </legend>
+
+                                                    <div class="row">
+
+                                                        <div class="col s12 m3" style="min-width: 150px">
+
+                                                            <div class="switch">
+                                                                <label>
+                                                                    Non
+                                                                    <input id="suite" name="suite" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <br>
+
+                                                    <div class="row" id="div_suite">
+                                                        <div class="col s12 m4">
+                                                            <p>
+                                                                <label>
+                                                                    <input value="décès" name="decs" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>décès</span>
+                                                                </label>
+                                                            </p>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input value="poussée myasthénique" name="poussée" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>poussée myasthéniquet</span>
+                                                                </label>
+                                                            </p>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input value="paralysie phrénique" name="phrénique" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>paralysie phrénique</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="col s12 m4">
+                                                            <p>
+                                                                <label>
+                                                                    <input value="paralysie concurrentielle" name="paralysie" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>paralysie concurrentielle</span>
+                                                                </label>
+                                                            </p>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input value="pneumopathie" name="pneumopathie" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>pneumopathie</span>
+                                                                </label>
+                                                            </p>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input value="bullage > 5 jours" name="bullage" class="suites"  autocomplete="off" type="checkbox"/>
+                                                                    <span>bullage > 5 jours</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+
+                                                        <div class="col s12 m4">
+                                                            <p>
+                                                                <label>
+                                                                    <input value="décollement" name="décollement" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>décollement</span>
+                                                                </label>
+                                                            </p>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input value="saignement" name="saignement" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>saignement</span>
+                                                                </label>
+                                                            </p>
+
+                                                            <p>
+                                                                <label>
+                                                                    <input value="infection" name="infection" class="suites" autocomplete="off" type="checkbox"/>
+                                                                    <span>infection</span>
+                                                                </label>
+                                                            </p>
+                                                        </div>
+                                                        <br>
+                                                        <div class="col s12 m3">
+                                                            {{ form_row(form.autre_post_op_suites) }}
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                        <br><br>
+
+
+                                        <div class="row">
+
+                                            <div class="col s12 m4">
+                                                {{ form_row(form.post_op_duree_drainage) }}
+                                                <span class="helper-text orange-text">En jours</span>
+                       
+                                            </div>
+                                            <div class="col s12 m4">
+                                                {{ form_row(form.post_op_date_sortie) }}
+                                               
+                                            </div>
+                                            <div class="col s12 m4">
+                                                <label for="duree_hopi">Durée hospi en jours</label>
+                                                <input type="number" autocomplete="off" min="0" readonly id="duree_hopi">
+                                                <span class="helper-text orange-text">En jours</span>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                                <h4 class="card-title">Traitement complémentaire</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="view-input-fields_5">
+                                        <div class="row">
+
+                                            <div class="col s12 m6">
+
+                                                <fieldset>
+
+                                                    <legend>Chimio post op</legend>
+
+                                                    <div class="row">
+                                                        <div class="col s12 m6" style="min-width: 130px">
+
+                                                            <div class="switch" >
+                                                                <label>
+                                                                    Non
+                                                                    <input id="chimio_post_op" name="chimio_post_op" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col s12 m6" style="margin-top: -15px">
+                                                            {{ form_row(form.chimio_post_op) }}
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+
+                                            </div>
+
+                                            <div class="col s12 m6">
+
+                                                <fieldset>
+
+                                                    <legend>Radiothérapie post op</legend>
+
+                                                    <div class="row">
+                                                        <div class="col s12 m6" style="min-width: 130px">
+
+                                                            <div class="switch" >
+                                                                <label>
+                                                                    Non
+                                                                    <input id="radio_post_op" name="radio_post_op" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col s12 m6" style="margin-top: -15px">
+                                                            {{ form_row(form.radiotherapie_post_op) }}
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                               <!-- <h4 class="card-title">Bio complémentaire</h4>  -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="view-input-fields_5">
+                                        <div class="row">
+
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.date_der_nouvelles) }}
+                                            </div>
+
+                                            <div class="col s12 m3">
+                                                <label for="suivi_jour">Suivi </label>
+                                                <input type="number" id="suivi_jour" autocomplete="off" readonly>
+                                                <span class="helper-text orange-text">En jours</span>
+                                            </div>
+
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.suivi_myasthenie) }}
+                                            </div>
+
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.score_mya_post_op) }}
+                                            </div>
+                                            
+
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                                 <h4 class="card-title">Récidive
+                                                     <div class="switch" style="margin-left: 10px; display: inline;">
+                                                         <label>
+                                                             Non
+                                                             <input id="recidive" name="recidive" autocomplete="off" type="checkbox">
+                                                             <span class="lever"></span>
+                                                             Oui
+                                                         </label>
+                                                     </div>
+                                                 </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="view-input-fields_10">
+                                        <div class="row">
+                                            <div class="col s12 m4">
+                                                {{ form_row(form.date_recidive) }}
+                                            </div>
+
+                                            <div class="col s12 m4">
+                                                {{ form_row(form.localisation_recidive) }}
+                                            </div>
+
+                                            <div class="col s12 m4">
+                                                {{ form_row(form.traitement_rechute_recidive) }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div id="input-fields" class="card card-tabs">
+                                <div class="card-content">
+                                    <div class="card-title">
+                                        <div class="row">
+                                            <div class="col s12 m6 l10">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div id="view-input-fields_10">
+                                        <div class="row">
+                                            <div class="col s12 m6">
+                                                {{ form_row(form.num_acp) }}
+                                            </div>
+                                            <div class="col s12 m6">
+                                                  Décès
+                                                <div class="switch" style="margin-left: 10px; display: inline;">
+                                                    <label>
+                                                        Non
+                                                        <input name="deces" id="deces" autocomplete="off" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        Oui
+                                                    </label>
+                                                </div>
+                                                <div id="cause_deces">{{ form_row(form.cause_deces) }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row center-align">
+
+                        <button class="btn waves-effect waves-light red" type="submit" name="anuller">ANNULER
+                            <i class="material-icons left">remove</i>
+                        </button>
+
+                        <button class="btn waves-effect waves-light green" type="submit" name="action">ENREGISTRER
+                            <i class="material-icons right">add</i>
+                        </button>
+                        <br><br>
+
+                    </div>
 
 
                 </div>

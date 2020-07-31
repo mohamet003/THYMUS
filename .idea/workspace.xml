@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="133dbd8a-94c4-4d86-bd0d-276fc5c628cb" name="Default Changelist" comment="" />
+    <list default="true" id="133dbd8a-94c4-4d86-bd0d-276fc5c628cb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/views/materialize_form_theme.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0cfb6a1d-a697-4679-99e8-0ef8706079b9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0cfb6a1d-a697-4679-99e8-0ef8706079b9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20200729143610.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FormulaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormulaireController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/FormPatientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormPatientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/formulaire/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formulaire/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,8 +52,18 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="thymus: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="thymus" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="thymus: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="patient: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -148,6 +170,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1fGLVpMjpJRoCbnWEI4qK4c2dP0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -156,8 +179,14 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -171,7 +200,8 @@
       <updated>1595839508566</updated>
       <workItem from="1595839510012" duration="1469000" />
       <workItem from="1595843496156" duration="1291000" />
-      <workItem from="1595922921172" duration="42725000" />
+      <workItem from="1595922921172" duration="70953000" />
+      <workItem from="1596188443016" duration="15019000" />
     </task>
     <servers />
   </component>
@@ -191,10 +221,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2560" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595843359043" />
-    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1595928550107">
+    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596190104672">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595928550107" />
+    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1596190104672" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1595946789238">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -203,9 +233,13 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2715" y="462" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595928307165" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1595943521431">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1596121296927">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595943521431" />
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1596121296927" />
+    <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1596099332668">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1596099332668" />
   </component>
 </project>

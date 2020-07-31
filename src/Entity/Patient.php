@@ -46,12 +46,12 @@ class Patient
     private $sexe;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $poids;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float",nullable=true)
      */
     private $taille;
 
@@ -136,7 +136,7 @@ class Patient
     private $tnm_n;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $tnm_m;
 
@@ -459,6 +459,156 @@ class Patient
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $autre_chir_geste;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_anapath_post_op;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_post_tnm_t;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_post_tnm_n;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_post_tnm_m;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_post_tnm_stade_ctnm;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_rea_usc_post_op;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $duree_rean;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_post_op_suites;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $autre_chirurgien_referent;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $file_anapath_post_op;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $file_chirurgie;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date_create;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $date_update;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $user_create;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $user_update;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $reste_riques;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $chir_txt_libre;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $vcs;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $hta;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $tvi;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $od;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $og;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $aorte;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pericard;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $phreniqued;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $phreniqueg;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $wedge;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $lobectomie;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pneug;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pneud;
 
     public function __construct()
     {
@@ -1548,6 +1698,366 @@ class Patient
     public function setAutreChirGeste(?string $autre_chir_geste): self
     {
         $this->autre_chir_geste = $autre_chir_geste;
+
+        return $this;
+    }
+
+    public function getAutreAnapathPostOp(): ?string
+    {
+        return $this->autre_anapath_post_op;
+    }
+
+    public function setAutreAnapathPostOp(?string $autre_anapath_post_op): self
+    {
+        $this->autre_anapath_post_op = $autre_anapath_post_op;
+
+        return $this;
+    }
+
+    public function getAutrePostTnmT(): ?string
+    {
+        return $this->autre_post_tnm_t;
+    }
+
+    public function setAutrePostTnmT(?string $autre_post_tnm_t): self
+    {
+        $this->autre_post_tnm_t = $autre_post_tnm_t;
+
+        return $this;
+    }
+
+    public function getAutrePostTnmN(): ?string
+    {
+        return $this->autre_post_tnm_n;
+    }
+
+    public function setAutrePostTnmN(?string $autre_post_tnm_n): self
+    {
+        $this->autre_post_tnm_n = $autre_post_tnm_n;
+
+        return $this;
+    }
+
+    public function getAutrePostTnmM(): ?string
+    {
+        return $this->autre_post_tnm_m;
+    }
+
+    public function setAutrePostTnmM(?string $autre_post_tnm_m): self
+    {
+        $this->autre_post_tnm_m = $autre_post_tnm_m;
+
+        return $this;
+    }
+
+    public function getAutrePostTnmStadeCtnm(): ?string
+    {
+        return $this->autre_post_tnm_stade_ctnm;
+    }
+
+    public function setAutrePostTnmStadeCtnm(?string $autre_post_tnm_stade_ctnm): self
+    {
+        $this->autre_post_tnm_stade_ctnm = $autre_post_tnm_stade_ctnm;
+
+        return $this;
+    }
+
+    public function getAutreReaUscPostOp(): ?string
+    {
+        return $this->autre_rea_usc_post_op;
+    }
+
+    public function setAutreReaUscPostOp(?string $autre_rea_usc_post_op): self
+    {
+        $this->autre_rea_usc_post_op = $autre_rea_usc_post_op;
+
+        return $this;
+    }
+
+    public function getDureeRean(): ?string
+    {
+        return $this->duree_rean;
+    }
+
+    public function setDureeRean(?string $duree_rean): self
+    {
+        $this->duree_rean = $duree_rean;
+
+        return $this;
+    }
+
+    public function getAutrePostOpSuites(): ?string
+    {
+        return $this->autre_post_op_suites;
+    }
+
+    public function setAutrePostOpSuites(?string $autre_post_op_suites): self
+    {
+        $this->autre_post_op_suites = $autre_post_op_suites;
+
+        return $this;
+    }
+
+    public function getAutreChirurgienReferent(): ?string
+    {
+        return $this->autre_chirurgien_referent;
+    }
+
+    public function setAutreChirurgienReferent(?string $autre_chirurgien_referent): self
+    {
+        $this->autre_chirurgien_referent = $autre_chirurgien_referent;
+
+        return $this;
+    }
+
+    public function getFileAnapathPostOp(): ?string
+    {
+        return $this->file_anapath_post_op;
+    }
+
+    public function setFileAnapathPostOp(?string $file_anapath_post_op): self
+    {
+        $this->file_anapath_post_op = $file_anapath_post_op;
+
+        return $this;
+    }
+
+    public function getFileChirurgie(): ?string
+    {
+        return $this->file_chirurgie;
+    }
+
+    public function setFileChirurgie(?string $file_chirurgie): self
+    {
+        $this->file_chirurgie = $file_chirurgie;
+
+        return $this;
+    }
+
+    public function getDateCreate(): ?\DateTimeInterface
+    {
+        return $this->date_create;
+    }
+
+    public function setDateCreate(\DateTimeInterface $date_create): self
+    {
+        $this->date_create = $date_create;
+
+        return $this;
+    }
+
+    public function getDateUpdate(): ?\DateTimeInterface
+    {
+        return $this->date_update;
+    }
+
+    public function setDateUpdate(?\DateTimeInterface $date_update): self
+    {
+        $this->date_update = $date_update;
+
+        return $this;
+    }
+
+    public function getUserCreate(): ?string
+    {
+        return $this->user_create;
+    }
+
+    public function setUserCreate(?string $user_create): self
+    {
+        $this->user_create = $user_create;
+
+        return $this;
+    }
+
+    public function getUserUpdate(): ?string
+    {
+        return $this->user_update;
+    }
+
+    public function setUserUpdate(?string $user_update): self
+    {
+        $this->user_update = $user_update;
+
+        return $this;
+    }
+
+    public function getResteRiques(): ?string
+    {
+        return $this->reste_riques;
+    }
+
+    public function setResteRiques(?string $reste_riques): self
+    {
+        $this->reste_riques = $reste_riques;
+
+        return $this;
+    }
+
+    public function getChirTxtLibre(): ?string
+    {
+        return $this->chir_txt_libre;
+    }
+
+    public function setChirTxtLibre(?string $chir_txt_libre): self
+    {
+        $this->chir_txt_libre = $chir_txt_libre;
+
+        return $this;
+    }
+
+    public function getVcs(): ?bool
+    {
+        return $this->vcs;
+    }
+
+    public function setVcs(?bool $vcs): self
+    {
+        $this->vcs = $vcs;
+
+        return $this;
+    }
+
+    public function getHta(): ?bool
+    {
+        return $this->hta;
+    }
+
+    public function setHta(?bool $hta): self
+    {
+        $this->hta = $hta;
+
+        return $this;
+    }
+
+    public function getTvi(): ?bool
+    {
+        return $this->tvi;
+    }
+
+    public function setTvi(?bool $tvi): self
+    {
+        $this->tvi = $tvi;
+
+        return $this;
+    }
+
+    public function getOd(): ?bool
+    {
+        return $this->od;
+    }
+
+    public function setOd(?bool $od): self
+    {
+        $this->od = $od;
+
+        return $this;
+    }
+
+    public function getOg(): ?bool
+    {
+        return $this->og;
+    }
+
+    public function setOg(?bool $og): self
+    {
+        $this->og = $og;
+
+        return $this;
+    }
+
+    public function getAorte(): ?bool
+    {
+        return $this->aorte;
+    }
+
+    public function setAorte(?bool $aorte): self
+    {
+        $this->aorte = $aorte;
+
+        return $this;
+    }
+
+    public function getPericard(): ?bool
+    {
+        return $this->pericard;
+    }
+
+    public function setPericard(?bool $pericard): self
+    {
+        $this->pericard = $pericard;
+
+        return $this;
+    }
+
+    public function getPhreniqued(): ?bool
+    {
+        return $this->phreniqued;
+    }
+
+    public function setPhreniqued(?bool $phreniqued): self
+    {
+        $this->phreniqued = $phreniqued;
+
+        return $this;
+    }
+
+    public function getPhreniqueg(): ?bool
+    {
+        return $this->phreniqueg;
+    }
+
+    public function setPhreniqueg(?bool $phreniqueg): self
+    {
+        $this->phreniqueg = $phreniqueg;
+
+        return $this;
+    }
+
+    public function getWedge(): ?bool
+    {
+        return $this->wedge;
+    }
+
+    public function setWedge(?bool $wedge): self
+    {
+        $this->wedge = $wedge;
+
+        return $this;
+    }
+
+    public function getLobectomie(): ?bool
+    {
+        return $this->lobectomie;
+    }
+
+    public function setLobectomie(?bool $lobectomie): self
+    {
+        $this->lobectomie = $lobectomie;
+
+        return $this;
+    }
+
+    public function getPneug(): ?bool
+    {
+        return $this->pneug;
+    }
+
+    public function setPneug(?bool $pneug): self
+    {
+        $this->pneug = $pneug;
+
+        return $this;
+    }
+
+    public function getPneud(): ?bool
+    {
+        return $this->pneud;
+    }
+
+    public function setPneud(?bool $pneud): self
+    {
+        $this->pneud = $pneud;
 
         return $this;
     }
