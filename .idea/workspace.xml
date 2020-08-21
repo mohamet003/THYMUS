@@ -2,16 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="133dbd8a-94c4-4d86-bd0d-276fc5c628cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/views/materialize_form_theme.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0cfb6a1d-a697-4679-99e8-0ef8706079b9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0cfb6a1d-a697-4679-99e8-0ef8706079b9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20200821081005.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20200821083211.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app-assets/js/scripts/service-dataTable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/bdd_tymus.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/AcceuilController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/acceuil/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20200729143610.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FormulaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormulaireController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/FormPatientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormPatientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PatientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PatientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formulaire/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formulaire/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,13 +55,6 @@
         <item name="thymus" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="thymus: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="thymus: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="patient: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -170,21 +167,31 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1fGLVpMjpJRoCbnWEI4qK4c2dP0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Controller" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public\app-assets\js\scripts" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Entity" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates" />
     </key>
   </component>
@@ -201,12 +208,23 @@
       <workItem from="1595839510012" duration="1469000" />
       <workItem from="1595843496156" duration="1291000" />
       <workItem from="1595922921172" duration="70953000" />
-      <workItem from="1596188443016" duration="15019000" />
+      <workItem from="1596188443016" duration="19215000" />
+      <workItem from="1597650754281" duration="1885000" />
+      <workItem from="1597736238166" duration="11000" />
+      <workItem from="1597843171294" duration="7685000" />
+      <workItem from="1597908155056" duration="13069000" />
+      <workItem from="1597928692497" duration="124000" />
+      <workItem from="1597929165458" duration="5033000" />
+      <workItem from="1597995777715" duration="3472000" />
+      <workItem from="1597999272910" duration="5664000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2472" y="197" key="#Composer" timestamp="1595839561286">
@@ -221,10 +239,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2560" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595843359043" />
-    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1596190104672">
+    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597910545909">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1596190104672" />
+    <state x="2610" y="294" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597910545909" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1595946789238">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -237,6 +255,18 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1596121296927" />
+    <state x="2676" y="364" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1597910239468">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2676" y="364" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597910239468" />
+    <state x="2689" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597844680550">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2689" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597844680550" />
+    <state x="2536" y="245" key="run.anything.popup" timestamp="1597998005369">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2536" y="245" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597998005369" />
     <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1596099332668">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

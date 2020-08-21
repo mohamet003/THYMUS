@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/data-tables/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css') }}">
+    <!-- END: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/page-users.min.css') }}">
+
+{% endblock %}
+
+{% block body %}
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div class="content-wrapper-before gradient-45deg-light-blue-cyan"></div>
+
+            <div class="row">
+                <div class="col s12">
+                    <div id="input-fields" class="card card-tabs">
+                        <div class="card-content">
+                            <div class="card-title">
+                                <div class="row">
+                                    <div class="col s12 m6 l10">
+                                        <h3 class="card-title">Rechercher un patient </h3>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="view-input-fields_10">
+                                <div class="row">
+                                    <form action="" method="get">
+                                        <div class="row">
+                                            <div class="col m3">
+                                                <div class="input-field">
+                                                    <input type="text" value="{{ recherche.prenom }}" class="validate" id="search-prenom"  name="prenom">
+                                                    <label for="search-prenom">Prénom :  </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col m3">
+                                                <div class="input-field">
+                                                    <input type="text" value="{{ recherche.nom }}" class="validate" id="search-nom"  name="nom">
+                                                    <label for="search-nom">Nom :  </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col m3">
+                                            </div>
+                                            <div class="col m3">
+                                                <a href="{{ path('formulaire') }}" class="waves-effect waves-light  btn"><i class="material-icons left">add</i> Nouveau Patient</a>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col m3">
+                                                <div class="input-field">
+                                                    <input type="date" {% if recherche.dateNaissance %} value="{{ recherche.dateNaissance|date('Y-m-d') }}"  {% endif %} class="validate" id="search-datenaissance" placeholder=""  name="datenaissance">
+                                                    <label for="search-datenaissance">Date de naissance :</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col m3">
+                                                <div class="input-field">
+                                                    <input type="text" value="{{ recherche.referent }}" class="validate" id="search-referent"  name="referent">
+                                                    <label for="search-referent">Chirurgien référent :  </label>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col m3 right-align" style="margin-top: 29px">
+                                                <div class="col m3 right-align">
+                                                    <button type="submit" name="rechercher" class="btn-small  waves-effect waves-light gradient-45deg-light-blue-cyan gradient-shadow "> Rechercher </button>
+                                                </div>
+
+                                                <a href="{{ path('acceuil') }}" style="margin-top:-10px" class="mb-6 btn-floating waves-effect gradient-45deg-light-blue-cyan gradient-shadow">
+                                                    <i class="material-icons">autorenew</i>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if patients|length != 0 %}
+            <div class="users-list-table">
+                <div class="card">
+                    <div class="card-content">
+                        <!-- datatable start -->
+                        <div class="responsive-table">
+                            <table id="users-list-datatable" class="table">
+                                <thead>
+                                <tr>
+
+                                    <th>Prénom</th>
+                                    <th>Nom</th>
+                                    <th>Date de naissance</th>
+                                    <th>Chirurgien référent</th>
+                                    <th>Afficher</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for patient in patients %}
+                                    <tr>
+
+                                        <td>{{ patient.prenom }}</td>
+                                        <td>{{ patient.nom }}</td>
+                                        <td>{{ patient.ddn|date("d-m-Y") }}</td>
+                                        <td>
+                                            {% if patient.chirurgienReferent != "Autre" %}
+                                                {{ patient.chirurgienReferent }}
+                                            {% else %}
+                                                {{ patient.autreChirurgienReferent }}
+                                            {% endif %}
+                                        </td>
+                                        <td><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">remove_red_eye</i></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <br><br>
+                        </div>
+                        <!-- datatable ends -->
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
+            <div class="content-overlay"></div>
+        </div>
+    </div>
+    </div>
+    <!-- END: Page Main-->
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('app-assets/vendors/data-tables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('app-assets/vendors/data-tables/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/my-data-table.js') }}"></script>
+    <script src="{{ asset('app-assets/js/scripts/service-dataTable.js') }}"></script>
+
+
+{% endblock %}

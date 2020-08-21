@@ -156,12 +156,10 @@ class FormPatientType extends AbstractType
 
                 'required' => false
             ])
-            ->add('imc',IntegerType::class, [
+            ->add('imc',TextType::class, [
                 'label' => "IMC",
                 'attr' => [
                     'autocomplete' => 'off',
-                    'min' => '0',
-                    'step' => "0.001",
                     'readonly' => true ,
                 ],
 
@@ -679,7 +677,6 @@ class FormPatientType extends AbstractType
             ->add('commentaire',TextareaType::class, [
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea'
                 ],
                 'required' => false
             ])
@@ -724,48 +721,103 @@ class FormPatientType extends AbstractType
             ->add('vcs',CheckboxType::class, [
                 'label' => "VCS",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('avc',CheckboxType::class, [
+                'label' => "AVC",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
             ->add('hta',CheckboxType::class, [
                 'label' => "HTA",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
+
+
 
             ->add('tvi',CheckboxType::class, [
                 'label' => "TVI",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
             ->add('od',CheckboxType::class, [
                 'label' => "OD",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
+
+
+            ->add('og',CheckboxType::class, [
+                'label' => "OG",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'mapped' => true,
+                'required' => false
+            ])
+
 
             ->add('aorte',CheckboxType::class, [
                 'label' => "Aorte",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('ap',CheckboxType::class, [
+                'label' => "AP",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
             ->add('pericard',CheckboxType::class, [
                 'label' => "péricarde",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
             ->add('phreniqued',CheckboxType::class, [
                 'label' => "Phrénique droit",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
             ->add('phreniqueg',CheckboxType::class, [
                 'label' => "Phrénique gauche",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
@@ -780,6 +832,9 @@ class FormPatientType extends AbstractType
             ->add('lobectomie',CheckboxType::class, [
                 'label' => "Lobectomie",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
@@ -787,6 +842,9 @@ class FormPatientType extends AbstractType
             ->add('pneug',CheckboxType::class, [
                 'label' => "Pneumonectomie gauche",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
@@ -794,6 +852,227 @@ class FormPatientType extends AbstractType
             ->add('pneud',CheckboxType::class, [
                 'label' => "Pneumonectomie droit",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('pneud',CheckboxType::class, [
+                'label' => "Pneumonectomie droit",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('insRenChr',CheckboxType::class, [
+                'label' => "Insuffisance rénale chronique",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('maladieThroVein',CheckboxType::class, [
+                'label' => "Maladie thrombo-embolique veineuse",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('dyslipide',CheckboxType::class, [
+                'label' => "Dyslipidémie",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('diabete',CheckboxType::class, [
+                'label' => "Diabète",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('cancer',CheckboxType::class, [
+                'label' => "Cancer",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('cardiopathie',CheckboxType::class, [
+                'label' => "Cardiopathie",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('obesite',CheckboxType::class, [
+                'label' => "Obésité",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('tabagisme',CheckboxType::class, [
+                'label' => "Tabagisme",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('kystique',CheckboxType::class, [
+                'label' => "Kystique",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('nonKystique',CheckboxType::class, [
+                'label' => "Non kystique",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('solide',CheckboxType::class, [
+                'label' => "Solide",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('mixte',CheckboxType::class, [
+                'label' => "Mixte",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('nonrealise',CheckboxType::class, [
+                'label' => "Non réalisé",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('donneeinconnue',CheckboxType::class, [
+                'label' => "Donnée inconnue",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('decesChe',CheckboxType::class, [
+                'label' => "Décès",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('pousse',CheckboxType::class, [
+                'label' => "Poussée myasthéniquet",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('paralysie',CheckboxType::class, [
+                'label' => "Paralysie phrénique",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('paralysieCur',CheckboxType::class, [
+                'label' => "Paralysie concurrentielle",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('pneumopatie',CheckboxType::class, [
+                'label' => "Pneumopathie",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('bullage',CheckboxType::class, [
+                'label' => "Bullage > 5 jours",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('decollement',CheckboxType::class, [
+                'label' => "Décollement",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('saignement',CheckboxType::class, [
+                'label' => "Saignement",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('infection',CheckboxType::class, [
+                'label' => "Infection",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
                 'required' => false
             ])
 
@@ -1078,7 +1357,6 @@ class FormPatientType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea',
                     'data-length' => "254"
                 ],
                 'required' => false
@@ -1088,7 +1366,6 @@ class FormPatientType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea',
                     'data-length' => "254"
                 ],
                 'required' => false
@@ -1109,7 +1386,6 @@ class FormPatientType extends AbstractType
                 'label' => 'Suivi myasthénie ',
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea',
                     'data-length' => "1000"
                 ],
                 'required' => false
@@ -1129,7 +1405,21 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
 
+            ->add('lobectomie_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
 
+            ->add('wedge_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
 
             //->add('recidive')
             ->add('date_recidive', DateType::class, [
@@ -1146,7 +1436,6 @@ class FormPatientType extends AbstractType
                 'label' => 'Localisation',
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea',
                     'data-length' => "255"
                 ],
                 'required' => false
@@ -1155,7 +1444,6 @@ class FormPatientType extends AbstractType
                 'label' => 'Traitement de la rechute',
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea',
                     'data-length' => "1000"
                 ],
                 'required' => false
@@ -1176,7 +1464,6 @@ class FormPatientType extends AbstractType
                 'label' => 'Cause du décès ',
                 'attr' => [
                     'autocomplete' => 'off',
-                    'class' => 'materialize-textarea',
                     'data-length' => "1000"
                 ],
                 'required' => false
@@ -1207,7 +1494,7 @@ class FormPatientType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Patient::class,
+            'data_class' => Patient::class
         ]);
     }
 }

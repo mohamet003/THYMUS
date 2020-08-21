@@ -6,6 +6,7 @@ use App\Repository\PatientRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\Types\This;
 
 /**
@@ -27,6 +28,10 @@ class Patient
 
 
     private $age;
+
+    /**
+     * @var string
+     */
     private $imc;
 
 
@@ -609,6 +614,141 @@ class Patient
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $pneud;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $avc;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $ap;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $obesite;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $dyslipide;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $diabete;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $insRenChr;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $maladieThroVein;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $cancer;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $cardiopathie;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $tabagisme;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $kystique;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $nonKystique;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $solide;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $mixte;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $nonrealise;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $donneeinconnue;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $decesChe;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pousse;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $paralysie;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $paralysieCur;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pneumopatie;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $bullage;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $decollement;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $saignement;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $infection;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $lobectomie_txt;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $wedge_txt;
 
     public function __construct()
     {
@@ -1527,12 +1667,19 @@ class Patient
         return $this->age;
     }
 
-    public function getImc(): ?int
+    public function getImc(): ?string
     {
         if ($this->taille)
             $this->imc = $this->poids / (($this->taille/100) * ($this->taille/100));
-        return $this->imc;
+        return (string)$this->imc;
     }
+
+    public function setImc(?string $val): self
+    {
+        $this->imc = $val;
+        return $this;
+    }
+
 
     public function getScoreCharlson(): ?string
     {
@@ -2058,6 +2205,330 @@ class Patient
     public function setPneud(?bool $pneud): self
     {
         $this->pneud = $pneud;
+
+        return $this;
+    }
+
+    public function getAvc(): ?bool
+    {
+        return $this->avc;
+    }
+
+    public function setAvc(bool $avc): self
+    {
+        $this->avc = $avc;
+
+        return $this;
+    }
+
+    public function getAp(): ?bool
+    {
+        return $this->ap;
+    }
+
+    public function setAp(?bool $ap): self
+    {
+        $this->ap = $ap;
+
+        return $this;
+    }
+
+    public function getObesite(): ?bool
+    {
+        return $this->obesite;
+    }
+
+    public function setObesite(?bool $obesite): self
+    {
+        $this->obesite = $obesite;
+
+        return $this;
+    }
+
+    public function getDyslipide(): ?bool
+    {
+        return $this->dyslipide;
+    }
+
+    public function setDyslipide(?bool $dyslipide): self
+    {
+        $this->dyslipide = $dyslipide;
+
+        return $this;
+    }
+
+    public function getDiabete(): ?bool
+    {
+        return $this->diabete;
+    }
+
+    public function setDiabete(?bool $diabete): self
+    {
+        $this->diabete = $diabete;
+
+        return $this;
+    }
+
+    public function getInsRenChr(): ?bool
+    {
+        return $this->insRenChr;
+    }
+
+    public function setInsRenChr(?bool $insRenChr): self
+    {
+        $this->insRenChr = $insRenChr;
+
+        return $this;
+    }
+
+    public function getMaladieThroVein(): ?bool
+    {
+        return $this->maladieThroVein;
+    }
+
+    public function setMaladieThroVein(?bool $maladieThroVein): self
+    {
+        $this->maladieThroVein = $maladieThroVein;
+
+        return $this;
+    }
+
+    public function getCancer(): ?bool
+    {
+        return $this->cancer;
+    }
+
+    public function setCancer(?bool $cancer): self
+    {
+        $this->cancer = $cancer;
+
+        return $this;
+    }
+
+    public function getCardiopathie(): ?bool
+    {
+        return $this->cardiopathie;
+    }
+
+    public function setCardiopathie(?bool $cardiopathie): self
+    {
+        $this->cardiopathie = $cardiopathie;
+
+        return $this;
+    }
+
+    public function getTabagisme(): ?bool
+    {
+        return $this->tabagisme;
+    }
+
+    public function setTabagisme(?bool $tabagisme): self
+    {
+        $this->tabagisme = $tabagisme;
+
+        return $this;
+    }
+
+    public function getKystique(): ?bool
+    {
+        return $this->kystique;
+    }
+
+    public function setKystique(?bool $kystique): self
+    {
+        $this->kystique = $kystique;
+
+        return $this;
+    }
+
+    public function getNonKystique(): ?bool
+    {
+        return $this->nonKystique;
+    }
+
+    public function setNonKystique(?bool $nonKystique): self
+    {
+        $this->nonKystique = $nonKystique;
+
+        return $this;
+    }
+
+    public function getSolide(): ?bool
+    {
+        return $this->solide;
+    }
+
+    public function setSolide(?bool $solide): self
+    {
+        $this->solide = $solide;
+
+        return $this;
+    }
+
+    public function getMixte(): ?bool
+    {
+        return $this->mixte;
+    }
+
+    public function setMixte(?bool $mixte): self
+    {
+        $this->mixte = $mixte;
+
+        return $this;
+    }
+
+    public function getNonrealise(): ?bool
+    {
+        return $this->nonrealise;
+    }
+
+    public function setNonrealise(?bool $nonrealise): self
+    {
+        $this->nonrealise = $nonrealise;
+
+        return $this;
+    }
+
+    public function getDonneeinconnue(): ?bool
+    {
+        return $this->donneeinconnue;
+    }
+
+    public function setDonneeinconnue(?bool $donneeinconnue): self
+    {
+        $this->donneeinconnue = $donneeinconnue;
+
+        return $this;
+    }
+
+    public function getDecesChe(): ?bool
+    {
+        return $this->decesChe;
+    }
+
+    public function setDecesChe(?bool $decesChe): self
+    {
+        $this->decesChe = $decesChe;
+
+        return $this;
+    }
+
+    public function getPousse(): ?bool
+    {
+        return $this->pousse;
+    }
+
+    public function setPousse(?bool $pousse): self
+    {
+        $this->pousse = $pousse;
+
+        return $this;
+    }
+
+    public function getParalysie(): ?bool
+    {
+        return $this->paralysie;
+    }
+
+    public function setParalysie(?bool $paralysie): self
+    {
+        $this->paralysie = $paralysie;
+
+        return $this;
+    }
+
+    public function getParalysieCur(): ?bool
+    {
+        return $this->paralysieCur;
+    }
+
+    public function setParalysieCur(?bool $paralysieCur): self
+    {
+        $this->paralysieCur = $paralysieCur;
+
+        return $this;
+    }
+
+    public function getPneumopatie(): ?bool
+    {
+        return $this->pneumopatie;
+    }
+
+    public function setPneumopatie(?bool $pneumopatie): self
+    {
+        $this->pneumopatie = $pneumopatie;
+
+        return $this;
+    }
+
+    public function getBullage(): ?bool
+    {
+        return $this->bullage;
+    }
+
+    public function setBullage(?bool $bullage): self
+    {
+        $this->bullage = $bullage;
+
+        return $this;
+    }
+
+    public function getDecollement(): ?bool
+    {
+        return $this->decollement;
+    }
+
+    public function setDecollement(?bool $decollement): self
+    {
+        $this->decollement = $decollement;
+
+        return $this;
+    }
+
+    public function getSaignement(): ?bool
+    {
+        return $this->saignement;
+    }
+
+    public function setSaignement(?bool $saignement): self
+    {
+        $this->saignement = $saignement;
+
+        return $this;
+    }
+
+    public function getInfection(): ?bool
+    {
+        return $this->infection;
+    }
+
+    public function setInfection(?bool $infection): self
+    {
+        $this->infection = $infection;
+
+        return $this;
+    }
+
+    public function getLobectomieTxt(): ?string
+    {
+        return $this->lobectomie_txt;
+    }
+
+    public function setLobectomieTxt(?string $lobectomie_txt): self
+    {
+        $this->lobectomie_txt = $lobectomie_txt;
+
+        return $this;
+    }
+
+    public function getWedgeTxt(): ?string
+    {
+        return $this->wedge_txt;
+    }
+
+    public function setWedgeTxt(?string $wedge_txt): self
+    {
+        $this->wedge_txt = $wedge_txt;
 
         return $this;
     }
