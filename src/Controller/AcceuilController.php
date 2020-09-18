@@ -74,7 +74,7 @@ class AcceuilController extends AbstractController
                     $ligne = explode(';', $item);
                     dump($ligne);
                 }
-   */
+
 
         if (($handle = fopen('../public/bdd_tymus.csv', 'r')) !== FALSE) { // Check the resource is valid
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) { // Check opening the file is OK!
@@ -85,7 +85,7 @@ class AcceuilController extends AbstractController
             }
             fclose($handle);
         }
-
+   */
         $repository = new PatientRepository($this->getDoctrine());
         $patients = [];
         $inSearch = false;
@@ -128,7 +128,7 @@ class AcceuilController extends AbstractController
         }
 
 
-        dump($patients);
+
         return $this->render('acceuil/index.html.twig', [
             'controller_name' => 'AcceuilController',
             'patients' => $patients,

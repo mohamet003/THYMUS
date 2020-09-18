@@ -1329,6 +1329,9 @@ class FormPatientType extends AbstractType
 
             ->add('post_op_duree_drainage',NumberType::class, [
                 'label' => 'Durée de drainage',
+                'label_attr' => [
+                    'class' => 'active'
+                ],
                 'attr' => [
                     'class' => 'validate',
                     'min' => '0',
@@ -1344,6 +1347,9 @@ class FormPatientType extends AbstractType
            // ->add('pre_op_duree_rea')
             ->add('post_op_date_sortie', DateType::class, [
                'label' => "Date de sortie",
+               'label_attr' => [
+                   'class' => 'active'
+               ],
                'widget' => 'single_text',
                'html5' => true,
                'attr' => [

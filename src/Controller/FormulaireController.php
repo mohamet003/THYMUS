@@ -192,7 +192,6 @@ class FormulaireController extends AbstractController
             return $this->redirectToRoute('acceuil');
         }
 
-dump($patient);
         return $this->render('formulaire/index.html.twig', [
             'controller_name' => 'FormulaireController',
             'form' => $form->createView(),
@@ -218,6 +217,6 @@ dump($patient);
                 "Patient supprimé avec succes !"
             );
 
-            return $this->redirectToRoute('acceuil');
+        return $this->json("");
 }
 }

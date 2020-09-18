@@ -17,6 +17,9 @@
         <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/flag-icon/css/flag-icon.min.css')}}">
         <link rel="stylesheet" href="{{asset('app-assets/vendors/noUiSlider/nouislider.min.css')}}" type="text/css">
         <!-- END: VENDOR CSS-->
+        <!-- iziToas t-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/iziToast-master/dist/css/iziToast.min.css') }}">
+
         <!-- BEGIN: Page Level CSS-->
         <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/horizontal-menu-template/materialize.min.css')}}">
         <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/themes/horizontal-menu-template/style.min.css')}}">
@@ -94,15 +97,13 @@
     <script src="{{asset('app-assets/js/scripts/form-elements.min.js')}}"></script>
     <script src="{{ asset('app-assets/iziToast-master/dist/js/iziToast.min.js') }}"></script>
     <script src="{{ asset('app-assets/js/axios.js') }}"></script>
-    <script src="{{ asset('app-assets/js/scripts/form-masks.min.js') }}"></script>
 
     <!-- Minified version of `es6-promise-auto` below. -->
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
 
-
-
     {# read and display all flash messages #}
+
     {% for label, messages in app.flashes %}
         {% for message in messages %}
 
@@ -163,6 +164,25 @@
         {% endfor %}
     {% endfor %}
 
+    <script>
+       $(document).ready(function () {
+
+
+           $('.input-field label').each(function () {
+
+               if (!$(this).parent().find(".select-dropdown").hasClass("select-dropdown")){
+                  $(this).addClass('active');
+                   console.log($(this))
+               }
+
+           })
+           if (window.scrollY) {
+               window.scroll(0, 0);  // reset the scroll position to the top left of the document.
+           }
+       })
+
+
+    </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

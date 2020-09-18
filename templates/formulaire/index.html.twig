@@ -1152,7 +1152,7 @@
                                 <i class="material-icons right">add</i>
                             </button>
                         {% if button != "ENREGISTRER" %}
-                            <a href="{{ path('formulaire.delete', {'id': patient.id}) }}" class="waves-effect waves-light  btn"><i class="material-icons left">delete</i> SUPPRIMER</a>
+                            <a href="#" onclick="deleteUser({{ patient.id }})" class="waves-effect waves-light  btn"><i class="material-icons left">delete</i> SUPPRIMER</a>
 
                         {% endif %}
 
