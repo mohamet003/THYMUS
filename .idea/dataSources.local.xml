@@ -15,5 +15,11 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="Microsoft SQL Server (jTds) - DSA-CLA-PRD@clinicom" uuid="cda81200-c881-464e-9cf8-b8ebb41908f0">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MSSQL" exact-version="0" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>ClinicomSQL</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

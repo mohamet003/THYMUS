@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class FormulaireController extends AbstractController
@@ -26,10 +27,11 @@ class FormulaireController extends AbstractController
     /**
      * @Route("/formulaire", name="formulaire")
      * @param Request $request
+     * @param Session $session
      * @return RedirectResponse|Response
      * @throws \Exception
      */
-    public function index(Request $request)
+    public function index(Request $request, Session $session)
     {
         $patient = new Patient();
         $form = $this->createForm(FormPatientType::class, $patient);
@@ -41,7 +43,7 @@ class FormulaireController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             if ($request->get('tissus')){
-                $patient->setTissuCongele($request->get('tissus'));
+                $patient->setTissuCongele("Oui");
             }
 
             if ($request->get('suite')){
@@ -114,7 +116,8 @@ class FormulaireController extends AbstractController
                 'succes',
                 "Patient enrégistré avec succes !"
             );
-            return $this->redirectToRoute('acceuil');
+            return $this->redirect($session->get('searchUrl'));
+            //return $this->redirectToRoute('acceuil');
         }
 
 
@@ -131,10 +134,11 @@ class FormulaireController extends AbstractController
      * @Route("/formulaire/{id}", name="formulaire.edit")
      * @param Patient $patient
      * @param Request $request
+     * @param Session $session
      * @return RedirectResponse|Response
      * @throws \Exception
      */
-    public function edit(Patient $patient, Request $request)
+    public function edit(Patient $patient, Request $request, Session $session)
     {
 
         $form = $this->createForm(FormPatientType::class, $patient);
@@ -189,7 +193,8 @@ class FormulaireController extends AbstractController
                 'succes',
                 "Patient modifié avec succes !"
             );
-            return $this->redirectToRoute('acceuil');
+
+            return $this->redirect($session->get('searchUrl'));
         }
 
         return $this->render('formulaire/index.html.twig', [

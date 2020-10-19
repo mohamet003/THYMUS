@@ -64,6 +64,16 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => true
             ])
+
+            ->add('ipp',TextType::class, [
+                'label' => "IPP du patient",
+                'attr' => [
+                    'class' => 'validate',
+                    'autocomplete' => 'off'
+                ],
+                'required' => true
+            ])
+
             ->add('nom',TextType::class, [
                 'attr' => [
                     'label' => "Nom",
@@ -98,8 +108,8 @@ class FormPatientType extends AbstractType
                 'attr' => [
                     'class' => 'validate',
                     'min' => '0',
-                    'max' => '999',
-                    'step' => "0.01",
+                    'max' => '500',
+                    'step' => "0.1",
                     'autocomplete' => 'off'
                 ],
                 'html5' => true,
@@ -121,7 +131,7 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
             ->add('chirurgien_referent',ChoiceType::class, [
-                'label' => "Chirurgien référent",
+                'label' => false,
                 'attr' => [
                     'class' => "validate",
                     'onchange' => 'chirOnChange(event)',
@@ -178,10 +188,7 @@ class FormPatientType extends AbstractType
                     '0' => '0',
                     '1' => '1',
                     '2' => '2',
-                    '3' => '3',
-                    '4' => '4',
-                    '5' => '5',
-                    '6' => '6'
+                    '3' => '3'
                 ]
             ])
             ->add('score_charlson',ChoiceType::class, [
@@ -211,7 +218,7 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
             ->add('mode_obt_his_pre_ope',ChoiceType::class, [
-                'label' => "Mode d'obtension de l'His pré opératoire",
+                'label' => "Biopsie pré op",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -219,8 +226,7 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false,
                 'choices' => [
-                    'ponction' => 'ponction',
-                    'TDM' => 'TDM',
+                    'ponction TDM' => 'ponction TDM',
                     'biopsie chirurgicale' => 'biopsie chirurgicale',
                     'pre op' => 'pre op',
                     'piece anapath' => 'pièce anapath',
@@ -231,6 +237,30 @@ class FormPatientType extends AbstractType
 
             ->add('autre_mode_obt_his_pre_ope',TextType::class, [
                 'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('ttt_pre_op',TextType::class, [
+                'label' => "TTT preop",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('ttt_post_op',TextType::class, [
+                'label' => "TTT postop",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('autre_preop',TextType::class, [
+                'label' => "Autre preop",
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
@@ -256,8 +286,16 @@ class FormPatientType extends AbstractType
                     'carcinoïde' => 'carcinoïde',
                     'carcinoide typique' => 'carcinoide typique',
                     'carcinoide atypique' => 'carcinoide atypique',
+                    'carcinome épidermoïde' => 'carcinome épidermoïde',
+                    'carcinome NE thymique avancé' => 'carcinome NE thymique avancé',
+                    'carcinome thymique' => 'carcinome thymique',
+                    'cellules thymiques' => 'cellules thymiques',
+                    'contributif négatif' => 'contributif négatif',
+                    'lymphome' => 'lymphome',
+                    'lymphome B' => 'lymphome B',
+                    'lyphome de Hodgkin' => 'lyphome de Hodgkin',
+                    'non contributive' => 'non contributive',
                     'Autre' => 'Autre',
-
                 ]
             ])
             ->add('autre_histo_pre_op',TextType::class, [
@@ -277,13 +315,20 @@ class FormPatientType extends AbstractType
                 'required' => false,
                 'choices' => [
                     'myasthénie' => 'myasthénie',
-                    'tumeur médiastinale loge thymique' => 'tumeur médiastinale loge thymique'
-
+                    'tumeur médiastinale loge thymique' => 'tumeur médiastinale loge thymique',
+                    'carci thymique avec réponse partielle' => 'carci thymique avec réponse partielle',
+                    'carcinome thymique' => 'carcinome thymique',
+                    'masse thymique sans dg' => 'masse thymique sans dg',
+                    'myasthénie + masse thymique sans dg' => 'myasthénie + masse thymique sans dg',
+                    'myasthénie + thymome' => 'myasthénie + thymome',
+                    'myasthénie isolée' => 'myasthénie isolée',
+                    'nodule thymique sans dg' => 'nodule thymique sans dg',
+                    'thymome isolé' => 'thymome isolé'
                 ]
             ])
 
             ->add('cons_neu_dep_mg_pre_op',ChoiceType::class, [
-                'label' => "Consult de neurologie de dépistage MG pré op",
+                'label' => "Cs préop neuro",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -304,7 +349,7 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
             ->add('score_myast_pre_op',NumberType::class, [
-                'label' => 'Score myasthénique pré opératoire' ,
+                'label' => 'Score myasth préop' ,
                 'attr' => [
                     'class' => 'validate',
                     'min' => '0',
@@ -365,7 +410,8 @@ class FormPatientType extends AbstractType
                 'required' => false,
                 'choices' => [
                     'Oui' => 'Oui',
-                    'Non' => 'Non'
+                    'Non' => 'Non',
+                    'Autre' => 'Autre'
                 ]
             ])
             ->add('autre_tdm',NumberType::class, [
@@ -389,7 +435,8 @@ class FormPatientType extends AbstractType
                 'required' => false,
                 'choices' => [
                     'Oui' => 'Oui',
-                    'Non' => 'Non'
+                    'Non' => 'Non',
+                    'Autre' => 'Autre',
                 ]
             ])
             ->add('autre_petscan',NumberType::class, [
@@ -430,6 +477,7 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false,
                 'choices' => [
+                    'T1' => 'T1',
                     'T1a' => 'T1a',
                     'T1b' => 'T1b',
                     'T2' => 'T2',
@@ -440,7 +488,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('tnm_n',ChoiceType::class, [
-                'label' => "N ",
+                'label' => "N",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -473,7 +521,7 @@ class FormPatientType extends AbstractType
 
 
             ->add('tnm_stade_ctnm',ChoiceType::class, [
-                'label' => "Stade cTNM",
+                'label' => "Stade TNM",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -483,6 +531,7 @@ class FormPatientType extends AbstractType
                 'choices' => [
                     'I' => 'I',
                     'II' => 'II',
+                    'III' => 'III',
                     'IIIA' => 'IIIA',
                     'IIIB' => 'IIIB',
                     'IVA' => 'IVA',
@@ -490,6 +539,7 @@ class FormPatientType extends AbstractType
                     'Autre' => 'Autre'
                 ]
             ])
+
             ->add('autre_tnm_t',TextType::class, [
                 'label' => "Autre...",
                 'attr' => [
@@ -531,12 +581,57 @@ class FormPatientType extends AbstractType
                 'choices' => [
                     'I' => 'I',
                     'II' => 'II',
-                    'IIIa' => 'IIIa',
-                    'IIIb' => 'IIIb',
-                    'IVa' => 'IVa',
-                    'IVb' => 'IVb',
+                    'III' => 'III',
+                    'IIIA' => 'IIIA',
+                    'IIIB' => 'IIIB',
+                    'IVA' => 'IVA',
+                    'IVB' => 'IVB',
                 ]
             ])
+
+
+            ->add('masaoka_post_op',ChoiceType::class, [
+                'label' => "Masaoka post op",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+
+                ],
+                'required' => false,
+                'choices' => [
+                    'I' => 'I',
+                    'II' => 'II',
+                    'III' => 'III',
+                    'IIA' => 'IIA',
+                    'IIB' => 'IIB',
+                    'IIIA' => 'IIIA',
+                    'IIIB' => 'IIIB',
+                    'IVA' => 'IVA',
+                    'IVB' => 'IVB',
+                ]
+            ])
+
+            ->add('masaoko_koga',ChoiceType::class, [
+                'label' => "Masaoka-koga",
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+
+                ],
+                'required' => false,
+                'choices' => [
+                    'I' => 'I',
+                    'II' => 'II',
+                    'III' => 'III',
+                    'IIA' => 'IIA',
+                    'IIB' => 'IIB',
+                    'IIIA' => 'IIIA',
+                    'IIIB' => 'IIIB',
+                    'IVA' => 'IVA',
+                    'IVB' => 'IVB',
+                ]
+            ])
+
 
 
             ->add('maladi_auto_imm_assoc',TextType::class, [
@@ -554,40 +649,42 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
 
-
-
             ->add('epp',ChoiceType::class, [
                 'label' => "EPP",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
-
+                    'onchange' => 'eppOnChange(event)'
                 ],
                 'required' => false,
                 'choices' => [
                     'hypergamma' => 'hypergamma',
                     'hypogamma' => 'hypogamma',
-                    'inconnu' => 'inconnu'
+                    'normal' => 'normal',
+                    'Autre' => 'Autre'
                 ]
             ])
+
             ->add('anticorps_anti_rach',ChoiceType::class, [
                 'label' => "Anticorps  anti RACh",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
-
+                    'onchange' => 'anticorpOnChange(event)'
                 ],
                 'required' => false,
                 'choices' => [
-                    'positif' => 'positif',
-                    'négatif' => 'négatif',
-                    'non réalisé' => 'non réalisé'
+                    'positifs' => 'positifs',
+                    'négatifs' => 'négatifs',
+                    'non fait' => 'non fait',
+                    'Autre' => 'Autre',
                 ]
+
             ])
 
 
             ->add('rcp_rythmique',TextType::class, [
-                'label' => 'RCP rythmique',
+                'label' => false,
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
@@ -605,6 +702,17 @@ class FormPatientType extends AbstractType
                     ],
                     'required' => false
                 ])
+
+            ->add('rcp_rythmique_date', DateType::class, [
+                'label' => "Date",
+                'widget' => 'single_text',
+                'html5' => true,
+                'attr' => [
+                    'class' => 'validate',
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
 
             ->add('chir_abord',ChoiceType::class, [
                 'label' => "Abord",
@@ -651,7 +759,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('chir_geste',ChoiceType::class, [
-                'label' => "Geste ",
+                'label' => false,
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -659,7 +767,7 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false,
                 'choices' => [
-                    'hymectomie radicale' => 'hymectomie radicale',
+                    'thymectomie radicale' => 'thymectomie radicale',
                     'thymectomie partielle' => 'thymectomie partielle',
                     'thymomectomie' => 'thymomectomie',
                     'Autre' => 'Autre',
@@ -675,6 +783,14 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('commentaire',TextareaType::class, [
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+
+            ->add('commentaire_last',TextareaType::class, [
+                'label' => 'Commentaire',
                 'attr' => [
                     'autocomplete' => 'off',
                 ],
@@ -701,10 +817,11 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
 
-            ->add('reste_riques',TextType::class, [
-                'label' => "Autre...",
+            ->add('reste_riques',TextareaType::class, [
+                'label' => "Autre",
                 'attr' => [
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'data-length' => "254"
                 ],
                 'required' => false
             ])
@@ -911,10 +1028,26 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false
             ])
+            ->add('cancer_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
 
             ->add('cardiopathie',CheckboxType::class, [
                 'label' => "Cardiopathie",
                 'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('cardiopathie_txt',TextType::class, [
+                'label' => false,
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
@@ -939,6 +1072,95 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false
             ])
+
+
+            ->add('tabagisme_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('co_chirurgie',CheckboxType::class, [
+                'label' => "Chirurgie",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+            ->add('co_chirurgie_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('co_diabete_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('co_respiratoire',CheckboxType::class, [
+                'label' => "Respiratoire",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+            ->add('co_respiratoire_txt',TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('epp_autre',TextType::class, [
+                'label' => 'Autre...',
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('anticr_autre',TextType::class, [
+                'label' => 'Autre...',
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('tdm_autre',TextType::class, [
+                'label' => 'Autre...',
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('petscan_autre',TextType::class, [
+                'label' => 'Autre...',
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+
 
             ->add('kystique',CheckboxType::class, [
                 'label' => "Kystique",
@@ -977,6 +1199,43 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
 
+            ->add('tissulaire',CheckboxType::class, [
+                'label' => "Tissulaire",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+
+            ->add('homogene',CheckboxType::class, [
+                'label' => "Homogène",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('regulier',CheckboxType::class, [
+                'label' => "Régulière",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('limiter',CheckboxType::class, [
+                'label' => "Limitée",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
             ->add('nonrealise',CheckboxType::class, [
                 'label' => "Non réalisé",
                 'mapped' => true,
@@ -1005,7 +1264,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('pousse',CheckboxType::class, [
-                'label' => "Poussée myasthéniquet",
+                'label' => "Poussée myasthénique",
                 'mapped' => true,
                 'attr' => [
                     'autocomplete' => 'off'
@@ -1104,7 +1363,7 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
             ->add('mortalite_par_ope',ChoiceType::class, [
-                'label' => "Mortalité pre opératoire",
+                'label' => "Décès per opératoire ",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -1116,12 +1375,23 @@ class FormPatientType extends AbstractType
                 ]
             ])
             ->add('complication_pre_ope',TextType::class, [
-                'label' => "Complication pre opératoire",
+                'label' => "Complication per opératoire",
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
                 'required' => false
             ])
+/*
+            ->add('complication_post_op',TextType::class, [
+                'label' => "Complication post opératoire",
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+*/
+
             ->add('chir_drainage',ChoiceType::class, [
                 'label' => "Drainage",
                 'attr' => [
@@ -1150,7 +1420,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('qualite_resection',ChoiceType::class, [
-                'label' => "Intervention itérative",
+                'label' => "Qualité resection",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -1183,6 +1453,15 @@ class FormPatientType extends AbstractType
                     'carcinoïde' => 'carcinoïde',
                     'carcinoide typique' => 'carcinoide typique',
                     'carcinoide atypique' => 'carcinoide atypique',
+                    'carcinome épidermoïde' => 'carcinome épidermoïde',
+                    'carcinome NE thymique avancé' => 'carcinome NE thymique avancé',
+                    'carcinome thymique' => 'carcinome thymique',
+                    'cellules thymiques' => 'cellules thymiques',
+                    'contributif négatif' => 'contributif négatif',
+                    'lymphome' => 'lymphome',
+                    'lymphome B' => 'lymphome B',
+                    'lyphome de Hodgkin' => 'lyphome de Hodgkin',
+                    'non contributive' => 'non contributive',
                     'Autre' => 'Autre',
 
                 ]
@@ -1197,7 +1476,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('post_tnm_t',ChoiceType::class, [
-        'label' => "T ",
+        'label' => "pT",
         'attr' => [
             'class' => "validate",
             'autocomplete' => 'off',
@@ -1205,6 +1484,7 @@ class FormPatientType extends AbstractType
         ],
         'required' => false,
         'choices' => [
+            'T1' => 'T1',
             'T1a' => 'T1a',
             'T1b' => 'T1b',
             'T2' => 'T2',
@@ -1223,7 +1503,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('post_tnm_n',ChoiceType::class, [
-                'label' => "N ",
+                'label' => "pN",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -1247,7 +1527,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('post_tnm_m',ChoiceType::class, [
-                'label' => "M",
+                'label' => "pM",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -1271,7 +1551,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('post_tnm_stade_ctnm',ChoiceType::class, [
-                'label' => "Stade cTNM",
+                'label' => "Stade TNM",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -1281,6 +1561,7 @@ class FormPatientType extends AbstractType
                 'choices' => [
                     'I' => 'I',
                     'II' => 'II',
+                    'III' => 'III',
                     'IIIA' => 'IIIA',
                     'IIIB' => 'IIIB',
                     'IVA' => 'IVA',
@@ -1398,7 +1679,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('score_mya_post_op',NumberType::class, [
-                'label' => 'Score myasthénique post opératoire',
+                'label' => 'Score myasth postop',
                 'attr' => [
                     'class' => 'validate',
                     'min' => '0',
@@ -1458,6 +1739,15 @@ class FormPatientType extends AbstractType
 
             ->add('num_acp',TextType::class, [
                 'label' => 'N°ACP ',
+                'attr' => [
+                    'autocomplete' => 'off',
+                    'data-length' => "100"
+                ],
+                'required' => false
+            ])
+
+            ->add('diag_ACP_thymone',TextType::class, [
+                'label' => 'Diag ACP thymone',
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-length' => "100"

@@ -3,19 +3,32 @@
 {% block title %}Accueil{% endblock %}
 
 {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/data-tables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/data-tables.min.css">
 
-    <!-- BEGIN: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/data-tables/css/jquery.dataTables.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css') }}">
-    <!-- END: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/pages/page-users.min.css') }}">
 
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/quill/quill.snow.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/app-email.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/custom/custom.css">
+
+    <style>
+        select {
+            display: block;
+            width: 100%;
+            height: 3rem;
+            padding: 5px;
+            border: 1px solid #f2f2f2;
+            border-radius: 2px;
+            background-color: rgba(255,255,255,.9);
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
     <!-- BEGIN: Page Main-->
-    <div id="main">
+    <div id="main" style="display: none">
         <div class="row">
             <div class="content-wrapper-before gradient-45deg-light-blue-cyan"></div>
 
@@ -38,8 +51,8 @@
                                         <div class="row">
                                             <div class="col m3">
                                                 <div class="input-field">
-                                                    <input type="text" value="{{ recherche.prenom }}" class="validate" id="search-prenom"  name="prenom">
-                                                    <label for="search-prenom">Prénom :  </label>
+                                                    <input type="text" value="" class="validate" id="search-ipp"  name="ipp">
+                                                    <label for="search-ipp">IPP :  </label>
                                                 </div>
                                             </div>
 
@@ -51,6 +64,10 @@
                                             </div>
 
                                             <div class="col m3">
+                                                <div class="input-field">
+                                                    <input type="text" value="{{ recherche.prenom }}" class="validate" id="search-prenom"  name="prenom">
+                                                    <label for="search-prenom">Prénom :  </label>
+                                                </div>
                                             </div>
                                             <div class="col m3">
                                                 <a href="{{ path('formulaire') }}" class="waves-effect waves-light  btn"><i class="material-icons left">add</i> Nouveau Patient</a>
@@ -64,6 +81,13 @@
                                                 <div class="input-field">
                                                     <input type="date" {% if recherche.dateNaissance %} value="{{ recherche.dateNaissance|date('Y-m-d') }}"  {% endif %} class="validate" id="search-datenaissance" placeholder=""  name="datenaissance">
                                                     <label for="search-datenaissance">Date de naissance :</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col m3">
+                                                <div class="input-field">
+                                                    <input type="date"  class="validate" id="search-datechir" placeholder=""  name="datechir">
+                                                    <label for="search-datechir">Date chirurgie: </label>
                                                 </div>
                                             </div>
 
@@ -102,24 +126,41 @@
                     <div class="card-content">
                         <!-- datatable start -->
                         <div class="responsive-table">
-                            <table id="users-list-datatable" class="table">
+                            <form action="{{ path('liste') }}" method="post">
+                            <table id="multi-select" class="display">
                                 <thead>
                                 <tr>
-
+                                    <th>
+                                        <label>
+                                            <input onchange="" autocomplete="off" id="toutlesdocs" type="checkbox" class="select-all" />
+                                            <span></span>
+                                        </label>
+                                    </th>
+                                    <th></th>
+                                    <th>IPP</th>
                                     <th>Prénom</th>
                                     <th>Nom</th>
                                     <th>Date de naissance</th>
+                                    <th>Date Chirurgie</th>
                                     <th>Chirurgien référent</th>
-                                    <th>Afficher</th>
+                                    <th>Modifier</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for patient in patients %}
                                     <tr>
-
+                                        <th>
+                                            <label>
+                                                <input onchange="" name="patients[]" value="{{ patient.id }}" autocomplete="off" type="checkbox" class="filled-in" />
+                                                <span></span>
+                                            </label>
+                                        </th>
+                                        <td></td>
+                                        <td>{{ patient.ipp }}</td>
                                         <td>{{ patient.prenom }}</td>
                                         <td>{{ patient.nom }}</td>
                                         <td>{{ patient.ddn|date("d-m-Y") }}</td>
+                                        <td>{{ patient.chirDateOpe|date("d-m-Y") }}</td>
                                         <td>
                                             {% if patient.chirurgienReferent != "Autre" %}
                                                 {{ patient.chirurgienReferent }}
@@ -127,11 +168,19 @@
                                                 {{ patient.autreChirurgienReferent }}
                                             {% endif %}
                                         </td>
-                                        <td><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">remove_red_eye</i></a></td>
+                                        <td><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">edit</i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
+
+                                <div class="row center-align">
+                                    <button class="btn waves-effect waves-light " type="submit" name="action">VISUALISER
+                                        <i class="material-icons right">remove_red_eye</i>
+                                    </button>
+                                </div>
+
+                            </form>
                             <br><br>
                         </div>
                         <!-- datatable ends -->
@@ -144,16 +193,22 @@
             <div class="content-overlay"></div>
         </div>
     </div>
-    </div>
+
     <!-- END: Page Main-->
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('app-assets/vendors/data-tables/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js') }}"></script>
-    <script src="{{ asset('app-assets/vendors/data-tables/js/dataTables.select.min.js') }}"></script>
-    <script src="{{ asset('app-assets/js/scripts/my-data-table.js') }}"></script>
-    <script src="{{ asset('app-assets/js/scripts/service-dataTable.js') }}"></script>
+    <script src="../../../app-assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+    <script src="../../../app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../../app-assets/vendors/data-tables/js/dataTables.select.min.js"></script>
+    <script src="../../../app-assets/js/search.min.js"></script>
+
+    <script src="../../../app-assets/vendors/sortable/jquery-sortable-min.js"></script>
+    <script src="../../../app-assets/vendors/quill/quill.min.js"></script>
+    <script src="../../../app-assets/js/custom/custom-script.min.js"></script>
+    <script src="../../../app-assets/js/scripts/app-email.min.js"></script>
+
+    <script src="{{ asset('app-assets/js/scripts/my_data_table.js') }}"></script>
 
 
 {% endblock %}

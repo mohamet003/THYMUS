@@ -9,8 +9,8 @@
         <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
         <meta name="author" content="ThemeSelect">
         <title>{% block title %}THYMUS{% endblock %}</title>
-        <link rel="apple-touch-icon" href={{asset('app-assets/images/favicon/apple-touch-icon-152x152.png')}}>
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('app-assets/images/favicon/favicon-32x32.png')}}">
+        <link rel="apple-touch-icon" href="{{ asset('app-assets/images/logo_thymus.png') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/logo_thymus.png') }}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!-- BEGIN: VENDOR CSS-->
         <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/vendors.min.css')}}">
@@ -28,9 +28,35 @@
         <!-- BEGIN: Custom CSS-->
         <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/custom/custom.css')}}">
 
+        <style>
+            #breadcrumbs-wrapper .breadcrumbs .active {
+                font-weight: 400;
+                color: #c0c0c0 !important;
+
+            }
+
+            label {
+                font-size: 1.1rem !important;
+                color: #5d5555 !important;
+                font-weight: bold !important;
+            }
+            #breadcrumbs-wrapper.breadcrumbs-dark .breadcrumbs-title, #breadcrumbs-wrapper.breadcrumbs-dark a {
+                color: rgba(255,255,255,.85);
+                font-size: 1.5rem !important;
+            }
+
+            header .brand-logo img {
+                height: 35px;
+            }
+
+
+        </style>
+
         {% block stylesheets %}{% endblock %}
     </head>
-    <body class="horizontal-layout page-header-light horizontal-menu preload-transitions 2-columns   " data-open="click" data-menu="horizontal-menu" data-col="2-columns">
+    <body class="horizontal-layout page-header-light horizontal-menu preload-transitions 2-columns"
+          data-open="click" data-menu="horizontal-menu"
+          data-col="2-columns" onload="myFunction()" >
 
     <!-- BEGIN: Header-->
     <header class="page-topbar" id="header">
@@ -39,7 +65,7 @@
                 <div class="nav-wrapper">
                     <ul class="left">
                         <li>
-                            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ path('acceuil') }}"><img src="../../../app-assets/images/logo/materialize-logo.png" alt="materialize logo"><span class="logo-text hide-on-med-and-down">THYMUS</span></a></h1>
+                            <h1 class="logo-wrapper"><a class="brand-logo darken-1" href="{{ path('acceuil') }}"><img src="{{ asset('app-assets/images/logo.png') }}" alt="materialize logo"><span class="logo-text hide-on-med-and-down">THYMUS</span></a></h1>
                         </li>
                     </ul>
                     <!--
@@ -50,16 +76,16 @@
                     -->
                     <ul class="navbar-list right">
                         <li class="hide-on-med-and-down"><a class="waves-effect waves-block waves-light toggle-fullscreen" href="javascript:void(0);"><i class="material-icons">settings_overscan</i></a></li>
-                        <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search         </i></a></li>
-                        <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="../../../app-assets/images/avatar/avatar-7.png" alt="avatar"><i></i></span></a></li>
-
+                        <li class="hide-on-med-and-down">{{app.session.get('user')}}</li>
+                        <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button" href="javascript:void(0);"><i class="material-icons">search</i></a></li>
+                        <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="../../../app-assets/images/avatar/user.png" alt="avatar"><i></i></span></a></li>
                     </ul>
 
                     <!-- profile-dropdown-->
                     <ul class="dropdown-content" id="profile-dropdown">
                         <li><a class="grey-text text-darken-1" href="#"><i class="material-icons">person_outline</i>Aide ?</a></li>
                         <li class="divider"></li>
-                        <li><a class="grey-text text-darken-1" href="#"><i class="material-icons">lock_outline</i> Logout</a></li>
+                        <li><a class="grey-text text-darken-1" href="{{ path('logout') }}"><i class="material-icons">lock_outline</i> Logout</a></li>
                     </ul>
                 </div>
 
@@ -74,7 +100,7 @@
 
     <!-- BEGIN: Footer-->
 
-    <footer class="page-footer footer footer-static footer-dark gradient-45deg-light-blue-cyan gradient-shadow navbar-border navbar-shadow">
+    <footer id="footer" class="page-footer footer footer-static footer-dark gradient-45deg-light-blue-cyan gradient-shadow navbar-border navbar-shadow">
         <div class="footer-copyright">
             <div class="container"><span>&copy; {{ "now"|date('Y') }}          <a href="https://imm.fr" target="_blank">IMM</a> All rights reserved.</span><span class="right hide-on-small-only">Design and Developed by <a href="https://github.com/mohamet003">IMM-DSI</a></span></div>
         </div>
@@ -165,17 +191,20 @@
     {% endfor %}
 
     <script>
+
+        function ready() {
+            $('#main').fadeIn();
+            $('#footer').fadeIn();
+        }
+
+        document.addEventListener("DOMContentLoaded", ready);
        $(document).ready(function () {
-
-
            $('.input-field label').each(function () {
-
                if (!$(this).parent().find(".select-dropdown").hasClass("select-dropdown")){
                   $(this).addClass('active');
-                   console.log($(this))
                }
-
            })
+
            if (window.scrollY) {
                window.scroll(0, 0);  // reset the scroll position to the top left of the document.
            }

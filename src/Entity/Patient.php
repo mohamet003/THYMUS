@@ -750,6 +750,146 @@ class Patient
      */
     private $wedge_txt;
 
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $cancer_txt;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $cardiopathie_txt;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $tabagisme_txt;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $tissulaire;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $homogene;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $regulier;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $limiter;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $diag_ACP_thymone;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $masaoka_post_op;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $masaoko_koga;
+
+    /**
+     * @ORM\Column(type="string", length=70, nullable=true)
+     */
+    private $ttt_pre_op;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $autre_preop;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $complication_post_op;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $ttt_post_op;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $co_chirurgie;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $co_diabete;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $co_chirurgie_txt;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $co_diabete_txt;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $co_respiratoire;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $co_respiratoire_txt;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $epp_autre;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $anticr_autre;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $tdm_autre;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $petscan_autre;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isActive;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $ipp;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $commentaire_last;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $rcp_rythmique_date;
+
     public function __construct()
     {
         $this->cases_cochee_multi = new ArrayCollection();
@@ -1029,7 +1169,7 @@ class Patient
         return $this->tnm_m;
     }
 
-    public function setTnmM(string $tnm_m): self
+    public function setTnmM(?string $tnm_m): self
     {
         $this->tnm_m = $tnm_m;
 
@@ -1665,6 +1805,31 @@ class Patient
         }
 
         return $this->age;
+    }
+
+    public function getDureeHosp(): ?string
+    {
+        $duree = 0;
+        if ($this->chir_date_ope and $this->post_op_date_sortie){
+            //$duree = $this->post_op_date_sortie - $this->chir_date_ope ;
+            $duree = date_diff($this->chir_date_ope,$this->post_op_date_sortie);
+            return $duree->format("%R%a jours");
+        }
+        return "0";
+        //return round($duree / (60 * 60 * 24));
+    }
+
+    public function getDureeSuivi(): ?string
+    {
+
+        $duree = 0;
+        if ($this->chir_date_ope and $this->date_der_nouvelles){
+            //$duree = $this->post_op_date_sortie - $this->chir_date_ope ;
+            $duree = date_diff($this->chir_date_ope,$this->date_der_nouvelles);
+            return $duree->format("%R%a jours");
+        }
+     return "0";
+        //return round($duree / (60 * 60 * 24));
     }
 
     public function getImc(): ?string
@@ -2529,6 +2694,342 @@ class Patient
     public function setWedgeTxt(?string $wedge_txt): self
     {
         $this->wedge_txt = $wedge_txt;
+
+        return $this;
+    }
+
+    public function getCancerTxt(): ?string
+    {
+        return $this->cancer_txt;
+    }
+
+    public function setCancerTxt(?string $cancer_txt): self
+    {
+        $this->cancer_txt = $cancer_txt;
+
+        return $this;
+    }
+
+    public function getCardiopathieTxt(): ?string
+    {
+        return $this->cardiopathie_txt;
+    }
+
+    public function setCardiopathieTxt(?string $cardiopathie_txt): self
+    {
+        $this->cardiopathie_txt = $cardiopathie_txt;
+
+        return $this;
+    }
+
+    public function getTabagismeTxt(): ?string
+    {
+        return $this->tabagisme_txt;
+    }
+
+    public function setTabagismeTxt(?string $tabagisme_txt): self
+    {
+        $this->tabagisme_txt = $tabagisme_txt;
+
+        return $this;
+    }
+
+    public function getTissulaire(): ?bool
+    {
+        return $this->tissulaire;
+    }
+
+    public function setTissulaire(?bool $tissulaire): self
+    {
+        $this->tissulaire = $tissulaire;
+
+        return $this;
+    }
+
+    public function getHomogene(): ?bool
+    {
+        return $this->homogene;
+    }
+
+    public function setHomogene(?bool $homogene): self
+    {
+        $this->homogene = $homogene;
+
+        return $this;
+    }
+
+    public function getRegulier(): ?bool
+    {
+        return $this->regulier;
+    }
+
+    public function setRegulier(?bool $regulier): self
+    {
+        $this->regulier = $regulier;
+
+        return $this;
+    }
+
+    public function getLimiter(): ?bool
+    {
+        return $this->limiter;
+    }
+
+    public function setLimiter(?bool $limiter): self
+    {
+        $this->limiter = $limiter;
+
+        return $this;
+    }
+
+    public function getDiagACPThymone(): ?string
+    {
+        return $this->diag_ACP_thymone;
+    }
+
+    public function setDiagACPThymone(?string $diag_ACP_thymone): self
+    {
+        $this->diag_ACP_thymone = $diag_ACP_thymone;
+
+        return $this;
+    }
+
+    public function getMasaokaPostOp(): ?string
+    {
+        return $this->masaoka_post_op;
+    }
+
+    public function setMasaokaPostOp(?string $masaoka_post_op): self
+    {
+        $this->masaoka_post_op = $masaoka_post_op;
+
+        return $this;
+    }
+
+    public function getMasaokoKoga(): ?string
+    {
+        return $this->masaoko_koga;
+    }
+
+    public function setMasaokoKoga(?string $masaoko_koga): self
+    {
+        $this->masaoko_koga = $masaoko_koga;
+
+        return $this;
+    }
+
+    public function getTttPreOp(): ?string
+    {
+        return $this->ttt_pre_op;
+    }
+
+    public function setTttPreOp(?string $ttt_pre_op): self
+    {
+        $this->ttt_pre_op = $ttt_pre_op;
+
+        return $this;
+    }
+
+    public function getAutrePreop(): ?string
+    {
+        return $this->autre_preop;
+    }
+
+    public function setAutrePreop(?string $autre_preop): self
+    {
+        $this->autre_preop = $autre_preop;
+
+        return $this;
+    }
+
+    public function getComplicationPostOp(): ?string
+    {
+        return $this->complication_post_op;
+    }
+
+    public function setComplicationPostOp(?string $complication_post_op): self
+    {
+        $this->complication_post_op = $complication_post_op;
+
+        return $this;
+    }
+
+    public function getTttPostOp(): ?string
+    {
+        return $this->ttt_post_op;
+    }
+
+    public function setTttPostOp(?string $ttt_post_op): self
+    {
+        $this->ttt_post_op = $ttt_post_op;
+
+        return $this;
+    }
+
+    public function getCoChirurgie(): ?bool
+    {
+        return $this->co_chirurgie;
+    }
+
+    public function setCoChirurgie(?bool $co_chirurgie): self
+    {
+        $this->co_chirurgie = $co_chirurgie;
+
+        return $this;
+    }
+
+    public function getCoDiabete(): ?bool
+    {
+        return $this->co_diabete;
+    }
+
+    public function setCoDiabete(?bool $co_diabete): self
+    {
+        $this->co_diabete = $co_diabete;
+
+        return $this;
+    }
+
+    public function getCoChirurgieTxt(): ?string
+    {
+        return $this->co_chirurgie_txt;
+    }
+
+    public function setCoChirurgieTxt(?string $co_chirurgie_txt): self
+    {
+        $this->co_chirurgie_txt = $co_chirurgie_txt;
+
+        return $this;
+    }
+
+    public function getCoDiabeteTxt(): ?string
+    {
+        return $this->co_diabete_txt;
+    }
+
+    public function setCoDiabeteTxt(?string $co_diabete_txt): self
+    {
+        $this->co_diabete_txt = $co_diabete_txt;
+
+        return $this;
+    }
+
+    public function getCoRespiratoire(): ?bool
+    {
+        return $this->co_respiratoire;
+    }
+
+    public function setCoRespiratoire(?bool $co_respiratoire): self
+    {
+        $this->co_respiratoire = $co_respiratoire;
+
+        return $this;
+    }
+
+    public function getCoRespiratoireTxt(): ?string
+    {
+        return $this->co_respiratoire_txt;
+    }
+
+    public function setCoRespiratoireTxt(?string $co_respiratoire_txt): self
+    {
+        $this->co_respiratoire_txt = $co_respiratoire_txt;
+
+        return $this;
+    }
+
+    public function getEppAutre(): ?string
+    {
+        return $this->epp_autre;
+    }
+
+    public function setEppAutre(?string $epp_autre): self
+    {
+        $this->epp_autre = $epp_autre;
+
+        return $this;
+    }
+
+    public function getAnticrAutre(): ?string
+    {
+        return $this->anticr_autre;
+    }
+
+    public function setAnticrAutre(?string $anticr_autre): self
+    {
+        $this->anticr_autre = $anticr_autre;
+
+        return $this;
+    }
+
+    public function getTdmAutre(): ?string
+    {
+        return $this->tdm_autre;
+    }
+
+    public function setTdmAutre(?string $tdm_autre): self
+    {
+        $this->tdm_autre = $tdm_autre;
+
+        return $this;
+    }
+
+    public function getPetscanAutre(): ?string
+    {
+        return $this->petscan_autre;
+    }
+
+    public function setPetscanAutre(?string $petscan_autre): self
+    {
+        $this->petscan_autre = $petscan_autre;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(?bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getIpp(): ?string
+    {
+        return $this->ipp;
+    }
+
+    public function setIpp(string $ipp): self
+    {
+        $this->ipp = $ipp;
+
+        return $this;
+    }
+
+    public function getCommentaireLast(): ?string
+    {
+        return $this->commentaire_last;
+    }
+
+    public function setCommentaireLast(?string $commentaire_last): self
+    {
+        $this->commentaire_last = $commentaire_last;
+
+        return $this;
+    }
+
+    public function getRcpRythmiqueDate(): ?\DateTimeInterface
+    {
+        return $this->rcp_rythmique_date;
+    }
+
+    public function setRcpRythmiqueDate(?\DateTimeInterface $rcp_rythmique_date): self
+    {
+        $this->rcp_rythmique_date = $rcp_rythmique_date;
 
         return $this;
     }

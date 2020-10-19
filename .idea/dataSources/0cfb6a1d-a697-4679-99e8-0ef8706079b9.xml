@@ -48,7 +48,7 @@
     </schema>
     <schema id="15" parent="1" name="thymus">
       <Current>1</Current>
-      <Collation>latin1_swedish_ci</Collation>
+      <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="16" parent="1" name="wordpress">
       <Collation>utf8_general_ci</Collation>
@@ -943,7 +943,7 @@
     </collation>
     <table id="239" parent="15" name="case_cochee_multiple">
       <Engine>InnoDB</Engine>
-      <Collation>utf8mb4_unicode_ci</Collation>
+      <Collation>utf8_unicode_ci</Collation>
     </table>
     <table id="240" parent="15" name="doctrine_migration_versions">
       <Engine>InnoDB</Engine>
@@ -951,49 +951,48 @@
     </table>
     <table id="241" parent="15" name="patient">
       <Engine>InnoDB</Engine>
+      <Collation>utf8_unicode_ci</Collation>
+    </table>
+    <table id="242" parent="15" name="user">
+      <Engine>InnoDB</Engine>
       <Collation>utf8mb4_unicode_ci</Collation>
     </table>
-    <column id="242" parent="239" name="id">
+    <column id="243" parent="239" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="239" name="patient_id">
+    <column id="244" parent="239" name="patient_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="244" parent="239" name="nom_case">
+    <column id="245" parent="239" name="nom_case">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="245" parent="239" name="value_case">
+    <column id="246" parent="239" name="value_case">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="239" name="texte_case">
+    <column id="247" parent="239" name="texte_case">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="247" parent="239" name="IDX_1E5E006F6B899279">
+    <index id="248" parent="239" name="IDX_1E5E006F6B899279">
       <ColNames>patient_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="248" parent="239" name="PRIMARY">
+    <key id="249" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="249" parent="239" name="FK_1E5E006F6B899279">
-      <ColNames>patient_id</ColNames>
-      <RefTableName>patient</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
     <column id="250" parent="240" name="version">
       <Position>1</Position>
       <DataType>varchar(191)|0s</DataType>
@@ -1139,7 +1138,7 @@
     </column>
     <column id="277" parent="241" name="tnm_m">
       <Position>24</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="278" parent="241" name="tnm_stade_ctnm">
@@ -1459,57 +1458,57 @@
     </column>
     <column id="341" parent="241" name="autre_anapath_post_op">
       <Position>88</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="342" parent="241" name="autre_post_tnm_t">
       <Position>89</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="343" parent="241" name="autre_post_tnm_n">
       <Position>90</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="344" parent="241" name="autre_post_tnm_m">
       <Position>91</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="345" parent="241" name="autre_post_tnm_stade_ctnm">
       <Position>92</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="346" parent="241" name="autre_rea_usc_post_op">
       <Position>93</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="347" parent="241" name="duree_rean">
       <Position>94</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="348" parent="241" name="autre_post_op_suites">
       <Position>95</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="349" parent="241" name="autre_chirurgien_referent">
       <Position>96</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="350" parent="241" name="file_anapath_post_op">
       <Position>97</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="351" parent="241" name="file_chirurgie">
       <Position>98</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="352" parent="241" name="date_create">
@@ -1525,25 +1524,416 @@
     </column>
     <column id="354" parent="241" name="user_create">
       <Position>101</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="355" parent="241" name="user_update">
       <Position>102</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="356" parent="241" name="reste_riques">
       <Position>103</Position>
-      <DataType>varchar(100)|0s</DataType>
+      <DataType>longtext|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="357" parent="241" name="chir_txt_libre">
       <Position>104</Position>
+      <DataType>longtext|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="358" parent="241" name="vcs">
+      <Position>105</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="359" parent="241" name="hta">
+      <Position>106</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="241" name="tvi">
+      <Position>107</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="361" parent="241" name="od">
+      <Position>108</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="362" parent="241" name="og">
+      <Position>109</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="241" name="aorte">
+      <Position>110</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="364" parent="241" name="pericard">
+      <Position>111</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="365" parent="241" name="phreniqued">
+      <Position>112</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="366" parent="241" name="phreniqueg">
+      <Position>113</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="367" parent="241" name="wedge">
+      <Position>114</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="368" parent="241" name="lobectomie">
+      <Position>115</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="369" parent="241" name="pneug">
+      <Position>116</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="370" parent="241" name="pneud">
+      <Position>117</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="371" parent="241" name="avc">
+      <Position>118</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="372" parent="241" name="ap">
+      <Position>119</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="373" parent="241" name="obesite">
+      <Position>120</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="374" parent="241" name="dyslipide">
+      <Position>121</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="375" parent="241" name="diabete">
+      <Position>122</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="376" parent="241" name="ins_ren_chr">
+      <Position>123</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="377" parent="241" name="maladie_thro_vein">
+      <Position>124</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="378" parent="241" name="cancer">
+      <Position>125</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="379" parent="241" name="cardiopathie">
+      <Position>126</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="380" parent="241" name="tabagisme">
+      <Position>127</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="381" parent="241" name="kystique">
+      <Position>128</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="382" parent="241" name="non_kystique">
+      <Position>129</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="383" parent="241" name="solide">
+      <Position>130</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="384" parent="241" name="mixte">
+      <Position>131</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="385" parent="241" name="nonrealise">
+      <Position>132</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="386" parent="241" name="donneeinconnue">
+      <Position>133</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="387" parent="241" name="deces_che">
+      <Position>134</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="388" parent="241" name="pousse">
+      <Position>135</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="389" parent="241" name="paralysie">
+      <Position>136</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="390" parent="241" name="paralysie_cur">
+      <Position>137</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="391" parent="241" name="pneumopatie">
+      <Position>138</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="392" parent="241" name="bullage">
+      <Position>139</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="393" parent="241" name="decollement">
+      <Position>140</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="394" parent="241" name="saignement">
+      <Position>141</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="395" parent="241" name="infection">
+      <Position>142</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="396" parent="241" name="lobectomie_txt">
+      <Position>143</Position>
       <DataType>varchar(100)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="358" parent="241" name="PRIMARY">
+    <column id="397" parent="241" name="wedge_txt">
+      <Position>144</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="398" parent="241" name="cancer_txt">
+      <Position>145</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="399" parent="241" name="cardiopathie_txt">
+      <Position>146</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="400" parent="241" name="tabagisme_txt">
+      <Position>147</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="401" parent="241" name="tissulaire">
+      <Position>148</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="402" parent="241" name="homogene">
+      <Position>149</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="403" parent="241" name="regulier">
+      <Position>150</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="404" parent="241" name="limiter">
+      <Position>151</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="405" parent="241" name="diag_acp_thymone">
+      <Position>152</Position>
+      <DataType>longtext|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="406" parent="241" name="masaoka_post_op">
+      <Position>153</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="407" parent="241" name="masaoko_koga">
+      <Position>154</Position>
+      <DataType>longtext|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="408" parent="241" name="ttt_pre_op">
+      <Position>155</Position>
+      <DataType>varchar(70)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="409" parent="241" name="autre_preop">
+      <Position>156</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="410" parent="241" name="complication_post_op">
+      <Position>157</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="411" parent="241" name="ttt_post_op">
+      <Position>158</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="412" parent="241" name="co_chirurgie">
+      <Position>159</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="413" parent="241" name="co_diabete">
+      <Position>160</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="414" parent="241" name="co_chirurgie_txt">
+      <Position>161</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="415" parent="241" name="co_diabete_txt">
+      <Position>162</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="416" parent="241" name="co_respiratoire">
+      <Position>163</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="417" parent="241" name="co_respiratoire_txt">
+      <Position>164</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="418" parent="241" name="epp_autre">
+      <Position>165</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="419" parent="241" name="anticr_autre">
+      <Position>166</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="420" parent="241" name="tdm_autre">
+      <Position>167</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="421" parent="241" name="petscan_autre">
+      <Position>168</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="422" parent="241" name="is_active">
+      <Position>169</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="423" parent="241" name="ipp">
+      <Position>170</Position>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="424" parent="241" name="commentaire_last">
+      <Position>171</Position>
+      <DataType>longtext|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="425" parent="241" name="rcp_rythmique_date">
+      <Position>172</Position>
+      <DataType>date|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="426" parent="241" name="ak1_patient_unique">
+      <ColNames>chir_date_ope
+ipp</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="427" parent="241" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="428" parent="241" name="ak1_patient_unique">
+      <ColNames>chir_date_ope
+ipp</ColNames>
+      <UnderlyingIndexName>ak1_patient_unique</UnderlyingIndexName>
+    </key>
+    <column id="429" parent="242" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="430" parent="242" name="mail">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="431" parent="242" name="password">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="432" parent="242" name="roles">
+      <Position>4</Position>
+      <DataType>json|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="433" parent="242" name="date_con">
+      <Position>5</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="434" parent="242" name="name">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="435" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

@@ -1,15 +1,42 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User:
+            algorithm: auto
     providers:
-        users_in_memory: { memory: null }
+
+        #users_in_memory: { memory: null }
+        my_ldap:
+            ldap:
+                service: Symfony\Component\Ldap\Ldap
+                base_dn: OU=Comptes,OU=IMM,DC=immdom,DC=local
+                search_dn: CN=immpacte service,OU=Comptes Techniques,OU=Utilisateurs,OU=Comptes,OU=IMM,DC=immdom,DC=local
+                search_password: ImmP@cte
+                extra_fields: [name,title,mail]
+                filter: ({uid_key}={username})
+                uid_key: sAMAccountName
+                default_roles: ROLE_LDAP_USER
+
+        users:
+            entity:
+                class: 'App\Entity\User'
+                property: 'mail'
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
-            lazy: true
-            provider: users_in_memory
+            anonymous: ~
+            form_login_ldap:
+                login_path: /login
+                check_path: /login
+                service: Symfony\Component\Ldap\Ldap
+                dn_string: 'IMMDOM\{username}'
+                default_target_path: acceuil
+                provider: my_ldap
+            logout:
+                path: /logout
+                target: /login #route de redirection quand on se deconnecte
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -22,3 +49,5 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_LDAP_USER }

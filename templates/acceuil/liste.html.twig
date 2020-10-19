@@ -1,0 +1,545 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/data-tables/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/vendors/data-tables/css/select.dataTables.min.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/vertical-modern-menu-template/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/themes/vertical-modern-menu-template/style.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/pages/data-tables.min.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="../../../app-assets/css/custom/custom.css">
+    <!-- END: Custom CSS-->
+    <style>
+        select {
+            display: block;
+            width: 100%;
+            height: 3rem;
+            padding: 5px;
+            border: 1px solid #f2f2f2;
+            border-radius: 2px;
+            background-color: rgba(255,255,255,.9);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <!-- BEGIN: Page Main-->
+    <div id="main" style="display: none">
+        <div class="row">
+            <div class="content-wrapper-before gradient-45deg-light-blue-cyan"></div>
+
+
+            <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper" style="margin-top: -100px">
+                <!-- Search for small screen-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 m6 l6">
+                            <ol class="breadcrumbs mb-0">
+                                <li class="breadcrumb-item"><a href="{{ app.session.get('searchUrl') }}">Accueil</a>
+                                </li>
+                                <li class="breadcrumb-item"><a class="active">Liste</a> </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if patients|length != 0 %}
+            <div class="users-list-table">
+                <div class="card">
+                    <div class="card-content">
+
+                        <table id="scroll-vert-hor" class="display nowrap">
+                            <thead>
+
+                            <tr style="color: orange;font-weight: bold">
+
+                                <th>ELIOS</th>
+                                <th>Nom</th>
+                                <th>Pr&eacute;nom</th>
+                                <th>sexe</th>
+                                <th>DdN</th>
+                                <th>Age</th>
+                                <th>Chir r&eacute;f&eacute;rent</th>
+                                <th>Poids</th>
+                                <th>Taille</th>
+                                <th>IMC</th>
+                                <th>PS</th>
+                                <th>Charlson</th>
+                                <th>Comorbidit&eacute;s</th>
+                                <th>Maladie Auto Im</th>
+                                <th>Sd Paran&eacute;o</th>
+                                <th>Mode de d&eacute;couverte</th>
+                                <th>Cs pr&eacute;op neuro</th>
+                                <th>Score Myasth pr&eacute;op</th>
+                                <th>TTT de fond Myasth</th>
+                                <th>El Pr Plasm</th>
+                                <th>Ac anti Rach</th>
+                                <th>IRM</th>
+                                <th>TDM (grand axe en cm)</th>
+                                <th>TEPscan (SUVm)</th>
+                                <th>Biopsie pr&eacute; op</th>
+                                <th>Histo pr&eacute;op</th>
+                                <th>cTNM</th>
+                                <th>T</th>
+                                <th>N</th>
+                                <th>M</th>
+                                <th>stade cTNM</th>
+                                <th>Masaoka pr&eacute;op</th>
+                                <th>Tissu congel&eacute;?</th>
+                                <th>Date de Diag ACP</th>
+                                <th>ID ACP</th>
+                                <th>Diag ACP thymome</th>
+                                <th>RCP/Rythmic</th>
+                                <th>TTT PREOP</th>
+                                <th>type de chimio</th>
+                                <th>AUTRE</th>
+                                <th>R&eacute;ponse</th>
+                                <th>Indication</th>
+                                <th>DATE CHIR</th>
+                                <th>ABORD</th>
+                                <th>ROBOT</th>
+                                <th>CO2</th>
+                                <th>GESTE</th>
+                                <th>EXTENSION</th>
+                                <th>COMMENTAIRE</th>
+                                <th>CONVERSION</th>
+                                <th>Dur&eacute;e (min)</th>
+                                <th>Sang (ml)</th>
+                                <th>DC perop</th>
+                                <th>DRAIN</th>
+                                <th>Interv It&eacute;r</th>
+                                <th>Qualit&eacute; R</th>
+                                <th>HISTO POST OP</th>
+                                <th>pTNM</th>
+                                <th>pT</th>
+                                <th>pN</th>
+                                <th>pM</th>
+                                <th>Stade pTNM</th>
+                                <th>Masaoka post op</th>
+                                <th>Masaoka-Koga</th>
+                                <th>R&eacute;a/USC</th>
+                                <th>SUITES SIMPLES</th>
+                                <th>COMPLIC</th>
+                                <th>DUREE DRAIN</th>
+                                <th>DATE SORTIE</th>
+                                <th>DUREE HOSPI</th>
+                                <th>TTT compl&eacute;mentaire</th>
+                                <th>TYPE DE CHIMIO2</th>
+                                <th>RADIOT</th>
+                                <th>RECHUTE</th>
+                                <th>DATE RECHUTE</th>
+                                <th>LOCALISATION</th>
+                                <th>TTT RECHUTE</th>
+                                <th>N&ordm; ACP</th>
+                                <th>SUIVI (jours)</th>
+                                <th>DERNIERE VUE</th>
+                                <th>DECES</th>
+                                <th>CAUSE</th>
+                                <th>SUIVI MYASTH</th>
+                                <th>SCORE MYASTH POST OP</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            {% for patient in patients %}
+                            <tr>
+                                <td>{{ patient.elios }}</td>
+                                <td>{{ patient.nom }}</td>
+                                <td>{{ patient.prenom }}</td>
+                                <td>{{ patient.sexe }}</td>
+                                <td>
+                                    {% if patient.ddn %}
+                                        {{ patient.ddn|date('d-m-Y') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.age }}</td>
+                                <td>
+                                    {% if patient.chirurgienReferent != "Autre" %}
+                                        {{ patient.chirurgienReferent }}
+                                    {% else %}
+                                        {{ patient.autreChirurgienReferent }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.poids }}</td>
+                                <td>{{ patient.taille }}</td>
+                                <td>{{ patient.imc }}</td>
+                                <td>{{ patient.ps }}</td>
+                                <td>{{ patient.scoreCharlson }}</td>
+                                <td>
+                                    {% if patient.avc %}
+                                        AVC
+                                    {% endif %}
+                                    {% if patient.obesite %}
+                                        Ob&eacute;sit&eacute;/
+                                    {% endif %}
+                                    {% if patient.hta %}
+                                        HTA/
+                                    {% endif %}
+                                    {% if patient.dyslipide %}
+                                        Dyslipid&eacute;mie/
+                                    {% endif %}
+                                    {% if patient.insRenChr %}
+                                        Insuffisance r&eacute;nale chronique/
+                                    {% endif %}
+                                    {% if patient.maladieThroVein %}
+                                        Maladie thrombo-embolique veineuse/
+                                    {% endif %}
+                                    {% if patient.diabete %}
+                                        Diab&egrave;te ({{ patient.coDiabeteTxt }}) /
+                                    {% endif %}
+                                    {% if patient.coChirurgie %}
+                                        Chirurgie ({{ patient.coChirurgieTxt }}) /
+                                    {% endif %}
+                                    {% if patient.cancer %}
+                                        Cancer ({{ patient.cancerTxt }}) /
+                                    {% endif %}
+                                    {% if patient.cardiopathie %}
+                                        Cardiopathie ({{ patient.cardiopathieTxt }}) /
+                                    {% endif %}
+                                    {% if patient.coRespiratoire %}
+                                        Respiratoire ({{ patient.coRespiratoireTxt }}) /
+                                    {% endif %}
+                                    {% if patient.tabagisme %}
+                                        Tabagisme ({{ patient.tabagismeTxt }}) /
+                                    {% endif %}
+                                    {{ patient.resteRiques }}
+                                </td>
+                                <td>{{ patient.maladiAutoImmAssoc }}</td>
+                                <td>{{ patient.syndromeParaneo }}</td>
+                                <td>{{ patient.modeDeDecouverte }}</td>
+                                <td>{{ patient.consNeuDepMgPreOp }} {{ patient.autreConsNeuDepMgPreOp }}</td>
+                                <td>{{ patient.scoreMyastPreOp }}</td>
+                                <td>{{ patient.traiFondMyasthenie }}{{ patient.autreTraiFondMyasthenie }}</td>
+                                <td>
+                                    {% if patient.eppAutre == "Autre" %}
+                                        {{ patient.eppAutre }}
+                                    {% else %}
+                                        {{ patient.epp }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient.anticorpsAntiRach == "Autre" %}
+                                        {{ patient.anticrAutre }}
+                                    {% else %}
+                                        {{ patient.anticorpsAntiRach }}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if patient.irm == "Autre" %}
+                                        {{ patient.autreIrm }}
+                                    {% else %}
+                                        {{ patient.irm }}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if patient.tdm == "Autre" %}
+                                        {{ patient.tdmAutre }}
+                                    {% else %}
+                                        {% if patient.tdm == "Oui" %}
+                                            taille = {{ patient.autreTdm }}
+                                        {% endif %}
+
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if patient.petscan == "Autre" %}
+                                        {{ patient.petscanAutre }}
+                                    {% else %}
+                                        {% if patient.petscan == "Oui" %}
+                                            SUV m = {{ patient.autrePetscan }}
+                                        {% endif %}
+
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if patient.modeObtHisPreOpe == "Autre" %}
+                                        {{ patient.autreModeObtHisPreOpe }}
+                                    {% else %}
+                                        {{ patient.modeObtHisPreOpe }}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if patient.modeObtHisPreOpe == "Autre" %}
+                                        {{ patient.autreHistoPreOp }}
+                                    {% else %}
+                                        {{ patient.histoPreOp }}
+                                    {% endif %}
+                                </td>
+
+                                <td>{{ patient.preOpXTnm }}</td>
+                                <td>
+                                    {% if patient.tnmT == "Autre" %}
+                                        {{ patient.autreTnmT }}
+                                    {% else %}
+                                        {{ patient.tnmT }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient.tnmN == "Autre" %}
+                                        {{ patient.autreTnmN }}
+                                    {% else %}
+                                        {{ patient.tnmN }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient.tnmM == "Autre" %}
+                                        {{ patient.autreTnmM }}
+                                    {% else %}
+                                        {{ patient.tnmM }}
+                                    {% endif %}
+                                </td>
+
+                                <td>
+                                    {% if patient.tnmStadeCtnm == "Autre" %}
+                                        {{ patient.autreStade }}
+                                    {% else %}
+                                        {{ patient.tnmStadeCtnm }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient.stadeMasaokaPreOp == "Autre" %}
+                                        {{ patient.stadeMasaokaPreOp }}
+                                    {% else %}
+                                        {{ patient.autreStade }}
+                                    {% endif %}
+                                </td>
+
+
+                                <td>{{ patient.tissuCongele }}</td>
+                                <td>
+                                    {% if patient.dateDiagAcp %}
+                                        {{ patient.dateDiagAcp|date('d-m-Y') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.idAcp }}</td>
+                                <td>{{ patient.diagACPThymone }}</td>
+                                <td>{{ patient.rcpRythmique }}</td>
+                                <td>{{ patient.tttPreOp }}</td>
+                                <td>{{ patient.chimioPreOp }}</td>
+                                <td>{{ patient.autrePreop }}</td>
+                                <td>{{ patient.reponseChimioPreOp }}</td>
+                                <td>{{ patient.indication }}</td>
+                                <td>
+                                    {% if patient.chirDateOpe %}
+                                        {{ patient.chirDateOpe|date('d-m-Y') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.chirAbord }}</td>
+                                <td>{{ patient.chirRoboAssist }}</td>
+                                <td>{{ patient.insufflationCo2 }}</td>
+                                <td>
+                                    {% if patient.chirGeste == "Autre" %}
+                                        {{ patient.autreChirGeste }}
+                                    {% else %}
+                                        {{ patient.chirGeste }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient.vcs %}
+                                        VCS /
+                                    {% endif %}
+                                    {% if patient.tvi %}
+                                        TVI /
+                                    {% endif %}
+                                    {% if patient.od %}
+                                        OD /
+                                    {% endif %}
+                                    {% if patient.og %}
+                                        OG /
+                                    {% endif %}
+                                    {% if patient.aorte %}
+                                        Aorte /
+                                    {% endif %}
+                                    {% if patient.ap %}
+                                        AP /
+                                    {% endif %}
+                                    {% if patient.pericard %}
+                                        P&eacute;ricarde /
+                                    {% endif %}
+                                    {% if patient.phreniqued %}
+                                        Phr&eacute;nique droit /
+                                    {% endif %}
+                                    {% if patient.phreniqueg %}
+                                        Phr&eacute;nique gauche /
+                                    {% endif %}
+                                    {% if patient.pneud %}
+                                        Pneumonectomie droit /
+                                    {% endif %}
+                                    {% if patient.pneug %}
+                                        Pneumonectomie gauche /
+                                    {% endif %}
+                                    {% if patient.wedge %}
+                                        Wedge ({{ patient.wedgeTxt }}) /
+                                    {% endif %}
+                                    {% if patient.lobectomie %}
+                                        Lobectomie ({{ patient.lobectomieTxt }}) /
+                                    {% endif %}
+                                    {{ patient.chirTxtLibre }}
+                                </td>
+                                <td>{{ patient.commentaire }}</td>
+                                <td>{{ patient.conversion }}</td>
+                                <td>{{ patient.chirDuree }}</td>
+                                <td>{{ patient.chirSang }}</td>
+                                <td>{{ patient.mortaliteParOpe }}</td>
+                                <td>{{ patient.chirDrainage }}</td>
+                                <td>{{ patient.chirIntervInterac }}</td>
+                                <td>{{ patient.qualiteResection }}</td>
+                                <td>
+                                    {% if patient.anapathPostOp == "Autre" %}
+                                        {{ patient.autreAnapathPostOp }}
+                                    {% else %}
+                                        {{ patient.anapathPostOp }}
+                                    {% endif %}
+                                 </td>
+                                <td>{{ patient.xTnm }}</td>
+                                <td>
+                                    {% if patient.postTnmT == "Autre" %}
+                                        {{ patient.autrePostTnmT }}
+                                    {% else %}
+                                        {{ patient.postTnmT }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if patient.postTnmN == "Autre" %}
+                                        {{ patient.autrePostTnmN }}
+                                    {% else %}
+                                        {{ patient.postTnmN }}
+                                    {% endif %}
+                                 </td>
+                                <td>
+                                    {% if patient.postTnmM == "Autre" %}
+                                        {{ patient.autrePostTnmM }}
+                                    {% else %}
+                                        {{ patient.postTnmM }}
+                                    {% endif %}
+                                 </td>
+                                <td>
+                                    {% if patient.postTnmStadeCtnm == "Autre" %}
+                                        {{ patient.autrePostTnmStadeCtnm }}
+                                    {% else %}
+                                        {{ patient.postTnmStadeCtnm }}
+                                    {% endif %}
+                                 </td>
+                                <td>{{ patient.masaokaPostOp }}</td>
+                                <td>{{ patient.masaokoKoga }}</td>
+                                <td>{{ patient.reaUscPostOp }}</td>
+
+                                <td>
+                                    {% if patient.postOpSuites %}
+
+                                        {% if patient.decesChe %}
+                                            D&eacute;c&egrave;s /
+                                        {% endif %}
+                                        {% if patient.pousse %}
+                                            Pouss&eacute;e myasth&eacute;nique /
+                                        {% endif %}
+                                        {% if patient.paralysie %}
+                                            Paralysie phr&eacute;nique /
+                                        {% endif %}
+                                        {% if patient.paralysieCur %}
+                                            Paralysie concurrentielle /
+                                        {% endif %}
+                                        {% if patient.pneumopatie %}
+                                            Pneumopathie /
+                                        {% endif %}
+                                        {% if patient.bullage %}
+                                            Bullage > 5 jours /
+                                        {% endif %}
+                                        {% if patient.decollement %}
+                                           D&eacute;collement /
+                                        {% endif %}
+                                        {% if patient.saignement %}
+                                            Saignement /
+                                        {% endif %}
+                                        {% if patient.infection %}
+                                            Infection /
+                                        {% endif %}
+                                        {{ patient.autrePostOpSuites }}
+                                    {% endif %}
+
+                                </td>
+                                <td>{{ patient.complicationPostOp }}</td>
+                                <td>{{ patient.postOpDureeDrainage }}</td>
+                                <td>
+                                    {% if patient.postOpDateSortie %}
+                                        {{ patient.postOpDateSortie|date('d-m-Y') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.dureeHosp }}</td>
+                                <td>{{ patient.tttPostOp }}</td>
+                                <td>{{ patient.chimioPostOp }}</td>
+                                <td>{{ patient.radiotherapiePostOp }}</td>
+                                <td>{{ patient.recidive }}</td>
+                                <td>
+                                    {% if patient.dateRecidive %}
+                                        {{ patient.dateRecidive|date('d-m-Y') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.localisationRecidive }}</td>
+                                <td>{{ patient.traitementRechuteRecidive }}</td>
+                                <td>{{ patient.numAcp }}</td>
+                                <td>{{ patient.dureeSuivi }}</td>
+                                <td>
+                                    {% if patient.dateDerNouvelles %}
+                                        {{ patient.dateDerNouvelles|date('d-m-Y') }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ patient.deces }}</td>
+                                <td>{{ patient.causeDeces }}</td>
+                                <td>{{ patient.suiviMyasthenie }}</td>
+                                <td>{{ patient.scoreMyaPostOp }}</td>
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
+            <div class="content-overlay"></div>
+        </div>
+    </div>
+
+    <!-- END: Page Main-->
+{% endblock %}
+
+{% block javascripts %}
+    <!-- END: Footer-->
+    <!-- BEGIN VENDOR JS-->
+    <script src="../../../app-assets/js/vendors.min.js"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="../../../app-assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+    <script src="../../../app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../../app-assets/vendors/data-tables/js/dataTables.select.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="../../../app-assets/js/plugins.min.js"></script>
+    <script src="../../../app-assets/js/search.min.js"></script>
+    <script src="../../../app-assets/js/custom/custom-script.min.js"></script>
+    <script src="../../../app-assets/js/scripts/customizer.min.js"></script>
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="{{ asset('app-assets/js/scripts/data-tables.min.js') }}"></script>
+
+
+{% endblock %}

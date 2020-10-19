@@ -93,4 +93,21 @@ class PatientRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @param $value
+     * @return Patient[] Returns an array of Patient objects
+     */
+
+    public function getlistOfPatient($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.id IN (:val)')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }

@@ -22,10 +22,10 @@ $("#page-length-option").DataTable(
             scrollY:"50vh",
             scrollCollapse:!0,paging:!1}),
     $("#scroll-vert-hor").DataTable(
-        {scrollY:200,scrollX:!0}),
+        {scrollY:400,scrollX:!0}),
     $("#multi-select").DataTable(
         {responsive:false
-            ,paging:false,
+            ,paging:true,
             language: {
                 "sEmptyTable":     "Aucune donnée disponible dans le tableau",
                 "sInfo":           "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
@@ -59,7 +59,7 @@ $("#page-length-option").DataTable(
             "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tout"]],
             ordering:true,
             info:true,
-            columnDefs:[{visible:!1,targets:2},{ type: 'date-uk', targets: 6 },{ type: 'date-uk', targets: 5 }]
+            columnDefs:[{visible:!1,targets:1},{ type: 'date-uk', targets: 3 }]
 
         })}),
     $(window).on("load",function(){
@@ -86,4 +86,5 @@ $(document).ready(function()
 
         selectAll.hasClass("clicked")?$("#multi-select tbody tr").addClass("selected"):$("#multi-select tbody tr").removeClass("selected"),$("#multi-select tbody tr").hasClass("selected")?checkbox.prop("checked",!0):checkbox.prop("checked",!1)
 
-    })});
+   })});
+
