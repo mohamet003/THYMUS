@@ -31,11 +31,11 @@
     <div id="main" style="display: none">
         <div class="row">
             <div class="content-wrapper-before gradient-45deg-light-blue-cyan"></div>
-
             <div class="row">
                 <div class="col s12">
                     <div id="input-fields" class="card card-tabs">
                         <div class="card-content">
+
                             <div class="card-title">
                                 <div class="row">
                                     <div class="col s12 m6 l10">
@@ -52,28 +52,30 @@
                                             <div class="col m3">
                                                 <div class="input-field">
                                                     <input type="text" value="" class="validate" id="search-ipp"  name="ipp">
-                                                    <label for="search-ipp">IPP :  </label>
+                                                    <label for="search-ipp">IPP  </label>
                                                 </div>
                                             </div>
-
-                                            <div class="col m3">
+                                            <div class="col m2">
                                                 <div class="input-field">
                                                     <input type="text" value="{{ recherche.nom }}" class="validate" id="search-nom"  name="nom">
-                                                    <label for="search-nom">Nom :  </label>
+                                                    <label for="search-nom">Nom  </label>
                                                 </div>
                                             </div>
-
-                                            <div class="col m3">
+                                            <div class="col m2">
                                                 <div class="input-field">
                                                     <input type="text" value="{{ recherche.prenom }}" class="validate" id="search-prenom"  name="prenom">
-                                                    <label for="search-prenom">Prénom :  </label>
+                                                    <label for="search-prenom">Prénom  </label>
+                                                </div>
+                                            </div>
+                                            <div class="col m2">
+                                                <div class="input-field">
+                                                    <input type="text" value="{{ recherche.referent }}" class="validate" id="search-referent"  name="referent">
+                                                    <label for="search-referent">Chirurgien référent  </label>
                                                 </div>
                                             </div>
                                             <div class="col m3">
                                                 <a href="{{ path('formulaire') }}" class="waves-effect waves-light  btn"><i class="material-icons left">add</i> Nouveau Patient</a>
                                             </div>
-
-
                                         </div>
 
                                         <div class="row">
@@ -84,18 +86,23 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col m3">
-                                                <div class="input-field">
-                                                    <input type="date"  class="validate" id="search-datechir" placeholder=""  name="datechir">
-                                                    <label for="search-datechir">Date chirurgie: </label>
-                                                </div>
-                                            </div>
+                                            <div class="col m6">
+                                                <fieldset>
+                                                    <legend>Opération effectuée entre :</legend>
 
-                                            <div class="col m3">
-                                                <div class="input-field">
-                                                    <input type="text" value="{{ recherche.referent }}" class="validate" id="search-referent"  name="referent">
-                                                    <label for="search-referent">Chirurgien référent :  </label>
-                                                </div>
+                                                    <div class="row">
+                                                        <div class="col m6">
+                                                            <div class="input-field">
+                                                                <input type="date" {% if recherche.dateChirDeb %} value="{{ recherche.dateChirDeb|date('Y-m-d') }}"  {% endif %}  {% if recherche.dateChirFin %} max="{{ recherche.dateChirFin|date('Y-m-d') }}"  {% endif %} class="validate" id="search-datechirdeb" placeholder=""  name="datechirdeb">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col m6">
+                                                            <div class="input-field">
+                                                                <input type="date" {% if recherche.dateChirDeb %} min="{{ recherche.dateChirDeb|date('Y-m-d') }}"  {% endif %}  {% if recherche.dateChirFin %} value="{{ recherche.dateChirFin|date('Y-m-d') }}"  {% endif %} class="validate" id="search-datechirfin" placeholder=""  name="datechirfin">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
                                             </div>
 
 
@@ -126,41 +133,45 @@
                     <div class="card-content">
                         <!-- datatable start -->
                         <div class="responsive-table">
-                            <form action="{{ path('liste') }}" method="post">
-                            <table id="multi-select" class="display">
+
+                            <table id="data-table-simple" class="display">
                                 <thead>
                                 <tr>
-                                    <th>
-                                        <label>
-                                            <input onchange="" autocomplete="off" id="toutlesdocs" type="checkbox" class="select-all" />
-                                            <span></span>
-                                        </label>
-                                    </th>
-                                    <th></th>
                                     <th>IPP</th>
                                     <th>Prénom</th>
                                     <th>Nom</th>
                                     <th>Date de naissance</th>
                                     <th>Date Chirurgie</th>
                                     <th>Chirurgien référent</th>
+                                    <th>Dossier patient</th>
+                                    <th>Imprimer Fiche patient</th>
                                     <th>Modifier</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for patient in patients %}
                                     <tr>
-                                        <th>
-                                            <label>
-                                                <input onchange="" name="patients[]" value="{{ patient.id }}" autocomplete="off" type="checkbox" class="filled-in" />
-                                                <span></span>
-                                            </label>
-                                        </th>
-                                        <td></td>
-                                        <td>{{ patient.ipp }}</td>
+                                        <td>
+                                            {% if patient.isValideIpp %}
+                                                <span class="bold green-text">{{ patient.ipp }} </span>
+                                            {% else %}
+                                                <span class="bold red-text">{{ patient.ipp }} </span>
+                                            {% endif %}
+
+
+                                        </td>
                                         <td>{{ patient.prenom }}</td>
                                         <td>{{ patient.nom }}</td>
-                                        <td>{{ patient.ddn|date("d-m-Y") }}</td>
-                                        <td>{{ patient.chirDateOpe|date("d-m-Y") }}</td>
+                                        <td>
+                                            {% if patient.ddn %}
+                                                {{ patient.ddn|date("d-m-Y") }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if patient.chirDateOpe %}
+                                                {{ patient.chirDateOpe|date("d-m-Y") }}
+                                            {% endif %}
+                                        </td>
                                         <td>
                                             {% if patient.chirurgienReferent != "Autre" %}
                                                 {{ patient.chirurgienReferent }}
@@ -168,20 +179,20 @@
                                                 {{ patient.autreChirurgienReferent }}
                                             {% endif %}
                                         </td>
+                                        <td>
+                                            {% if patient.isValideIpp %}
+                                                <a href="#modal1" class="modal-trigger">
+                                                    <img width="25" src="{{ asset('app-assets/images/logo/logo_efp.png') }}" alt="">
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                        <td><a href="{{ path('formulaire.print', {'id': patient.id}) }}" target="_blank"><i class="material-icons">print</i></a></td>
                                         <td><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">edit</i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
                             </table>
 
-                                <div class="row center-align">
-                                    <button class="btn waves-effect waves-light " type="submit" name="action">VISUALISER
-                                        <i class="material-icons right">remove_red_eye</i>
-                                    </button>
-                                </div>
-
-                            </form>
-                            <br><br>
                         </div>
                         <!-- datatable ends -->
                     </div>
@@ -189,6 +200,40 @@
             </div>
 
             {% endif %}
+
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <form action="{{ path('liste.exdop') }}">
+                <div class="modal-content">
+                    <h4 class="center">Veuillez vous authentifier avec vos identifiants CLINICOM</h4>
+
+                    <br><br>
+                        <div class="row">
+
+                            <div class="input-field col s6">
+                                <input id="login" type="text" required class="validate" name="login">
+                                <label for="login">Identifiant</label>
+                            </div>
+
+                            <div class="input-field col s6">
+                                <input id="pwd" type="password" required class="validate" name="pwd">
+                                <label for="pwd">Mot de passe</label>
+                            </div>
+
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect red white-text waves-green btn-flat ">ANNULER</a>
+                    <button class="btn waves-effect waves-light " type="submit" name="action">VALIDER
+                        <i class="material-icons right">send</i>
+                    </button>
+                </div>
+
+                </form>
+            </div>
+
+
 
             <div class="content-overlay"></div>
         </div>
