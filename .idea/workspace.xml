@@ -2,55 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="133dbd8a-94c4-4d86-bd0d-276fc5c628cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20200929091924.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201005093640.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201006120116.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201006131317.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201007101444.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201007120132.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201007131830.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201009090934.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201009091417.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201009091711.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201016140408.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201016140817.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201016151508.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app-assets/images/LOGO_ITCM.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app-assets/images/img1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app-assets/images/img2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app-assets/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/app-assets/images/logo_thymus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/acceuil/liste.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/login/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0cfb6a1d-a697-4679-99e8-0ef8706079b9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0cfb6a1d-a697-4679-99e8-0ef8706079b9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201019110930.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201019110930.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201021124213.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20201021124213.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app-assets/js/scripts/data-tables.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/scripts/data-tables.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/app-assets/js/scripts/my_data_table.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/scripts/my_data_table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/bdd_tymus.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AcceuilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AcceuilController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FormulaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormulaireController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Search.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/FormPatientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormPatientType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/PatientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PatientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/acceuil/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/acceuil/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formulaire/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formulaire/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thymus.iml" beforeDir="false" afterPath="$PROJECT_DIR$/thymus.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/formulaire/print.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formulaire/print.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +44,38 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="IMM_DW@SRV-POC-BO" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="IMM_DW@SRV-POC-BO" type="feb32156:DbDataSourceImpl" />
+        <item name="IMM_DW: database" type="ccb7ac2a:MsImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="IMM_DW@SRV-POC-BO" type="feb32156:DbDataSourceImpl" />
+        <item name="IMM_DW: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="IMM_DW@SRV-POC-BO" type="feb32156:DbDataSourceImpl" />
+        <item name="IMM_DW: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="IMM_DW@SRV-POC-BO" type="feb32156:DbDataSourceImpl" />
+        <item name="IMM_DW: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="THYMUS_FORM_PATIENT: table" type="63ab2ba1:MsImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="Git.Settings">
@@ -219,19 +220,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/acceuil" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/formulaire" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public" />
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates\formulaire" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates\acceuil" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\public\app-assets\images" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Repository" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Entity" />
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -243,20 +247,17 @@
     <option name="viewStates">
       <list>
         <serviceView>
+          <option name="contentProportion" value="0.16552089" />
           <treeState>
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Microsoft SQL Server (jTds) - DSA-CLA-PRD@clinicom: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="IMM_DW@SRV-POC-BO: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="thymus: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="thymus: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@497a0a5b" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="IMM_DW@SRV-POC-BO: root" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@5f42a944" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -313,7 +314,11 @@
       <workItem from="1602769359117" duration="2850000" />
       <workItem from="1602835620816" duration="3413000" />
       <workItem from="1602849287325" duration="10862000" />
-      <workItem from="1603094276906" duration="860000" />
+      <workItem from="1603094276906" duration="12860000" />
+      <workItem from="1603182956022" duration="937000" />
+      <workItem from="1603189014290" duration="12536000" />
+      <workItem from="1603267228162" duration="26970000" />
+      <workItem from="1603701705111" duration="2657000" />
     </task>
     <servers />
   </component>
@@ -328,11 +333,15 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2472" y="197" key="#Composer/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595839561286" />
-    <state x="211" y="168" width="1176" height="685" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603093547924">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2343" y="317" width="1176" height="685" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603099507357">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="211" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603093547924" />
-    <state x="2130" y="176" width="1176" height="685" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602855882086" />
+    <state x="2343" y="317" width="1176" height="685" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603099507357" />
+    <state x="513" y="145" key="#com.intellij.ide.util.MemberChooser" timestamp="1603289770042">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="513" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1603289770042" />
     <state x="2560" y="275" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1595843359043">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -350,25 +359,29 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2660" y="294" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1601994541585" />
-    <state width="1920" height="284" key="GridCell.Tab.0.bottom" timestamp="1603094257725">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1177" height="269" key="GridCell.Tab.0.bottom" timestamp="1603286996903">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1920" height="284" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603094257725" />
+    <state width="1177" height="269" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1603286996903" />
+    <state width="1577" height="269" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603208896900" />
     <state width="1323" height="462" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602862247596" />
-    <state width="1920" height="284" key="GridCell.Tab.0.center" timestamp="1603094257725">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1177" height="269" key="GridCell.Tab.0.center" timestamp="1603286996903">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1920" height="284" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603094257725" />
+    <state width="1177" height="269" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1603286996903" />
+    <state width="1577" height="269" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603208896900" />
     <state width="1323" height="462" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602862247596" />
-    <state width="1920" height="284" key="GridCell.Tab.0.left" timestamp="1603094257725">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1177" height="269" key="GridCell.Tab.0.left" timestamp="1603286996903">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1920" height="284" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603094257725" />
+    <state width="1177" height="269" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1603286996903" />
+    <state width="1577" height="269" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603208896900" />
     <state width="1323" height="462" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602862247596" />
-    <state width="1920" height="284" key="GridCell.Tab.0.right" timestamp="1603094257725">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1177" height="269" key="GridCell.Tab.0.right" timestamp="1603286996903">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state width="1920" height="284" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603094257725" />
+    <state width="1177" height="269" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1603286996903" />
+    <state width="1577" height="269" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603208896900" />
     <state width="1323" height="462" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602862247596" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1602855723716">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -378,6 +391,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2715" y="462" key="NewPhpFileDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1595928307165" />
+    <state x="440" y="93" key="SettingsEditor" timestamp="1603105714771">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="93" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603105714771" />
     <state x="681" y="250" width="540" height="524" key="StructurePopup" timestamp="1602837543805">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -386,21 +403,29 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1596121296927" />
-    <state x="2769" y="419" width="326" height="242" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1602497174031">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="849" y="403" width="326" height="238" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1603105744247">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="849" y="403" width="326" height="238" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603105744247" />
     <state x="2769" y="419" width="326" height="242" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602497174031" />
-    <state x="2762" y="429" width="298" height="222" key="com.intellij.database.actions.ToolActions$ScriptingActionBase$MyDatabaseScriptDialog" timestamp="1602862207915">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="842" y="413" width="298" height="222" key="com.intellij.database.actions.ToolActions$ScriptingActionBase$MyDatabaseScriptDialog" timestamp="1603101739296">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="842" y="413" key="com.intellij.database.actions.ToolActions$ScriptingActionBase$MyDatabaseScriptDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603101739296" />
     <state x="2762" y="429" width="298" height="222" key="com.intellij.database.actions.ToolActions$ScriptingActionBase$MyDatabaseScriptDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602862207915" />
+    <state x="540" y="187" key="com.intellij.database.dbimport.ImportDialog" timestamp="1603113186693">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="187" key="com.intellij.database.dbimport.ImportDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603113186693" />
+    <state x="2460" y="194" key="com.intellij.database.dbimport.ImportDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603099754244" />
     <state x="2676" y="364" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1597910239468">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2676" y="364" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597910239468" />
-    <state x="2589" y="180" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1602862053145">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="669" y="173" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1603114377851">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="669" y="173" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603114377851" />
     <state x="2589" y="180" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602862053145" />
     <state x="2689" y="456" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597844680550">
       <screen x="1920" y="0" width="1920" height="1080" />
@@ -411,10 +436,11 @@
     </state>
     <state x="616" y="236" width="672" height="677" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1602849330385" />
     <state x="2536" y="245" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597998005369" />
-    <state x="467" y="187" width="670" height="540" key="search.everywhere.popup" timestamp="1602929846443">
+    <state x="467" y="187" width="672" height="540" key="search.everywhere.popup" timestamp="1603444592362">
       <screen x="0" y="0" width="1440" height="860" />
     </state>
-    <state x="467" y="187" width="670" height="540" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1602929846443" />
-    <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1602855715584" />
+    <state x="467" y="187" width="672" height="540" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1603444592362" />
+    <state x="623" y="226" width="672" height="653" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1603205144950" />
+    <state x="2543" y="235" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603099368099" />
   </component>
 </project>

@@ -2,19 +2,13 @@
 
 namespace App\Controller;
 
-use App\Entity\Patient;
 use App\Entity\Search;
 use App\Entity\User;
 use App\Repository\PatientRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use ExcelMerge\ExcelMerge;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
@@ -22,7 +16,6 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Finder\Finder;
 
 
 class AcceuilController extends AbstractController
@@ -76,7 +69,6 @@ class AcceuilController extends AbstractController
                      ->setRoles([$user['title']])
                      ->setPassword("vide")
                      ->setDateCon(new \DateTime());
-
              }
 
 
@@ -201,7 +193,7 @@ $i = 1;
                             //   for ($i = 0 ; $i < count($data) ; $i++){
                              //      $data[$i] = utf8_encode($data[$i]);
                              ///  }
-
+                                                              $patient->setIpp("NONIPP".$row);
 
 
                                                               $patient->setElios((int)$data[0])
@@ -583,8 +575,52 @@ $i = 1;
                                                                       $patient->setPostOpSuites(null);
                                                                   }
 
-                                                                  $patient->setComplicationPostOp(utf8_encode(trim($data[70])))
-                                                                  ->setPostOpDureeDrainage((int)$data[71]);
+
+                               $Compli = trim($data[70]);
+                               $Compli = explode('/',$Compli);
+
+                               $restCompli = "";
+
+                               for ($i = 0; $i < count($Compli) ; $i++ ){
+                                   $notin = true;
+                                   $str = trim(strtolower($Compli[$i]));
+
+                                   if (stristr($str, "décès") !== false){
+                                       $patient->setDecesChe(true);
+                                       $notin = false;
+                                   }
+
+                                   if (stristr($str, "poussée") !== false){
+                                       $patient->setPousse(true);
+                                       $notin = false;
+                                   }
+
+                                   if (stristr($str, "paralysie") !== false and stristr($str, "phrénique") !== false){
+                                       $patient->setParalysie(true);
+                                       $notin = false;
+                                   }
+
+                                   if (stristr($str, "infection") !== false){
+                                       $patient->setInfection(true);
+                                       $notin = false;
+                                   }
+
+                                   if ($notin == true){
+                                       $restCompli = $restCompli.$str."/" ;
+                                   }
+
+                               }
+
+                               if ($restCompli != ""){
+                                   $patient->setAutrePostOpSuites(utf8_encode($restCompli));
+                               }
+
+
+                            //   $patient->setComplicationPostOp(utf8_encode());
+
+
+
+                                                                  $patient->setPostOpDureeDrainage((int)$data[71]);
 
                                                               $patient->setPostOpDateSortie(new \DateTime($data[72]))
 
@@ -709,8 +745,8 @@ $i = 1;
                                                           fclose($handle);
                                                       }
 
-                                                      $this->em->flush();
-*/
+                 */                                     $this->em->flush();
+
         $session->set("searchUrl",$request->getRequestUri());
         $repository = new PatientRepository($this->getDoctrine());
         $patients = [];
@@ -722,6 +758,17 @@ $i = 1;
             if ($request->query->has('nom') && $request->get('nom') ){
                 $inSearch = true;
                 $this->recherche->setNom($request->get('nom'));
+            }
+
+
+            if ($request->query->has('datechirdeb') && $request->get('datechirdeb') ){
+                $inSearch = true;
+                $this->recherche->setDateChirDeb(new \DateTime($request->get('datechirdeb')));
+            }
+
+            if ($request->query->has('datechirfin') && $request->get('datechirfin') ){
+                $inSearch = true;
+                $this->recherche->setDateChirFin(new \DateTime($request->get('datechirfin')));
             }
 
             if ($request->query->has('prenom') && $request->get('prenom') ){
@@ -784,5 +831,25 @@ $i = 1;
             'controller_name' => 'AcceuilController',
             'patients' => $patients,
         ]);
+    }
+
+
+
+    /**
+     * @Route("/liste/exdop", name="liste.exdop")
+     * @param Request $request
+     * @param Session $session
+     * @param Security $security
+     * @return Response
+     * @throws \Exception
+     */
+    public function exdop(Request $request, Session $session, Security $security)
+    {
+        $login = $request->get('login');
+        $pwd = $request->get('pwd');
+        $cmd = 'CWSRun.exe /USERNAME='.$login.' /PASSWORD='.$pwd.' /UAC=XXXX /IPP=000564635' ;
+        dd(shell_exec($cmd));
+        return $this->redirectToRoute('acceuil');
+
     }
 }

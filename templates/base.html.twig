@@ -56,7 +56,7 @@
     </head>
     <body class="horizontal-layout page-header-light horizontal-menu preload-transitions 2-columns"
           data-open="click" data-menu="horizontal-menu"
-          data-col="2-columns" onload="myFunction()" >
+          data-col="2-columns">
 
     <!-- BEGIN: Header-->
     <header class="page-topbar" id="header">
@@ -106,6 +106,14 @@
         </div>
     </footer>
 
+    <script type="application/javascript">
+        RunFile()
+        function RunFile() {
+           // WshShell = new ActiveXObject("Shell.Application");
+          //  WshShell = new ActiveXObject("WScript.Shell");
+        //    WshShell.Run("C:\\Program Files (x86)\\smsi\\cws\\release 3.1\\CWSRun.exe /USERNAME=TRNDSI /PASSWORD=TRNDSI /UAC=XXXX","","","open","1");
+        }
+    </script>
     <!-- END: Footer-->
     <!-- BEGIN VENDOR JS-->
     <script src="{{asset('app-assets/js/vendors.min.js')}}"></script>

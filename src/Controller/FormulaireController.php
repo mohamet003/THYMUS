@@ -6,6 +6,7 @@ use App\Entity\CaseCocheeMultiple;
 use App\Entity\Patient;
 use App\Form\FormPatientType;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,6 +42,19 @@ class FormulaireController extends AbstractController
 
        // dd($form);
         if ($form->isSubmitted() && $form->isValid()){
+
+            $rsm = new ResultSetMapping();
+
+            $rsm->addScalarResult('IPP', 'IPP');
+            $ipp = $patient->getIpp();
+            $query = $this->em->createNativeQuery("SELECT * FROM CLI_MVT_PAT WHERE IPP = '".$ipp."'", $rsm);
+            $result = $query->getResult();
+
+            if (count($result) >= 1 ){
+                $patient->setIsValideIpp(true);
+            }else{
+                $patient->setIsValideIpp(false);
+            }
 
             if ($request->get('tissus')){
                 $patient->setTissuCongele("Oui");
@@ -147,6 +161,19 @@ class FormulaireController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
 
+            $rsm = new ResultSetMapping();
+
+            $rsm->addScalarResult('IPP', 'IPP');
+            $ipp = $patient->getIpp();
+            $query = $this->em->createNativeQuery("SELECT * FROM CLI_MVT_PAT WHERE IPP = '".$ipp."'", $rsm);
+            $result = $query->getResult();
+
+            if (count($result) >= 1 ){
+               $patient->setIsValideIpp(true);
+            }else{
+                $patient->setIsValideIpp(false);
+            }
+
             if ($request->get('tissus')){
                 $patient->setTissuCongele($request->get('tissus'));
             }else{
@@ -224,4 +251,60 @@ class FormulaireController extends AbstractController
 
         return $this->json("");
 }
+
+
+    /**
+     * @Route("/formulaire/check/patient/{ipp}", name="formulaire.check.patient")
+     * @param $ipp
+     * @param Request $request
+     * @return RedirectResponse|Response
+     */
+    public function check($ipp, Request $request)
+    {
+
+        $rsm = new ResultSetMapping();
+
+        $rsm->addScalarResult('IPP', 'IPP');
+        $rsm->addScalarResult('PRE_PAT', 'PRE_PAT');
+        $rsm->addScalarResult('NOM_PAT', 'NOM_PAT');
+        $rsm->addScalarResult('COD_SEXE', 'COD_SEXE');
+        $rsm->addScalarResult('DAT_NAISS', 'DAT_NAISS');
+
+        $query = $this->em->createNativeQuery("SELECT * FROM CLI_MVT_PAT WHERE IPP = '".$ipp."'", $rsm);
+
+        $result = $query->getResult();
+
+       // $jsonContent = $this->serializer->serialize($result[0], 'json');
+        if (count($result) >= 1 ){
+            return $this->json($result[0]);
+        }
+        return $this->json('false');
+
+    }
+
+
+
+
+    /**
+     * @Route("/formulaire/print/{id}", name="formulaire.print")
+     * @param Patient $patient
+     * @param Request $request
+     * @param Session $session
+     * @return RedirectResponse|Response
+     * @throws \Exception
+     */
+    public function print(Patient $patient)
+    {
+
+        $form = $this->createForm(FormPatientType::class, $patient);
+
+
+        return $this->render('formulaire/print.html.twig', [
+            'controller_name' => 'FormulaireController',
+            'form' => $form->createView(),
+            'patient' => $patient,
+            'button' => 'MODIFIER'
+        ]);
+    }
+
 }

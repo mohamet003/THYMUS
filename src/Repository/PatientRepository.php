@@ -51,6 +51,16 @@ class PatientRepository extends ServiceEntityRepository
                 ->setParameter('spec',$search->getReferent());
         }
 
+        if ($search->getDateChirDeb()){
+            $query->andWhere('p.chir_date_ope >= :dateStart')
+                ->setParameter('dateStart', $search->getDateChirDeb());
+        }
+
+        if ($search->getDateChirFin()){
+            $query->andWhere('p.chir_date_ope <= :dateend')
+                ->setParameter('dateend', $search->getDateChirFin());
+        }
+
 
         if ($search->getDateNaissance()){
             $query->andWhere('p.ddn = :ddn')

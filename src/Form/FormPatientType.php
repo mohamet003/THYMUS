@@ -96,7 +96,8 @@ class FormPatientType extends AbstractType
             ])
             ->add('sexe', ChoiceType::class, [
                 'attr' => [
-                    'class' => "validate"
+                    'class' => "validate",
+                    'autocomplete' => 'off'
                 ],
                 'required' => true,
                 'choices' => [

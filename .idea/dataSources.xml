@@ -10,11 +10,11 @@
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
     </data-source>
-    <data-source source="LOCAL" name="Microsoft SQL Server (jTds) - DSA-CLA-PRD@clinicom" uuid="cda81200-c881-464e-9cf8-b8ebb41908f0">
-      <driver-ref>sqlserver.jtds</driver-ref>
+    <data-source source="LOCAL" name="IMM_DW@SRV-POC-BO" uuid="cbcc3ce8-cd0c-46cf-86a6-c6085fba29c2">
+      <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>net.sourceforge.jtds.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:jtds:sqlserver://clinicom:1972/DSA-CLA-PRD;instance=DSA-CLA-PRD</jdbc-url>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://SRV-POC-BO\POC_BO;database=IMM_DW</jdbc-url>
     </data-source>
   </component>
 </project>

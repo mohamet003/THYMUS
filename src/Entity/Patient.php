@@ -8,8 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\Types\This;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * @ORM\Table(name="THYMUS_FORM_PATIENT")
+ * @UniqueEntity(fields={"ipp","chir_date_ope"})
  * @ORM\Entity(repositoryClass=PatientRepository::class)
  */
 class Patient
@@ -889,6 +892,11 @@ class Patient
      * @ORM\Column(type="date", nullable=true)
      */
     private $rcp_rythmique_date;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isValide_ipp;
 
     public function __construct()
     {
@@ -3030,6 +3038,18 @@ class Patient
     public function setRcpRythmiqueDate(?\DateTimeInterface $rcp_rythmique_date): self
     {
         $this->rcp_rythmique_date = $rcp_rythmique_date;
+
+        return $this;
+    }
+
+    public function getIsValideIpp(): ?bool
+    {
+        return $this->isValide_ipp;
+    }
+
+    public function setIsValideIpp(?bool $isValide_ipp): self
+    {
+        $this->isValide_ipp = $isValide_ipp;
 
         return $this;
     }

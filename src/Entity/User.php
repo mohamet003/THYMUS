@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Table(name="THYMUS_JNX_USER")
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements \Symfony\Component\Security\Core\User\UserInterface

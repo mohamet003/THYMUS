@@ -31,6 +31,20 @@ class Search
    */
   private $dateNaissance;
 
+
+    /**
+     * @ORM\Column(type="datetime", length=255, nullable=true)
+     */
+    private $dateChirDeb;
+
+
+    /**
+     * @ORM\Column(type="datetime", length=255, nullable=true)
+     */
+    private $dateChirFin;
+
+
+
   /**
    * @ORM\Column(type="string", length=255, nullable=true)
    */
@@ -143,6 +157,38 @@ class Search
     $this->referent = $referent;
     return $this;
   }
+
+    /**
+     * @return mixed
+     */
+    public function getDateChirDeb()
+    {
+        return $this->dateChirDeb;
+    }
+
+    /**
+     * @param mixed $dateChirDeb
+     */
+    public function setDateChirDeb($dateChirDeb): void
+    {
+        $this->dateChirDeb = $dateChirDeb;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateChirFin()
+    {
+        return $this->dateChirFin;
+    }
+
+    /**
+     * @param mixed $dateChirFin
+     */
+    public function setDateChirFin($dateChirFin): void
+    {
+        $this->dateChirFin = $dateChirFin;
+    }
 
 
 
