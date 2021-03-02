@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/public/bdd_tymus.csv" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/src/Controller/LoginController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Entity/EFPHistoriqueConnexion.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Entity/User.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Repository/UserRepository.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/templates/login" charset="UTF-8" />

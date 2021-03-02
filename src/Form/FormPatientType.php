@@ -361,7 +361,7 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
             ->add('trai_fond_myasthenie',ChoiceType::class, [
-                'label' => "Traitement de fond myasthénie",
+                'label' => "TTT de fond myasthénie",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -412,7 +412,7 @@ class FormPatientType extends AbstractType
                 'choices' => [
                     'Oui' => 'Oui',
                     'Non' => 'Non',
-                    'Autre' => 'Autre'
+                    //'Autre' => 'Autre'
                 ]
             ])
             ->add('autre_tdm',NumberType::class, [
@@ -427,7 +427,7 @@ class FormPatientType extends AbstractType
                 'required' => false
             ])
             ->add('petscan',ChoiceType::class, [
-                'label' => "PETscan ",
+                'label' => "TEPscan ",
                 'attr' => [
                     'class' => "validate",
                     'autocomplete' => 'off',
@@ -437,7 +437,7 @@ class FormPatientType extends AbstractType
                 'choices' => [
                     'Oui' => 'Oui',
                     'Non' => 'Non',
-                    'Autre' => 'Autre',
+                  //  'Autre' => 'Autre',
                 ]
             ])
             ->add('autre_petscan',NumberType::class, [
@@ -636,7 +636,7 @@ class FormPatientType extends AbstractType
 
 
             ->add('maladi_auto_imm_assoc',TextType::class, [
-                'label' => false,
+                'label' => "Autre",
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
@@ -725,12 +725,18 @@ class FormPatientType extends AbstractType
                 'required' => false,
                 'choices' => [
                     'sternotomie' => 'sternotomie',
-                    'thoracoscopie' => 'thoracoscopie',
+                    'manubriotomie' => 'manubriotomie',
                     'thoracotomie droite' => 'thoracotomie droite',
-                    'thoracotomie gauche' => 'thoracotomie gauche'
+                    'thoracotomie gauche' => 'thoracotomie gauche',
+                    'thoracoscopie droite' => 'thoracoscopie droite',
+                    'thoracoscopie gauche' => 'thoracoscopie gauche',
+                    'thoracoscopie bilatérale' => 'thoracoscopie bilatérale',
+                    'thoracoscopie sous xyph' => 'thoracoscopie sous xyph',
+                    'voie sous-xyphoïdienne' => 'voie sous-xyphoïdienne',
+                    'Autre' => 'Autre'
                 ]
             ])
-
+/*
             ->add('chir_thoracos',ChoiceType::class, [
                 'label' => "Thoracoscopie",
                 'attr' => [
@@ -745,7 +751,7 @@ class FormPatientType extends AbstractType
                     'Sous xyph' => 'Sous xyph'
                 ]
             ])
-
+*/
             ->add('chir_robo_assist',ChoiceType::class, [
                 'label' => "Robot assistée",
                 'attr' => [
@@ -768,6 +774,7 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false,
                 'choices' => [
+                    'biopsie' => 'biopsie',
                     'thymectomie radicale' => 'thymectomie radicale',
                     'thymectomie partielle' => 'thymectomie partielle',
                     'thymomectomie' => 'thymomectomie',
@@ -1145,7 +1152,7 @@ class FormPatientType extends AbstractType
 
 
             ->add('tdm_autre',TextType::class, [
-                'label' => 'Autre...',
+                'label' => 'Commentaire TDM',
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
@@ -1153,7 +1160,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('petscan_autre',TextType::class, [
-                'label' => 'Autre...',
+                'label' => 'Commentaire TEP',
                 'attr' => [
                     'autocomplete' => 'off'
                 ],
@@ -1660,7 +1667,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('date_der_nouvelles', DateType::class, [
-                'label' => "Date de dernières nouvelles",
+                'label' => "Date dernières nouvelles",
                 'widget' => 'single_text',
                 'html5' => true,
                 'attr' => [
@@ -1748,7 +1755,7 @@ class FormPatientType extends AbstractType
             ])
 
             ->add('diag_ACP_thymone',TextType::class, [
-                'label' => 'Diag ACP thymone',
+                'label' => 'Diag ACP thymome',
                 'attr' => [
                     'autocomplete' => 'off',
                     'data-length' => "100"
@@ -1765,16 +1772,130 @@ class FormPatientType extends AbstractType
                 ],
                 'required' => false
             ])
-/*
-            ->add('file_anapath_post_op',FileType::class, [
+
+            ->add('service_adresseur',ChoiceType::class, [
                 'label' => false,
                 'attr' => [
-                    'class' => 'btn',
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+                    'onchange' => 'serviceAdresseurOnChange(event)'
+                ],
+                'required' => false,
+                'choices' => [
+                    'IMM' => 'IMM',
+                    'Curie' => 'Curie',
+                    'Pitié' => 'Pitié',
+                    'Mondor' => 'Mondor',
+                    'Neurologue de ville' => 'Neurologue de ville',
+                    'CCN' => 'CCN',
+                    'Saint-Louis' => 'Saint-Louis',
+                    'Tournan' => 'Tournan',
+                    'Autre' => 'Autre',
+                ]
+            ])
+
+            ->add('maladie_auto_immune_liste',ChoiceType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => "validate",
+                    'autocomplete' => 'off',
+                    'onchange' => 'maladieAutoImmuneListeOnChange(event)'
+                ],
+                'required' => false,
+                'choices' => [
+
+                    'dysthyroïdies' => 'dysthyroïdies',
+                    'érythroblastopénie lupus' => 'érythroblastopénie lupus',
+                    'érythémateux systémique' => 'érythémateux systémique',
+                    'myopathies inflammatoires' => 'myopathies inflammatoires',
+                    'syndrome d’Isaac' => 'syndrome d’Isaac',
+                    'syndrome de Good' => 'syndrome de Good',
+                    'syndrome de Morvan' => 'syndrome de Morvan',
+                    'encéphalites limbiques' => 'encéphalites limbiques',
+                    'autres cytopénies auto-immunes' => 'autres cytopénies auto-immunes',
+                    'hépatites auto-immunes' => 'hépatites auto-immunes',
+                    'dermatoses bulleuses (pemphigus, lichen)' => 'dermatoses bulleuses (pemphigus, lichen)',
+                    'Autre' => 'Autre',
+                ]
+            ])
+
+            ->add('service_adresseur_autre',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off'
                 ],
                 'required' => false
             ])
 
+
+            ->add('autre_chir_abord',TextType::class, [
+                'label' => "Autre...",
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+
+            ->add('comm_inter_conf_rcp',TextareaType::class, [
+                'label' => 'Commentaire',
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+/*
+            ->add('comm_decom_post',TextareaType::class, [
+                'label' => 'Commentaire',
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
 */
+            ->add('comm_deci_con_rcp',TextareaType::class, [
+                'label' => 'Commentaire',
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+
+            ->add('comm_pat_in_protocole',TextareaType::class, [
+                'label' => 'Commentaire',
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+
+            ->add('decomp_post',CheckboxType::class, [
+                'label' => "Décompensation post op",
+                'mapped' => true,
+                'attr' => [
+                    'autocomplete' => 'off'
+                ],
+                'required' => false
+            ])
+
+            ->add('comm_decom_post',TextareaType::class, [
+                'label' => false,
+                'attr' => [
+                    'autocomplete' => 'off',
+                ],
+                'required' => false
+            ])
+
+
+            /*
+                        ->add('file_anapath_post_op',FileType::class, [
+                            'label' => false,
+                            'attr' => [
+                                'class' => 'btn',
+                            ],
+                            'required' => false
+                        ])
+
+            */
           /*  ->add('file_chirurgie',FileType::class, [
                 'label' => 'Cause du décès ',
                 'attr' => [

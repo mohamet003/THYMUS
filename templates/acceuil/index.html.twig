@@ -137,21 +137,21 @@
                             <table id="data-table-simple" class="display">
                                 <thead>
                                 <tr>
-                                    <th>IPP</th>
-                                    <th>Prénom</th>
-                                    <th>Nom</th>
-                                    <th>Date de naissance</th>
-                                    <th>Date Chirurgie</th>
-                                    <th>Chirurgien référent</th>
-                                    <th>Dossier patient</th>
-                                    <th>Imprimer Fiche patient</th>
+                                    <th class="center-align" >IPP</th>
+                                    <th class="center-align" >Prénom</th>
+                                    <th class="center-align" >Nom</th>
+                                    <th class="center-align" >Date de naissance</th>
+                                    <th class="center-align" >Date Chirurgie</th>
+                                    <th class="center-align" >Chirurgien référent</th>
+                                   <!-- <th>Dossier patient</th> -->
+                                    <th  class="center-align" >Visualiser la fiche du patient</th>
                                     <th>Modifier</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {% for patient in patients %}
                                     <tr>
-                                        <td>
+                                        <td class="center-align" >
                                             {% if patient.isValideIpp %}
                                                 <span class="bold green-text">{{ patient.ipp }} </span>
                                             {% else %}
@@ -160,25 +160,26 @@
 
 
                                         </td>
-                                        <td>{{ patient.prenom }}</td>
-                                        <td>{{ patient.nom }}</td>
-                                        <td>
+                                        <td class="center-align">{{ patient.prenom }}</td>
+                                        <td class="center-align">{{ patient.nom }}</td>
+                                        <td class="center-align">
                                             {% if patient.ddn %}
                                                 {{ patient.ddn|date("d-m-Y") }}
                                             {% endif %}
                                         </td>
-                                        <td>
+                                        <td class="center-align">
                                             {% if patient.chirDateOpe %}
                                                 {{ patient.chirDateOpe|date("d-m-Y") }}
                                             {% endif %}
                                         </td>
-                                        <td>
+                                        <td class="center-align">
                                             {% if patient.chirurgienReferent != "Autre" %}
                                                 {{ patient.chirurgienReferent }}
                                             {% else %}
                                                 {{ patient.autreChirurgienReferent }}
                                             {% endif %}
                                         </td>
+                                        <!--
                                         <td>
                                             {% if patient.isValideIpp %}
                                                 <a href="#modal1" class="modal-trigger">
@@ -186,8 +187,9 @@
                                                 </a>
                                             {% endif %}
                                         </td>
-                                        <td><a href="{{ path('formulaire.print', {'id': patient.id}) }}" target="_blank"><i class="material-icons">print</i></a></td>
-                                        <td><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">edit</i></a></td>
+                                        -->
+                                        <td class="center-align"><a href="{{ path('formulaire.print', {'id': patient.id}) }}"><i class="material-icons">remove_red_eye</i></a></td>
+                                        <td class="center-align"><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">edit</i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

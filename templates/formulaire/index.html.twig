@@ -12,6 +12,48 @@
         z-index: 12;
     }
 
+    .card .card-content {
+        padding: 24px;
+    }
+
+    .input-field {
+        position: relative;
+        margin-top: 1rem;
+        background-color: white;
+    }
+
+    .select-wrapper + label {
+        color: #3e3838 !important;
+        font-size: 1.1rem !important;
+        position: absolute;
+        top: -37px;
+    }
+    label.active {
+        width: 100%;
+        color: #3e3838 !important;
+        font-size: 1.3rem !important;
+        top: -8px;
+    }
+    fieldset {
+        padding: .35em .75em .625em;
+        border-color: black;
+    }
+    legend {
+        display: table;
+        max-width: 100%;
+        white-space: normal;
+        color: black;
+        font-weight: bold;
+    }
+
+    .cardBlue {
+       background-color: #70cdf7;
+    }
+    .cardBeige {
+        background-color: #b7e8ee;
+    }
+
+
 </style>
 {% endblock %}
 
@@ -54,7 +96,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
 
                                     <div class="card-title">
                                         <div class="row">
@@ -104,19 +146,37 @@
                                                 </fieldset>
 
                                             </div>
-                                            <div class="col s12 m2" style="margin-top: 27px;">
+
+                                            <div class="col s12 m4">
+                                                <fieldset>
+                                                    <legend>
+                                                        Service adresseur
+                                                    </legend>
+                                                    <div class="row">
+                                                        <div class="col s12 m6">
+                                                            {{ form_row(form.service_adresseur) }}
+                                                        </div>
+                                                        <div class="col s12 m6">
+                                                            {{ form_row(form.service_adresseur_autre) }}
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                            </div>
+
+                                            <div class="col s12 m1" style="margin-top: 27px;">
                                                 {{ form_row(form.poids) }}
                                                 <span class="helper-text orange-text">En Kg</span>
                                             </div>
-                                            <div class="col s12 m2" style="margin-top: 27px;">
+                                            <div class="col s12 m1" style="margin-top: 27px;">
                                                 {{ form_row(form.taille) }}
                                                 <span class="helper-text orange-text">En cm</span>
                                             </div>
-                                            <div class="col s12 m2" style="margin-top: 27px;">
+                                            <div class="col s12 m1" style="margin-top: 27px;">
                                                 {{ form_row(form.imc) }}
                                                 <span class="helper-text orange-text">En kg/m²</span>
                                             </div>
-                                            <div class="col s12 m2" style="margin-top: 27px;">
+                                            <div class="col s12 m1" style="margin-top: 27px;">
                                                 {{ form_row(form.age) }}
                                                 <span class="helper-text orange-text">En années</span>
                                             </div>
@@ -133,7 +193,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="prefilling-text" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBeige">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l6">
@@ -146,39 +206,41 @@
                                     <div id="view-prefilling-text">
 
                                             <div class="row">
-                                                <div class="col s12 m3">
+                                                <div class="col s12 m2">
                                                     {{ form_row(form.ps) }}
                                                 </div>
-                                                <div class="col s12 m3">
+                                                <div class="col s12 m2">
                                                     {{ form_row(form.score_charlson) }}
                                                     <span class="helper-text blue-text"> <a href="https://www.srlf.org/score-de-charlson/" target="_blank">Lien pour calcul</a></span>
                                                 </div>
 
-                                                <div class="col s12 m3">
-                                                    Maladie auto immune associée
-                                                    <div class="switch" style="margin-left: 10px">
-                                                        <label>
-                                                            Non
-                                                            <input id="immune" {% if patient.maladiAutoImmAssoc %} checked {% endif %} name="immune" autocomplete="off" type="checkbox">
-                                                            <span class="lever"></span>
-                                                            Oui
-                                                        </label>
+                                                <div class="col s12 m5">
+                                                    <div class="row">
+                                                        <div class="col s12 m6 right-align">
+                                                            Syndrome paranéoplasique
+                                                            <div class="switch" style="margin-left: 10px;">
+                                                                <label>
+                                                                    Non
+                                                                    <input id="paraneo" {% if patient.syndromeParaneo %} checked {% endif %} name="paraneo" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col s12 m6">
+                                                            {{ form_row(form.syndrome_paraneo) }}
+                                                        </div>
                                                     </div>
-                                                    {{ form_row(form.maladi_auto_imm_assoc) }}
+
                                                 </div>
 
+
                                                 <div class="col s12 m3">
-                                                    Syndrome paranéoplasique
-                                                    <div class="switch" style="margin-left: 10px;">
-                                                        <label>
-                                                            Non
-                                                            <input id="paraneo" {% if patient.syndromeParaneo %} checked {% endif %} name="paraneo" autocomplete="off" type="checkbox">
-                                                            <span class="lever"></span>
-                                                            Oui
-                                                        </label>
-                                                    </div>
-                                                    {{ form_row(form.syndrome_paraneo) }}
+
+                                                    {{ form_row(form.mode_de_decouverte) }}
+
                                                 </div>
+
                                                 <!--
                                                   <div class="col s12 m3">
 
@@ -234,7 +296,7 @@
                                                 </div>
 
 
-                                                <div class="col s12 m3">
+                                                <div class="col s12 m3" style="margin-top: 26px">
                                                     {{ form_row(form.reste_riques ) }}
                                                 </div>
                                                 </fieldset>
@@ -250,19 +312,42 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
-                                                <!--    <h4 class="card-title">Caractéristiques initiales du patient</h4>  -->
+                                                  <h4 class="card-title">Myasthénie</h4>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div id="view-input-fields75">
                                         <div class="row">
-                                            <div class="col s12 m2">
-                                                {{ form_row(form.mode_de_decouverte) }}
+                                            <div class="col s12 m3">
+                                                <fieldset>
+                                                    <legend>
+                                                        Maladie auto immune associée
+                                                    </legend>
+                                                    <div class="row">
+                                                        <div class="col s12 m12">
+
+                                                            <div class="switch" style="margin-left: 10px">
+                                                                <label>
+                                                                    Non
+                                                                    <input id="immune" {% if patient.maladiAutoImmAssoc %} checked {% endif %} name="immune" autocomplete="off" type="checkbox">
+                                                                    <span class="lever"></span>
+                                                                    Oui
+                                                                </label>
+                                                            </div>
+                                                            <div class="malAutoImm">
+                                                                {{ form_row(form.maladie_auto_immune_liste) }}
+                                                                {{ form_row(form.maladi_auto_imm_assoc) }}
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
                                             </div>
 
                                             <div class="col s12 m3">
@@ -283,7 +368,7 @@
                                                 {{ form_row(form.score_myast_pre_op) }}
                                             </div>
 
-                                            <div class="col s12 m5">
+                                            <div class="col s12 m4">
                                                 <fieldset>
                                                     <div class="row">
                                                         <div class="col s12 m6">
@@ -299,7 +384,18 @@
                                         </div>
                                         <br>
                                         <div class="row">
-                                            <div class="col s12 m6">
+                                            <div class="col s12 m3">
+                                                <div class="switch" style="margin-left: 10px">
+                                                    <label for="">Immunoglobulines preopératoires</label> <br>
+                                                    <label>
+                                                        Non
+                                                        <input id="immunoPreOp" {% if patient.immunoPreop == "oui" %} checked {% endif %} name="immunoPreOp" autocomplete="off" type="checkbox">
+                                                        <span class="lever"></span>
+                                                        Oui
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m4">
                                                 <fieldset>
                                                     <div class="row">
                                                         <div class="col s12 m6">
@@ -313,7 +409,7 @@
 
                                                 </fieldset>
                                             </div>
-                                            <div class="col s12 m6">
+                                            <div class="col s12 m5">
                                                 <fieldset>
                                                     <div class="row">
                                                         <div class="col s12 m6">
@@ -342,7 +438,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBeige">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -429,7 +525,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
 
                                     <div class="card-title">
                                         <div class="row">
@@ -530,7 +626,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBeige">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -578,9 +674,9 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
                                     <div id="view-input-fields_5">
-
+                                        <h4 class="card-title">RCP RYTHMIC</h4>
                                         <div class="row">
                                             <div class="col s12 m4">
                                                 <fieldset >
@@ -612,7 +708,7 @@
                                                     <div class="switch" style="margin-left: 10px; display: inline;">
                                                         <label>
                                                             Non
-                                                            <input id="chimiopreop" {% if patient.reponseChimioPreOp %} checked {% endif %} name="chimiopreop" autocomplete="off" type="checkbox">
+                                                            <input id="chimiopreop" {% if patient.chimioPreOp %} checked {% endif %} name="chimiopreop" autocomplete="off" type="checkbox">
                                                             <span class="lever"></span>
                                                             Oui
                                                         </label>
@@ -645,6 +741,96 @@
 
 
                                         </div>
+
+                                        <br>
+                                        <div class="row">
+                                            <fieldset>
+                                                <div class="col s12 m4">
+                                                    Dossier présenté en préopératoire
+                                                    <div class="switch" style="margin-left: 10px;">
+                                                        <label>
+                                                            Non
+                                                            <input id="dossierPrePreop" {% if patient.dossierPrePreop == 'oui' %} checked {% endif %} name="dossierPrePreop" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s12 m4" id="divintervConvforRcp">
+                                                    Intervention réalisée conforme à la RCP
+                                                    <div class="switch" style="margin-left: 10px;">
+                                                        <label>
+                                                            Non
+                                                            <input id="intervConvforRcp" {% if patient.intervConvforRcp == 'oui' %} checked {% endif %} name="intervConvforRcp" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s12 m4"  id="divintervConvforRcpComm">
+                                                    {{ form_row(form.comm_inter_conf_rcp) }}
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <br>
+                                        <div class="row">
+                                            <fieldset>
+                                                <div class="col s12 m4">
+                                                    Dossier présenté en postopératoire
+                                                    <div class="switch" style="margin-left: 10px;">
+                                                        <label>
+                                                            Non
+                                                            <input id="dossierPrePost" {% if patient.dossierPrePost == 'oui' %} checked {% endif %} name="dossierPrePost" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s12 m4" id="divdecisionConRcp">
+                                                    Décision conforme à la RCP
+                                                    <div class="switch" style="margin-left: 10px;">
+                                                        <label>
+                                                            Non
+                                                            <input id="decisionConRcp" {% if patient.decisionConRcp == 'oui' %} checked {% endif %} name="decisionConRcp" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s12 m4" id="divdecisionConRcpComm">
+                                                    {{ form_row(form.comm_deci_con_rcp) }}
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="row">
+                                            <fieldset>
+
+                                                <div class="col s12 m4">
+                                                    Patient inclus dans un protocole
+                                                    <div class="switch" style="margin-left: 10px;">
+                                                        <label>
+                                                            Non
+                                                            <input id="patientInProtocole" {% if patient.patientInProtocole == 'oui' %} checked {% endif %} name="patientInProtocole" autocomplete="off" type="checkbox">
+                                                            <span class="lever"></span>
+                                                            Oui
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col s12 m4" id="divpatientInProtocole">
+                                                    {{ form_row(form.comm_pat_in_protocole) }}
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
                                     </div>
 
 
@@ -657,7 +843,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBeige">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -673,7 +859,7 @@
                                         <div class="row">
                                             <div class="col s12 m3"> {{ form_row(form.chir_date_ope) }} </div>
                                             <div class="col s12 m3"> {{ form_row(form.chir_abord) }} </div>
-                                            <div class="col s12 m3" id="divAbord"> {{ form_row(form.chir_thoracos) }} </div>
+                                            <div class="col s12 m3" id="divAutre">{{ form_row(form.autre_chir_abord) }}</div>
                                             <div class="col s12 m3" id="divRobot"> {{ form_row(form.chir_robo_assist) }} </div>
                                         </div>
                                         <br>
@@ -762,7 +948,7 @@
                                                     <!--<input type="text" id="lobectomie" name="lobectomie" autocomplete="off">-->
                                                 </div>
 
-                                                <div class="col s12 m3">
+                                                <div class="col s12 m3" style="margin-top: 26px">
                                                     {{ form_row(form.chir_txt_libre) }}
                                                 </div>
                                             </fieldset>
@@ -803,7 +989,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
 
                                     <div class="card-title">
                                         <div class="row">
@@ -935,8 +1121,8 @@
                                                     </div>
 
                                                     <br>
-
-                                                    <div class="row" id="div_suite">
+                                                    <div id="div_suite" >
+                                                    <div class="row" >
                                                         <div class="col s12 m4">
                                                             {{ form_row(form.decesChe) }}
                                                             {{ form_row(form.pousse) }}
@@ -954,13 +1140,24 @@
                                                             {{ form_row(form.saignement) }}
                                                             {{ form_row(form.infection) }}
                                                         </div>
+                                                    </div>
+                                                        <br>
+                                                    <div class="row">
+                                                        <div class="col s12 m4">
+                                                            <fieldset>
+                                                                {{ form_row(form.decomp_post) }}
+                                                                {{ form_row(form.comm_decom_post) }}
+                                                            </fieldset>
+                                                        </div>
+                                                        <div class="col s12 m4">
+                                                        </div>
 
-                                                        <div class="col s12 m3">
+                                                        <div class="col s12 m4">
                                                             {{ form_row(form.autre_post_op_suites) }}
                                                         </div>
                                                     </div>
 
-
+                                                    </div>
                                                 </fieldset>
                                             </div>
                                         </div>
@@ -997,7 +1194,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBeige">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -1076,7 +1273,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -1121,7 +1318,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBeige">
                                     <div class="card-title">
                                         <div class="row">
                                             <div class="col s12 m6 l10">
@@ -1138,17 +1335,26 @@
                                                 {{ form_row(form.num_acp) }}
                                             </div>
 
-
-                                            <div class="col s12 m2">
+                                            <div class="col s12 m1">
                                                 <label for="suivi_jour">Suivi </label>
                                                 <input type="number" id="suivi_jour" autocomplete="off" readonly>
                                                 <span class="helper-text orange-text">En jours</span>
                                             </div>
 
-                                            <div class="col s12 m2">
+                                            <div class="col s12 m3">
                                                 {{ form_row(form.date_der_nouvelles) }}
                                             </div>
 
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.suivi_myasthenie) }}
+                                            </div>
+
+                                            <div class="col s12 m3">
+                                                {{ form_row(form.score_mya_post_op) }}
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
 
                                             <div class="col s12 m2">
                                                 Décès <br>
@@ -1160,18 +1366,11 @@
                                                         Oui
                                                     </label>
                                                 </div>
+                                            </div>
+
+                                            <div class="col s12 m3">
                                                 <div id="cause_deces">{{ form_row(form.cause_deces) }}</div>
                                             </div>
-
-
-                                            <div class="col s12 m2">
-                                                {{ form_row(form.suivi_myasthenie) }}
-                                            </div>
-
-                                            <div class="col s12 m2">
-                                                {{ form_row(form.score_mya_post_op) }}
-                                            </div>
-
                                         </div>
 
                                     </div>
@@ -1184,7 +1383,7 @@
                     <div class="row">
                         <div class="col s12">
                             <div id="input-fields" class="card card-tabs">
-                                <div class="card-content">
+                                <div class="card-content cardBlue">
 
 
                                     <div id="view-input-fields_10">

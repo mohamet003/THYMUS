@@ -42,7 +42,7 @@ class FormulaireController extends AbstractController
 
        // dd($form);
         if ($form->isSubmitted() && $form->isValid()){
-
+/*
             $rsm = new ResultSetMapping();
 
             $rsm->addScalarResult('IPP', 'IPP');
@@ -55,14 +55,14 @@ class FormulaireController extends AbstractController
             }else{
                 $patient->setIsValideIpp(false);
             }
-
+*/
             if ($request->get('tissus')){
                 $patient->setTissuCongele("Oui");
             }
 
             if ($request->get('suite')){
                 $patient->setPostOpSuites($request->get('suite'));
-        }
+            }
 
             if ($request->get('group1')){
                 $patient->setXTnm($request->get('group1'));
@@ -120,6 +120,45 @@ class FormulaireController extends AbstractController
                 $patient->setDeces($request->get('deces'));
             }
 
+            if ($request->get('dossierPrePreop')){
+                $patient->setDossierPrePreop("oui");
+            }else{
+                $patient->setDossierPrePreop("non");
+            }
+
+            if ($request->get('intervConvforRcp')){
+                $patient->setIntervConvforRcp("oui");
+            }else{
+                $patient->setIntervConvforRcp("non");
+            }
+
+            if ($request->get('dossierPrePost')){
+                $patient->setDossierPrePost("oui");
+            }else{
+                $patient->setDossierPrePost("non");
+            }
+
+            if ($request->get('decisionConRcp')){
+                $patient->setDecisionConRcp("oui");
+            }else{
+                $patient->setDecisionConRcp("non");
+            }
+
+            if ($request->get('patientInProtocole')){
+                $patient->setPatientInProtocole("oui");
+            }else{
+                $patient->setPatientInProtocole("non");
+            }
+            if ($request->get('immunoPreOp')){
+                $patient->setImmunoPreop("oui");
+            }else{
+                $patient->setImmunoPreop("non");
+            }
+
+
+
+
+
 
             $patient->setDateCreate(new \DateTime());
             $patient->setDateUpdate(new \DateTime());
@@ -158,14 +197,13 @@ class FormulaireController extends AbstractController
         $form = $this->createForm(FormPatientType::class, $patient);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()){
-
+/*
             $rsm = new ResultSetMapping();
 
             $rsm->addScalarResult('IPP', 'IPP');
             $ipp = $patient->getIpp();
-            $query = $this->em->createNativeQuery("SELECT * FROM CLI_MVT_PAT WHERE IPP = '".$ipp."'", $rsm);
+            $query = $this->em->createNativeQuery("SELECT * FROM IMPRIM_CCOM_DOC_EXP WHERE IPP = '".$ipp."'", $rsm);
             $result = $query->getResult();
 
             if (count($result) >= 1 ){
@@ -173,6 +211,7 @@ class FormulaireController extends AbstractController
             }else{
                 $patient->setIsValideIpp(false);
             }
+*/
 
             if ($request->get('tissus')){
                 $patient->setTissuCongele($request->get('tissus'));
@@ -211,6 +250,41 @@ class FormulaireController extends AbstractController
                 $patient->setDeces(null);
             }
 
+            if ($request->get('dossierPrePreop')){
+                $patient->setDossierPrePreop("oui");
+            }else{
+                $patient->setDossierPrePreop("non");
+            }
+
+            if ($request->get('intervConvforRcp')){
+                $patient->setIntervConvforRcp("oui");
+            }else{
+                $patient->setIntervConvforRcp("non");
+            }
+
+            if ($request->get('dossierPrePost')){
+                $patient->setDossierPrePost("oui");
+            }else{
+                $patient->setDossierPrePost("non");
+            }
+
+            if ($request->get('decisionConRcp')){
+                $patient->setDecisionConRcp("oui");
+            }else{
+                $patient->setDecisionConRcp("non");
+            }
+
+            if ($request->get('patientInProtocole')){
+                $patient->setPatientInProtocole("oui");
+            }else{
+                $patient->setPatientInProtocole("non");
+            }
+
+            if ($request->get('immunoPreOp')){
+                $patient->setImmunoPreop("oui");
+            }else{
+                $patient->setImmunoPreop("non");
+            }
 
 
 
@@ -265,12 +339,12 @@ class FormulaireController extends AbstractController
         $rsm = new ResultSetMapping();
 
         $rsm->addScalarResult('IPP', 'IPP');
-        $rsm->addScalarResult('PRE_PAT', 'PRE_PAT');
-        $rsm->addScalarResult('NOM_PAT', 'NOM_PAT');
-        $rsm->addScalarResult('COD_SEXE', 'COD_SEXE');
-        $rsm->addScalarResult('DAT_NAISS', 'DAT_NAISS');
+        $rsm->addScalarResult('PrenomPatient', 'PRE_PAT');
+        $rsm->addScalarResult('NomDeNaissance', 'NOM_PAT');
+      //  $rsm->addScalarResult('COD_SEXE', 'COD_SEXE');
+        $rsm->addScalarResult('DDN', 'DAT_NAISS');
 
-        $query = $this->em->createNativeQuery("SELECT * FROM CLI_MVT_PAT WHERE IPP = '".$ipp."'", $rsm);
+        $query = $this->em->createNativeQuery("SELECT * FROM IMPRIM_CCOM_DOC_EXP WHERE IPP = '".$ipp."'", $rsm);
 
         $result = $query->getResult();
 
@@ -283,15 +357,10 @@ class FormulaireController extends AbstractController
     }
 
 
-
-
     /**
      * @Route("/formulaire/print/{id}", name="formulaire.print")
      * @param Patient $patient
-     * @param Request $request
-     * @param Session $session
      * @return RedirectResponse|Response
-     * @throws \Exception
      */
     public function print(Patient $patient)
     {

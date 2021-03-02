@@ -11,7 +11,7 @@ use phpDocumentor\Reflection\Types\This;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Table(name="THYMUS_FORM_PATIENT")
+ * @ORM\Table(name="thymus_form_patient")
  * @UniqueEntity(fields={"ipp","chir_date_ope"})
  * @ORM\Entity(repositoryClass=PatientRepository::class)
  */
@@ -897,6 +897,86 @@ class Patient
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $isValide_ipp;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $serviceAdresseur;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $maladie_auto_immune_liste;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $serviceAdresseur_autre;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isInConflict;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $autre_chir_abord;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $dossier_pre_preop;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $interv_convfor_rcp;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $dossier_pre_post;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $decision_con_rcp;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $patient_in_protocole;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comm_inter_conf_rcp;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comm_deci_con_rcp;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comm_pat_in_protocole;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $immuno_preop;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $decomp_post;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $comm_decom_post;
 
     public function __construct()
     {
@@ -1805,14 +1885,22 @@ class Patient
 
     public function getAge(): ?int
     {
+        $date = new \DateTime();
         if ($this->ddn){
-            $annee = new \DateTime();
-            $annee = $annee->format('Y');
-            $anneeNais = $this->ddn->format('Y');
-            $this->age = (int)$annee - (int)$anneeNais;
+            $this->age = $date->diff($this->ddn);
+        }else{
+            return 0;
         }
 
-        return $this->age;
+        return $this->age->y;
+    }
+
+    function ageN($date) {
+        $age = date('Y') - $date;
+        if (date('md') < date('md', strtotime($date))) {
+            return $age - 1;
+        }
+        return $age;
     }
 
     public function getDureeHosp(): ?string
@@ -1843,7 +1931,7 @@ class Patient
     public function getImc(): ?string
     {
         if ($this->taille)
-            $this->imc = $this->poids / (($this->taille/100) * ($this->taille/100));
+            $this->imc = round($this->poids / (($this->taille/100) * ($this->taille/100)), 1);
         return (string)$this->imc;
     }
 
@@ -3050,6 +3138,198 @@ class Patient
     public function setIsValideIpp(?bool $isValide_ipp): self
     {
         $this->isValide_ipp = $isValide_ipp;
+
+        return $this;
+    }
+
+    public function getServiceAdresseur(): ?string
+    {
+        return $this->serviceAdresseur;
+    }
+
+    public function setServiceAdresseur(?string $serviceAdresseur): self
+    {
+        $this->serviceAdresseur = $serviceAdresseur;
+
+        return $this;
+    }
+
+    public function getMaladieAutoImmuneListe(): ?string
+    {
+        return $this->maladie_auto_immune_liste;
+    }
+
+    public function setMaladieAutoImmuneListe(?string $maladie_auto_immune_liste): self
+    {
+        $this->maladie_auto_immune_liste = $maladie_auto_immune_liste;
+
+        return $this;
+    }
+
+    public function getServiceAdresseurAutre(): ?string
+    {
+        return $this->serviceAdresseur_autre;
+    }
+
+    public function setServiceAdresseurAutre(?string $serviceAdresseur_autre): self
+    {
+        $this->serviceAdresseur_autre = $serviceAdresseur_autre;
+
+        return $this;
+    }
+
+    public function getIsInConflict(): ?bool
+    {
+        return $this->isInConflict;
+    }
+
+    public function setIsInConflict(?bool $isInConflict): self
+    {
+        $this->isInConflict = $isInConflict;
+
+        return $this;
+    }
+
+    public function getAutreChirAbord(): ?string
+    {
+        return $this->autre_chir_abord;
+    }
+
+    public function setAutreChirAbord(?string $autre_chir_abord): self
+    {
+        $this->autre_chir_abord = $autre_chir_abord;
+
+        return $this;
+    }
+
+    public function getDossierPrePreop(): ?string
+    {
+        return $this->dossier_pre_preop;
+    }
+
+    public function setDossierPrePreop(?string $dossier_pre_preop): self
+    {
+        $this->dossier_pre_preop = $dossier_pre_preop;
+
+        return $this;
+    }
+
+    public function getIntervConvforRcp(): ?string
+    {
+        return $this->interv_convfor_rcp;
+    }
+
+    public function setIntervConvforRcp(?string $interv_convfor_rcp): self
+    {
+        $this->interv_convfor_rcp = $interv_convfor_rcp;
+
+        return $this;
+    }
+
+    public function getDossierPrePost(): ?string
+    {
+        return $this->dossier_pre_post;
+    }
+
+    public function setDossierPrePost(?string $dossier_pre_post): self
+    {
+        $this->dossier_pre_post = $dossier_pre_post;
+
+        return $this;
+    }
+
+    public function getDecisionConRcp(): ?string
+    {
+        return $this->decision_con_rcp;
+    }
+
+    public function setDecisionConRcp(?string $decision_con_rcp): self
+    {
+        $this->decision_con_rcp = $decision_con_rcp;
+
+        return $this;
+    }
+
+    public function getPatientInProtocole(): ?string
+    {
+        return $this->patient_in_protocole;
+    }
+
+    public function setPatientInProtocole(?string $patient_in_protocole): self
+    {
+        $this->patient_in_protocole = $patient_in_protocole;
+
+        return $this;
+    }
+
+    public function getCommInterConfRcp(): ?string
+    {
+        return $this->comm_inter_conf_rcp;
+    }
+
+    public function setCommInterConfRcp(?string $comm_inter_conf_rcp): self
+    {
+        $this->comm_inter_conf_rcp = $comm_inter_conf_rcp;
+
+        return $this;
+    }
+
+    public function getCommDeciConRcp(): ?string
+    {
+        return $this->comm_deci_con_rcp;
+    }
+
+    public function setCommDeciConRcp(?string $comm_deci_con_rcp): self
+    {
+        $this->comm_deci_con_rcp = $comm_deci_con_rcp;
+
+        return $this;
+    }
+
+    public function getCommPatInProtocole(): ?string
+    {
+        return $this->comm_pat_in_protocole;
+    }
+
+    public function setCommPatInProtocole(?string $comm_pat_in_protocole): self
+    {
+        $this->comm_pat_in_protocole = $comm_pat_in_protocole;
+
+        return $this;
+    }
+
+    public function getImmunoPreop(): ?string
+    {
+        return $this->immuno_preop;
+    }
+
+    public function setImmunoPreop(?string $immuno_preop): self
+    {
+        $this->immuno_preop = $immuno_preop;
+
+        return $this;
+    }
+
+    public function getDecompPost(): ?bool
+    {
+        return $this->decomp_post;
+    }
+
+    public function setDecompPost(?bool $decomp_post): self
+    {
+        $this->decomp_post = $decomp_post;
+
+        return $this;
+    }
+
+    public function getCommDecomPost(): ?string
+    {
+        return $this->comm_decom_post;
+    }
+
+    public function setCommDecomPost(?string $comm_decom_post): self
+    {
+        $this->comm_decom_post = $comm_decom_post;
 
         return $this;
     }

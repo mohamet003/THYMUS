@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Patient;
 use App\Entity\Search;
 use App\Entity\User;
 use App\Repository\PatientRepository;
@@ -79,126 +80,28 @@ class AcceuilController extends AbstractController
                  $session->set('user',$us->getName());
              }
          }
-
-
-// Moulinette d'extraction de données PICIS
 /*
-        $finder = new Finder();
-        $filesystem = new Filesystem();
-        $finder->files()->in("C:\Users\makone\Documents\DOCXCSV");
-        //$finder->files()->in("//immdom.local\Applications$\PICIS");
-        $tab = [];
-        $spreadsheet = new Spreadsheet();
-
-
-        $sheet = $spreadsheet->getActiveSheet();
-
-        $sheet->setTitle("Merged");
-
-
-        // Creation des collones
-
-$i = 1;
-        foreach ($finder as $file) {
-            // dumps the absolute path
-          //  var_dump);
-            if (stristr(strtoupper($file->getRelativePathname()), "CONTROLE_IMP_PDF_PICIS_NON_TROUVES") !== false){
-
-                if (($handle = fopen($file->getRealPath(), "r")) !== FALSE) {
-
-
-                    while (($data = fgetcsv($handle)) !== FALSE) {
-
-                        $sheet->setCellValue('A'.$i, utf8_encode($data[0]));
-                        $sheet->setCellValue('B'.$i, utf8_encode($data[1]));
-                        $sheet->setCellValue('C'.$i, utf8_encode($data[2]));
-                        $sheet->setCellValue('D'.$i, utf8_encode($data[3]));
-                        $sheet->setCellValue('E'.$i, utf8_encode($data[4]));
-                        $sheet->setCellValue('F'.$i, utf8_encode($data[5]));
-                        $sheet->setCellValue('G'.$i, utf8_encode($data[6]));
-                        $sheet->setCellValue('H'.$i, utf8_encode($data[7]));
-                        $sheet->setCellValue('I'.$i, utf8_encode($data[8]));
-                        $sheet->setCellValue('J'.$i, utf8_encode($data[9]));
-                        $sheet->setCellValue('K'.$i, utf8_encode($data[10]));
-                        $sheet->setCellValue('L'.$i, utf8_encode($data[11]));
-                        $sheet->setCellValue('M'.$i, utf8_encode($data[12]));
-
-                        $i++;
-
-
-                       // dd($data);
-                    }
-                }
-
-
-               // $cmd = 'soffice --convert-to xlsx "'.$file->getRealPath().'" --outdir "C:\Users\makone\Documents\DOCX"' ;
-              // $cmd = 'soffice --convert-to csv "'.$file->getRealPath().'" --outdir "C:\Users\makone\Documents\DOCXCSV"' ;
-                //shell_exec($cmd);
-
-                /*
-                $xls_to_convert = 'xlsx/'.$i.$file->getFilename();
-
-                soffice --convert-to xlsx "C:\Users\makone\Documents\CONTROLE_IMP_PDF_PICIS_NON_TROUVES_01012018_2300.xls" -outdir "C:\Users\makone\Documents"
-
-                //------------------------------------------------------------------------------------
-
-               //$filesystem->copy($file->getRealPath(), 'CONTROLE_IMP_PDF_PICIS_NON_TROUVESXX/CONTROLE_IMP_PDF_PICIS_NON_TROUVES'.$i.'.xlsx');
-               //$tab[] = 'CONTROLE_IMP_PDF_PICIS_NON_TROUVES/CONTROLE_IMP_PDF_PICIS_NON_TROUVES'.$i.'.xlsm';
-               // $tab[] = $file->getRealPath();
-            }
-
-        }
-
-        // Create your Office 2007 Excel (XLSX Format)
-        $writer = new Xlsx($spreadsheet);
-
-        // Create a Temporary file in the system
-        $fileName = "COMPOLED.xlsx";
-        $temp_file = tempnam(sys_get_temp_dir(), $fileName);
-
-        // Create the excel file in the tmp directory of the system
-        $writer->save($temp_file);
-
-        // Return the excel file as an attachment
-        return $this->file($temp_file, $fileName, ResponseHeaderBag::DISPOSITION_INLINE);
-
-
-        //  $merged = new ExcelMerge($tab);
-      //$merged->download("my-filename.xlsm");
-
-        // or
-
-      //$filename = $merged->save("FUSION_CONTROLE_IMP_PDF_PICIS_NON_TROUVES.xlsx");
-
-*/
-
-
-
-                             // $csv = array_map('str_getcsv', file('../public/bdd_tymus.csv'));
                                $row = 1;
-                              // $data = "";
+                               // $data = "";
                                $tab = [];
 
                                $tabChir = ['DG','ASG','MG','EB','GB'];
                                $tabAnticor = ['positifs','négatifs','non fait'];
+                               $tabTTTFondMyas = ['mestinon','cortison','mythelase'];
+                               $tabGeste = ['thymectomie radicale','thymectomie partielle','thymomectomie','biopsie'];
                                $tabmode_obt_his_pre_ope = ['ponction TDM', 'biopsie chirurgicale', 'pre op', 'piece anapath'];
                                $tabHisto = ['thymome A', 'thymome AB', 'thymome B1', 'thymome B2', 'thymome B3', 'thymome rare', 'pièce anapath', 'carcinoïde', 'carcinoide typique', 'carcinoide atypique',
                                    'carcinome épidermoïde','carcinome NE thymique avancé','carcinome thymique','cellules thymiques','contributif négatif','lymphome','lymphome B','lyphome de Hodgkin','non contributive'];
-/*
-                       if (($handle = fopen("../public/bdd_Thymus_new_utf8.csv", "r")) !== FALSE) {
+
+                       if (($handle = fopen("../public/bd_thymus_final.csv", "r")) !== FALSE) {
                            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
-//dd($data);
+                               try {
+
                                $patient = new Patient();
-
-                            //   for ($i = 0 ; $i < count($data) ; $i++){
-                             //      $data[$i] = utf8_encode($data[$i]);
-                             ///  }
-                                                              $patient->setIpp("NONIPP".$row);
-
-
+                                $str = utf8_encode($data[2]);
                                                               $patient->setElios((int)$data[0])
                                                                   ->setNom(utf8_encode($data[1]))
-                                                                  ->setPrenom(utf8_encode($data[2]))
+                                                                  ->setPrenom($str)
                                                                   ->setSexe($data[3])
                                                                   ->setDdn(new \DateTime($data[4]));
 
@@ -206,7 +109,7 @@ $i = 1;
                                                                   $patient->setChirurgienReferent($data[6]);
                                                               }else{
                                                                   $patient->setChirurgienReferent("Autre");
-                                                                  $patient->setAutreChirurgienReferent($data[6]);
+                                                                  $patient->setAutreChirurgienReferent( utf8_encode($data[6]));
                                                               }
                                                               if (!$patient->getChirurgienReferent()){
                                                                   $patient->setChirurgienReferent("Autre");
@@ -216,10 +119,21 @@ $i = 1;
                                                                   ->setPoids((float) $data[7])
                                                                   ->setTaille((float) $data[8])
                                                                   ->setPs($data[10])
-                                                                  ->setScoreCharlson((int)$data[11])
-                                                                  ->setMaladiAutoImmAssoc(trim(utf8_encode($data[13])))
-                                                                  ->setSyndromeParaneo(trim(utf8_encode($data[14])))
-                                                                  ->setModeDeDecouverte(trim(utf8_encode($data[15])));
+                                                                  ->setScoreCharlson($data[11]);
+                                                              if (trim(utf8_encode($data[13])) == "0" or trim(utf8_encode($data[13])) == ""){
+                                                                  $patient->setMaladiAutoImmAssoc(null);
+                                                              }else{
+                                                                  $patient->setMaladiAutoImmAssoc(trim(utf8_encode($data[13])));
+                                                              }
+
+                                                               if (trim(utf8_encode($data[14])) == "1" or trim(utf8_encode($data[14])) == 1){
+                                                                   $patient->setSyndromeParaneo(trim(utf8_encode($data[14])));
+
+                                                               }else{
+                                                                   $patient->setSyndromeParaneo(null);
+                                                               }
+
+                                                               $patient->setModeDeDecouverte(trim(utf8_encode($data[15])));
 
                                                               $preop =  trim(utf8_encode($data[16]));
                                                               if ((int)$preop == 1 ){
@@ -231,12 +145,18 @@ $i = 1;
                                                               }
 
 
+                                                              if ((int)$data[17]){
+                                                                  $patient->setScoreMyastPreOp((int)$data[17]);
+                                                              }
+                                                                   $tttf = trim(strtolower($data[18]));
+                                                               if (in_array($tttf, $tabTTTFondMyas)){
+                                                                   $patient->setTraiFondMyasthenie($tttf);
+                                                               }else{
+                                                                   $patient->setTraiFondMyasthenie("Autre")
+                                                                       ->setAutreTraiFondMyasthenie($tttf);
+                                                               }
 
-                                                                  $patient->setScoreMyastPreOp((int)$data[17])
-                                                                  ->setTraiFondMyasthenie($data[18]);
-
-
-                                                              $epp = strtolower($data[19]);
+                                                              $epp = trim(strtolower($data[19]));
                                                               $isin = false;
                                                               if (stristr($epp, "hypogamma") !== false){
                                                                   $patient->setEpp("hypogamma");
@@ -253,20 +173,18 @@ $i = 1;
 
                                                               if (!$isin){
                                                                   $patient->setEpp("Autre")
-                                                                      ->setEppAutre($epp);
+                                                                      ->setEppAutre(utf8_encode($epp));
                                                               }
 
-                                                              $anticr = trim(utf8_encode($data[20]));
+                                                              $anticr = trim(strtolower(utf8_encode($data[20])));
                                                               if (in_array($anticr, $tabAnticor)){
                                                                   $patient->setAnticorpsAntiRach($anticr);
                                                               }else{
                                                                   $patient->setAnticorpsAntiRach("Autre")
-                                                                      ->setAnticrAutre($anticr);
+                                                                      ->setAnticrAutre(utf8_encode($anticr));
                                                               }
 
-
-
-                                                              $irm = strtolower($data[21]);
+                                                              $irm = trim(strtolower($data[21]));
 
                                                               if ($irm != "non fait" and $irm != "" and $irm != "nc"){
                                                                   $patient->setIrm("Oui");
@@ -336,34 +254,18 @@ $i = 1;
                                                               }
 
 
-                                                              $tdm = (int)utf8_encode($data[22]);
-                                                              if ($tdm != 0){
-                                                                  $patient->setTdm("Oui")
-                                                                      ->setAutreTdm($tdm);
-                                                              }else{
-                                                                  if (strlen($tdm) > 2){
-                                                                      $patient->setTdm("Autre")
-                                                                          ->setTdmAutre($tdm);
-                                                                  }else{
-                                                                      $patient->setTdm(null);
-                                                                  }
-                                                              }
-
-                                                              $tdm = (int)utf8_encode($data[23]);
-
-                                                              if ($tdm != 0){
-                                                                  $patient->setPetscan("Oui")
-                                                                      ->setAutrePetscan($tdm);
-                                                              }else{
-
-                                                                  if (strlen($tdm) > 2){
-                                                                      $patient->setPetscan("Autre")
-                                                                          ->setPetscanAutre($tdm);
-                                                                  }else{
-                                                                      $patient->setPetscan(null);
-                                                                  }
-
-                                                              }
+                                                            //  $tdm = utf8_encode($data[22]);
+                                                            //  if ($tdm != ""){
+                                                         //         $patient->setTdm("Autre")
+                                                         //             ->setTdmAutre($tdm);
+                                                         //     }
+//
+//                                                              $petSca = utf8_encode($data[23]);
+//
+//                                                              if ($petSca != 0){
+//                                                                  $patient->setPetscan("Autre")
+//                                                                      ->setPetscanAutre($petSca);
+//                                                              }
 
 
                                                               if (in_array($data[24], $tabmode_obt_his_pre_ope)){
@@ -372,7 +274,6 @@ $i = 1;
                                                                   $patient->setModeObtHisPreOpe('Autre')
                                                                       ->setAutreModeObtHisPreOpe(trim(utf8_encode($data[24])));
                                                               }
-
 
                                                               if (in_array($data[25], $tabHisto)){
                                                                   $patient->setHistoPreOp(trim(utf8_encode($data[25])));
@@ -409,49 +310,57 @@ $i = 1;
                                                               ->setChirDateOpe(new \DateTime($data[45]));
 
                                                               $str = trim(strtolower($data[46]));
+                                                                $notin = true;
+                                                                  if ($str == "sternotomie"){
+                                                                      $patient->setChirAbord("sternotomie");
+                                                                      $notin = false;
+                                                                  }
 
-                                                              if (stristr($str, "sternotomie") !== false){
-                                                                  $patient->setChirAbord("sternotomie");
+                                                               if ($str == "manubriotomie"){
+                                                                   $patient->setChirAbord("manubriotomie");
+                                                                   $notin = false;
+                                                               }
+                                                               if ($str == "thoracoscopie sous xyph"){
+                                                                   $patient->setChirAbord("thoracoscopie sous xyph");
+                                                                   $notin = false;
+                                                               }
+
+                                                                   if ($str == "thoracoscopie g"){
+                                                                       $patient->setChirAbord(trim(utf8_encode("thoracoscopie gauche")));
+                                                                       $notin = false;
+                                                                   }
+
+                                                                   if ($str == "thoracoscopie d"){
+                                                                       $patient->setChirAbord(utf8_encode("thoracoscopie droite"));
+                                                                       $notin = false;
+                                                                   }
+
+                                                                   if ($str == "thoracoscopie bilatérale"){
+                                                                       $patient->setChirAbord(utf8_encode("thoracoscopie bilatérale"));
+                                                                       $notin = false;
+                                                                   }
+
+                                                                   if ($str == "thoracotomie g"){
+                                                                      $patient->setChirAbord("thoracotomie gauche");
+                                                                       $notin = false;
+                                                                  }
+                                                                  if ($str == "thoracotomie d"){
+                                                                      $patient->setChirAbord("thoracotomie droite");
+                                                                      $notin = false;
+                                                                  }
+
+
+                                                                   if ($notin){
+                                                                       $patient->setChirAbord("Autre")
+                                                                           ->setAutreChirAbord(utf8_encode($str));
+                                                                   }
+
+
+                                                              if ((int)$data[47] == 1){
+                                                                  $patient->setChirRoboAssist("Oui");
+                                                              }else{
+                                                                  $patient->setChirRoboAssist("Non");
                                                               }
-
-                                                              if (stristr($str, "thoracoscopie") !== false){
-
-
-                                                                  $patient->setChirAbord("thoracoscopie");
-
-                                                                  if (stristr($str, "bilatérale") !== false){
-                                                                      $patient->setChirThoracos(trim(utf8_encode("bilatérale")));
-                                                                  }
-
-                                                                  if (stristr($str, "thoracoscopie g") !== false){
-                                                                      $patient->setChirThoracos(trim(utf8_encode("Unilatérale gauche")));
-                                                                  }
-
-                                                                  if (stristr($str, "thoracoscopie d") !== false){
-                                                                      $patient->setChirThoracos(utf8_encode("Unilatérale droite"));
-                                                                  }
-
-                                                                  if (stristr($str, "sous xyph") !== false){
-                                                                      $patient->setChirThoracos("Sous xyph");
-                                                                  }
-
-                                                              }
-
-
-                                                              if (stristr($str, "thoracotomie g") !== false){
-                                                                  $patient->setChirAbord("thoracotomie gauche");
-                                                              }
-
-                                                              if (stristr($str, "thoracotomie d") !== false){
-                                                                  $patient->setChirAbord("thoracotomie droite");
-                                                              }
-
-
-                                                                  if ((int)$data[47] == 1){
-                                                                      $patient->setChirRoboAssist("Oui");
-                                                                  }else{
-                                                                      $patient->setChirRoboAssist("Non");
-                                                                  }
 
 
                                                               if ((int)$data[48] == 1){
@@ -459,10 +368,13 @@ $i = 1;
                                                               }else{
                                                                   $patient->setInsufflationCo2("Non");
                                                               }
-
-
-                                                                  $patient
-                                                                  ->setChirGeste(trim(utf8_encode($data[49])));
+                                                              $gest = strtolower(trim($data[49]));
+                                                                if (in_array($gest, $tabGeste)){
+                                                                    $patient->setChirGeste(trim(utf8_encode($gest)));
+                                                                }else{
+                                                                    $patient->setChirGeste('Autre')
+                                                                        ->setAutreChirGeste(trim(utf8_encode($gest)));
+                                                                }
 
                                                               $resection = trim($data[50]);
                                                               $resection = explode('/',$resection);
@@ -565,9 +477,8 @@ $i = 1;
                                                                   ->setPostTnmStadeCtnm($data[64]);
 
                                                                    $patient->setMasaokaPostOp($data[65])
-                                                                   ->setMasaokoKoga($data[67]);
-
-                                                                  $patient->setReaUscPostOp($data[68]);
+                                                                  // ->setMasaokoKoga($data[67]);
+                                                                    ->setReaUscPostOp($data[68]);
 
                                                                   if ((int)$data[69] == 1){
                                                                       $patient->setPostOpSuites("Oui");
@@ -625,6 +536,7 @@ $i = 1;
                                                               $patient->setPostOpDateSortie(new \DateTime($data[72]))
 
                                                                   ->setTttPostOp(trim(utf8_encode($data[74])));
+
                                                                   if (utf8_encode($data[76]) != "" and utf8_encode($data[76]) != "0" and strtolower(utf8_encode($data[76])) != "nc" ){
                                                                       $patient->setChimioPostOp(trim(utf8_encode($data[76])));
                                                                   }
@@ -639,22 +551,70 @@ $i = 1;
                                                                   }else{
                                                                       $patient->setRecidive(null);
                                                                   }
-                                                                   if ($data[79] != ""){
-                                                                       $patient->setDateRecidive(new \DateTime($data[79]));
+
+
+
+                                                                   if ($data[81] != ""){
+                                                                       $patient->setDateRecidive(new \DateTime($data[81]));
                                                                    }
                                                                   $patient
-                                                                  ->setLocalisationRecidive(trim(utf8_encode($data[80])))
-                                                                  ->setTraitementRechuteRecidive(trim(utf8_encode($data[81])))
-                                                                  ->setNumAcp(utf8_encode($data[83]))
-                                                                  ->setDateDerNouvelles(new \DateTime($data[85]));
-                                                              if ((int)$data[86] == 1){
+                                                                  ->setLocalisationRecidive(trim(utf8_encode($data[82])))
+                                                                  ->setTraitementRechuteRecidive(trim(utf8_encode($data[83])))
+                                                                  ->setNumAcp(utf8_encode($data[85]));
+                                                                   if ($data[87] != ""){
+                                                                       $patient->setDateDerNouvelles(new \DateTime($data[87]));
+                                                                   }
+
+                                                              if ((int)$data[88] == 1){
                                                                   $patient->setDeces("Oui");
                                                               }else{
                                                                   $patient->setDeces(null);
                                                               }
-                                                                  $patient->setCauseDeces(utf8_encode($data[87]))
-                                                                  ->setSuiviMyasthenie(utf8_encode($data[89]))
-                                                                  ->setScoreMyaPostOp((int)$data[90]);
+                                                                  $patient->setCauseDeces(utf8_encode($data[89]))
+                                                                  ->setSuiviMyasthenie(utf8_encode($data[91]))
+                                                                  ->setScoreMyaPostOp((int)$data[92])
+                                                                      ->setCommentaireLast(utf8_encode($data[94]));
+                                $ipp = utf8_encode($data[95]);
+                                if ($ipp == ""){
+                                    $patient->setIpp("NONIPP".$row);
+                                }else{
+                                    $patient->setIpp($ipp);
+                                }
+
+                               $tdmTaille = (int) utf8_encode($data[96]);
+                               if ($tdmTaille != 0){
+                                   $patient->setTdm("Oui")
+                                       ->setAutreTdm($tdmTaille);
+                               }
+
+                               $tdmCom = trim(utf8_encode($data[97]));
+                               if ($tdmCom == "non fait" or $tdmCom == "nc"){
+                                   $patient->setTdm("Non")
+                                       ->setTdmAutre($tdmCom);
+                               }else{
+                                   $patient->setTdmAutre($tdmCom);
+                               }
+
+
+
+                               $petscanTaille = (int) utf8_encode($data[98]);
+                               if ($petscanTaille != 0){
+                                   $patient->setPetscan("Oui")
+                                       ->setAutrePetscan($petscanTaille);
+                               }
+
+                                if (isset($data[99])){
+                                    $petscanCom = trim(utf8_encode($data[99]));
+                                    if ($petscanCom == "non fait" or $petscanCom == "nc" or $petscanCom == "?"){
+                                        $patient->setPetscan("Non")
+                                            ->setPetscanAutre($petscanCom);
+                                    }else{
+                                        $patient->setPetscanAutre($petscanCom);
+                                    }
+                                }
+
+
+
 
                                                               $comorbidite = $data[12];
                                                               $comorbidite = explode('/',$comorbidite);
@@ -741,12 +701,20 @@ $i = 1;
                                                               $this->em->persist($patient);
 
                                                               $row++;
+
+                               }catch(\Exception $ex){
+                                    dump($data,$ex);
+                               }
                                                           }
                                                           fclose($handle);
+
                                                       }
 
-                 */                                     $this->em->flush();
 
+
+                                                   $this->em->flush();
+
+*/
         $session->set("searchUrl",$request->getRequestUri());
         $repository = new PatientRepository($this->getDoctrine());
         $patients = [];
@@ -833,7 +801,75 @@ $i = 1;
         ]);
     }
 
+    public function Utf8_ansi($valor) {
 
+        $utf8_ansi2 = array(
+            "\u00c0" =>"À",
+            "\u00c1" =>"Á",
+            "\u00c2" =>"Â",
+            "\u00c3" =>"Ã",
+            "\u00c4" =>"Ä",
+            "\u00c5" =>"Å",
+            "\u00c6" =>"Æ",
+            "\u00c7" =>"Ç",
+            "\u00c8" =>"È",
+            "\u00c9" =>"É",
+            "\u00ca" =>"Ê",
+            "\u00cb" =>"Ë",
+            "\u00cc" =>"Ì",
+            "\u00cd" =>"Í",
+            "\u00ce" =>"Î",
+            "\u00cf" =>"Ï",
+            "\u00d1" =>"Ñ",
+            "\u00d2" =>"Ò",
+            "\u00d3" =>"Ó",
+            "\u00d4" =>"Ô",
+            "\u00d5" =>"Õ",
+            "\u00d6" =>"Ö",
+            "\u00d8" =>"Ø",
+            "\u00d9" =>"Ù",
+            "\u00da" =>"Ú",
+            "\u00db" =>"Û",
+            "\u00dc" =>"Ü",
+            "\u00dd" =>"Ý",
+            "\u00df" =>"ß",
+            "\u00e0" =>"à",
+            "\u00e1" =>"á",
+            "\u00e2" =>"â",
+            "\u00e3" =>"ã",
+            "\u00e4" =>"ä",
+            "\u00e5" =>"å",
+            "\u00e6" =>"æ",
+            "\u00e7" =>"ç",
+            "\u00e8" =>"è",
+            "\u00e9" =>"é",
+            "\u00ea" =>"ê",
+            "\u00eb" =>"ë",
+            "\u00ec" =>"ì",
+            "\u00ed" =>"í",
+            "\u00ee" =>"î",
+            "\u00ef" =>"ï",
+            "\u00f0" =>"ð",
+            "\u00f1" =>"ñ",
+            "\u00f2" =>"ò",
+            "\u00f3" =>"ó",
+            "\u00f4" =>"ô",
+            "\u00f5" =>"õ",
+            "\u00f6" =>"ö",
+            "\u00f8" =>"ø",
+            "\u00f9" =>"ù",
+            "\u00fa" =>"ú",
+            "\u00fb" =>"û",
+            "\u00fc" =>"ü",
+            "\u00fd" =>"ý",
+            "\u00ff" =>"ÿ");
+
+        foreach ($utf8_ansi2 as $key => $value){
+            $valor = str_replace($value,$key,$valor);
+        }
+        return $valor;
+
+    }
 
     /**
      * @Route("/liste/exdop", name="liste.exdop")
@@ -848,7 +884,7 @@ $i = 1;
         $login = $request->get('login');
         $pwd = $request->get('pwd');
         $cmd = 'CWSRun.exe /USERNAME='.$login.' /PASSWORD='.$pwd.' /UAC=XXXX /IPP=000564635' ;
-        dd(shell_exec($cmd));
+       // dd(shell_exec($cmd));
         return $this->redirectToRoute('acceuil');
 
     }

@@ -1,0 +1,323 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20210104123811 extends AbstractMigration
+{
+    public function getDescription() : string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema) : void
+    {
+
+
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN id INT IDENTITY NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN prenom NVARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN nom NVARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ddn DATETIME2(6) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN sexe NVARCHAR(10) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chirurgien_referent NVARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ps NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN mode_de_decouverte NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN mode_obt_his_pre_ope NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN histo_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN indication NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cons_neu_dep_mg_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN irm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tdm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN petscan NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chimio_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN reponse_chimio_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN x_tnm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_t NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_n NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_m NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_stade_ctnm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN stade_masaoka_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN maladi_auto_imm_assoc NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN syndrome_paraneo NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN epp NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN anticorps_anti_rach NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN rcp_rythmique NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_date_ope DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_abord NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_thoracos NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_robo_assist NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_geste NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN insufflation_co2 NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN conversion NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_duree NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_sang NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN mortalite_par_ope NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_drainage NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_interv_interac NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN qualite_resection NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN anapath_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN pre_op_x_tnm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_t NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_n NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_m NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_stade_ctnm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN rea_usc_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_op_suites NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_op_date_sortie DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chimio_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN radiotherapie_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_der_nouvelles DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN recidive NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_recidive DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN deces NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cause_deces NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_diag_acp DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN id_acp NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tissu_congele NVARCHAR(10)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN score_charlson NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_histo_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_mode_obt_his_pre_ope NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_cons_neu_dep_mg_pre_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN trai_fond_myasthenie NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_trai_fond_myasthenie NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_irm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tdm NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_petscan NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tnm_t NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tnm_n NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tnm_m NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_stade NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_chir_geste NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_anapath_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_t NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_n NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_m NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_stade_ctnm NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_rea_usc_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN duree_rean NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_op_suites NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_chirurgien_referent NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN file_anapath_post_op NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN file_chirurgie NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_create DATETIME2(6) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_update DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN user_create NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN user_update NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN reste_riques NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_txt_libre NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN lobectomie_txt NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN wedge_txt NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cancer_txt NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cardiopathie_txt NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tabagisme_txt NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN diag_acp_thymone NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN masaoka_post_op NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN masaoko_koga NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ttt_pre_op NVARCHAR(70)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_preop NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN complication_post_op NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ttt_post_op NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN co_chirurgie_txt NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN co_diabete_txt NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN co_respiratoire_txt NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN epp_autre NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN anticr_autre NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tdm_autre NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN petscan_autre NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ipp NVARCHAR(100) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN service_adresseur NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN maladie_auto_immune_liste NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN service_adresseur_autre NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_chir_abord NVARCHAR(100)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN dossier_pre_preop NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN interv_convfor_rcp NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN dossier_pre_post NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN decision_con_rcp NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN patient_in_protocole NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN immuno_preop NVARCHAR(50)');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN decomp_post BIT');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ADD PRIMARY KEY (id)');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN id INT IDENTITY NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN mail NVARCHAR(255)');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN password NVARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN roles VARCHAR(MAX) NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN date_con DATETIME2(6)');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN name NVARCHAR(255)');
+        $this->addSql('EXEC sp_addextendedproperty N\'MS_Description\', N\'(DC2Type:json)\', N\'SCHEMA\', \'dbo\', N\'TABLE\', \'THYMUS_JNX_USER\', N\'COLUMN\', roles');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ADD PRIMARY KEY (id)');
+    }
+
+    public function down(Schema $schema) : void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE SCHEMA db_accessadmin');
+        $this->addSql('CREATE SCHEMA db_backupoperator');
+        $this->addSql('CREATE SCHEMA db_datareader');
+        $this->addSql('CREATE SCHEMA db_datawriter');
+        $this->addSql('CREATE SCHEMA db_ddladmin');
+        $this->addSql('CREATE SCHEMA db_denydatareader');
+        $this->addSql('CREATE SCHEMA db_denydatawriter');
+        $this->addSql('CREATE SCHEMA db_owner');
+        $this->addSql('CREATE SCHEMA db_securityadmin');
+        $this->addSql('CREATE SCHEMA dbo');
+        $this->addSql('CREATE TABLE ACCES_APPLI_WEB_IMM (ID INT NOT NULL, Application NVARCHAR(255) COLLATE French_CI_AS, Idenditifiant_LDAD NVARCHAR(255) COLLATE French_CI_AS)');
+        $this->addSql('CREATE TABLE CLI_MVT_PAT (NUM_IPP_INT NVARCHAR(15) COLLATE French_CI_AS NOT NULL, IPP NVARCHAR(12) COLLATE French_CI_AS, NOM_PAT NVARCHAR(50) COLLATE French_CI_AS, PRE_PAT NVARCHAR(50) COLLATE French_CI_AS, VIL_NAISS NVARCHAR(12) COLLATE French_CI_AS, DAT_NAISS_F NVARCHAR(20) COLLATE French_CI_AS, PAYS_NAISS NVARCHAR(3) COLLATE French_CI_AS, DEP_NAISS NVARCHAR(3) COLLATE French_CI_AS, COD_NAT NVARCHAR(3) COLLATE French_CI_AS, COD_SEXE NVARCHAR(2) COLLATE French_CI_AS, LOC_PAT NVARCHAR(35) COLLATE French_CI_AS, CP NVARCHAR(15) COLLATE French_CI_AS, COD_CSP NVARCHAR(2) COLLATE French_CI_AS, COD_MED_FAM NVARCHAR(8) COLLATE French_CI_AS, NOM_NAISS NVARCHAR(50) COLLATE French_CI_AS, DAT_CREA_F NVARCHAR(20) COLLATE French_CI_AS, COD_ID_PROVIS INT, DAT_CREA_PROVIS_F NVARCHAR(20) COLLATE French_CI_AS, COD_CREA_PROVIS NVARCHAR(20) COLLATE French_CI_AS, MODUL_CREA NVARCHAR(6) COLLATE French_CI_AS, NOM_RUE NVARCHAR(50) COLLATE French_CI_AS, COMPL_ADR NVARCHAR(50) COLLATE French_CI_AS, COD_PAYS NVARCHAR(3) COLLATE French_CI_AS, COMMENT NVARCHAR(255) COLLATE French_CI_AS, AUTRES_PRE NVARCHAR(50) COLLATE French_CI_AS, PROF_PAT NVARCHAR(35) COLLATE French_CI_AS, TEL NVARCHAR(20) COLLATE French_CI_AS, FLAG_DECES INT, CREA_PAT NVARCHAR(15) COLLATE French_CI_AS, TIT_PAT NVARCHAR(4) COLLATE French_CI_AS, TEL2 NVARCHAR(20) COLLATE French_CI_AS, MOBILE NVARCHAR(20) COLLATE French_CI_AS, DAT_DECES_F NVARCHAR(20) COLLATE French_CI_AS, FLAG_DECES_HORS_ETBS INT, NUM_INSC NVARCHAR(22) COLLATE French_CI_AS, DAT_INSC_F NVARCHAR(20) COLLATE French_CI_AS, SITUA_FAM NVARCHAR(15) COLLATE French_CI_AS, NBR_ENF INT, COD_MED_REF NVARCHAR(8) COLLATE French_CI_AS, MAIL_PAT NVARCHAR(255) COLLATE French_CI_AS, DAT_NAISS DATETIME2(6), DAT_CREA DATETIME2(6), DAT_CREA_PROVIS DATETIME2(6), DAT_DECES DATETIME2(6), DAT_INSC DATETIME2(6))');
+        $this->addSql('CREATE TABLE IMPRIM_CCOM_DOC (IPP NVARCHAR(12) COLLATE French_CI_AS, NomPatient NVARCHAR(50) COLLATE French_CI_AS, NomDeNaissance NVARCHAR(50) COLLATE French_CI_AS, PrenomPatient NVARCHAR(50) COLLATE French_CI_AS, DDN DATETIME2(6), Episode NVARCHAR(10) COLLATE French_CI_AS, Discipline DATE, DateEntree DATETIME2(6), US NVARCHAR(8) COLLATE French_CI_AS, UF NVARCHAR(6) COLLATE French_CI_AS, CodePrestation NVARCHAR(20) COLLATE French_CI_AS, DescPrestation DATE, NomLogique NVARCHAR(70) COLLATE French_CI_AS, NomDocument NVARCHAR(70) COLLATE French_CI_AS, Statut NVARCHAR(10) COLLATE French_CI_AS, DateCreation DATETIME2(6), DateModification DATETIME2(6), DateValidation DATETIME2(6), UtilisateurValid NVARCHAR(15) COLLATE French_CI_AS, CheminDocument VARCHAR(MAX) COLLATE French_CI_AS)');
+        $this->addSql('CREATE TABLE IMPRIM_CCOM_DOC_EXP (ID INT NOT NULL, IPP NVARCHAR(12) COLLATE French_CI_AS, NomPatien NVARCHAR(50) COLLATE French_CI_AS, NomDeNaissance NVARCHAR(50) COLLATE French_CI_AS, PrenomPatient NVARCHAR(50) COLLATE French_CI_AS, DDN DATETIME2(6), Episode NVARCHAR(10) COLLATE French_CI_AS, Discipline NVARCHAR(255) COLLATE French_CI_AS, DateEntree DATETIME2(6), US NVARCHAR(8) COLLATE French_CI_AS, UF NVARCHAR(6) COLLATE French_CI_AS, CodePrestation NVARCHAR(20) COLLATE French_CI_AS, DescPrestation DATE, NomLogique NVARCHAR(70) COLLATE French_CI_AS, NomDocument NVARCHAR(70) COLLATE French_CI_AS, Statut NVARCHAR(10) COLLATE French_CI_AS, DateCreation DATETIME2(6), DateModification DATETIME2(6), DateValidation DATETIME2(6), UtilisateurValid NVARCHAR(15) COLLATE French_CI_AS, CheminDocument VARCHAR(MAX) COLLATE French_CI_AS)');
+        $this->addSql('CREATE TABLE IMPRIM_JNX_CONNEXION_EXDOP (id INT NOT NULL, username DATE NOT NULL, last_connexion_date DATE NOT NULL, full_name DATE NOT NULL, is_connected BIT NOT NULL)');
+        $this->addSql('CREATE TABLE IMPRIM_JNX_CONNEXION_EXDOP_REC (id INT NOT NULL, username DATE NOT NULL, last_connexion_date DATE NOT NULL, full_name DATE NOT NULL, is_connected BIT NOT NULL)');
+        $this->addSql('CREATE TABLE IMPRIM_JNX_EXDOP (id INT NOT NULL, user_full_name DATE NOT NULL, user_ldap_login DATE NOT NULL, file_path DATE NOT NULL, date DATE NOT NULL, user_tel DATE NOT NULL, user_imm_email DATE NOT NULL, file_prestation DATE NOT NULL, file_logic_name DATE NOT NULL, nom_patient DATE NOT NULL, prenom_patient DATE NOT NULL, ipp DATE NOT NULL)');
+        $this->addSql('CREATE TABLE IMPRIM_JNX_EXDOP_REC (id INT NOT NULL, user_full_name DATE NOT NULL, user_ldap_login DATE NOT NULL, file_path DATE NOT NULL, date DATE NOT NULL, user_tel DATE NOT NULL, user_imm_email DATE NOT NULL, file_prestation DATE NOT NULL, file_logic_name DATE NOT NULL, nom_patient DATE NOT NULL, prenom_patient DATE NOT NULL, ipp DATE NOT NULL)');
+        $this->addSql('CREATE TABLE INFOCCENTRE_SCORE_PICIS (IPP NVARCHAR(48) COLLATE French_CI_AS, NOM_PATIENT NVARCHAR(128) COLLATE French_CI_AS, PRENOM_PATIENT NVARCHAR(128) COLLATE French_CI_AS, DDN DATETIME2(6), EPISODE NVARCHAR(48) COLLATE French_CI_AS, BRANDNAME NVARCHAR(48) COLLATE French_CI_AS, DATE_ENTREE DATETIME2(6), DATE_SORTIE DATETIME2(6), TODODATE DATETIME2(6), SCOREITEMDESC NVARCHAR(128) COLLATE French_CI_AS, SCORE NVARCHAR(1) COLLATE French_CI_AS)');
+        $this->addSql('CREATE TABLE QBL_ODS_OR_INTERVENTION_CONS_SERIAL (ICS_KEY NUMERIC(22, 0), ICS_INTERV_CONS_KEY NUMERIC(22, 0), ICS_SERIAL_INFO DATE, ICS_REMARK DATE, ICS_PREEMPTION_DATE DATETIME2(6), ICS_MATERIAL_STATUS NUMERIC(10, 0), ICS_SERIAL_NUMBER DATE, ICS_ACTUAL_QUANTITY NUMERIC(10, 0), ICS_SUPPLIER NUMERIC(22, 0), ICS_NIVEAU_INDICATION NUMERIC(1, 0), ICS_CODE_INDICATION DATE, ICS_TEXT_INDICATION DATE, ICS_STOCK_CODE DATE, ICS_USAGE_HOUR DATETIME2(6), ICS_SOAKING_HOUR DATETIME2(6))');
+        $this->addSql('CREATE TABLE QBL_ODS_OR_INTERVENTION_CONS_SERIAL_SH (ICS_KEY NUMERIC(10, 0) NOT NULL, ICS_SERIAL_INFO NVARCHAR(100) COLLATE French_CI_AS, ICS_REMARK NVARCHAR(200) COLLATE French_CI_AS, ICS_PREEMPTION_DATE DATETIME2(6), ICS_MATERIAL_STATUS NUMERIC(10, 0), ICS_SERIAL_NUMBER NVARCHAR(100) COLLATE French_CI_AS, ICS_PLANNED_QUANTITY NUMERIC(10, 0) NOT NULL, ICS_ACTUAL_QUANTITY NUMERIC(10, 0) NOT NULL, ICS_SUPPLIER NUMERIC(22, 0), ICS_NIVEAU_INDICATION NUMERIC(1, 0), ICS_CODE_INDICATION NVARCHAR(20) COLLATE French_CI_AS, ICS_TEXT_INDICATION NVARCHAR(4000) COLLATE French_CI_AS, ICS_STOCK_CODE NVARCHAR(30) COLLATE French_CI_AS, ICS_USAGE_HOUR DATETIME2(6), ICS_SOAKING_HOUR DATETIME2(6), ICS_CONSUMABLE_KEY NUMERIC(38, 0), ICS_INTERVENTION_KEY NUMERIC(38, 0), ICS_BATCHNR NUMERIC(38, 0) NOT NULL, ICS_DATE_SENT DATETIME2(6), ICS_INFO_OLD NVARCHAR(4000) COLLATE French_CI_AS, ICS_INFO VARCHAR(MAX) COLLATE French_CI_AS, ICS_CGR NVARCHAR(9) COLLATE French_CI_AS, ICS_ADMISSION_NR NVARCHAR(9) COLLATE French_CI_AS, ICS_NOMCHIR NVARCHAR(20) COLLATE French_CI_AS, ICS_PNOMCHIR NVARCHAR(20) COLLATE French_CI_AS, ICS_ROOM NVARCHAR(20) COLLATE French_CI_AS, ICS_MAGASIN NVARCHAR(6) COLLATE French_CI_AS, ICS_ACTUAL_START DATETIME2(6))');
+        $this->addSql('CREATE TABLE QBL_ODS_OR_INTERVENTION_CONSUMABLES (IC_KEY NUMERIC(22, 0), IC_INTERVENTION_KEY NUMERIC(22, 0), IC_CONSUMABLE_KEY NUMERIC(22, 0), IC_PLANNED_QUANTITY DOUBLE PRECISION, IC_ACTUAL_QUANTITY DOUBLE PRECISION, IC_NEEDS_VERIFICATION NUMERIC(2, 0), IC_DISINFECTION NUMERIC(22, 0), IC_DATE_INSERTED DATETIME2(6), IC_DATE_MODIFIED DATETIME2(6), IC_MODIFIED_BY DATE)');
+        $this->addSql('CREATE TABLE TMP_CONS_SERIAL_H (icsinterventionkey NUMERIC(38, 0), icsbatchnr NUMERIC(38, 0), idsplit INT, icsinfo VARCHAR(MAX) COLLATE French_CI_AS)');
+        $this->addSql('CREATE TABLE TMP_CONS_SERIAL_H_SPLIT (icsinterventionkey NUMERIC(38, 0), icsbatchnr NUMERIC(38, 0), idsplit INT, article NVARCHAR(60) COLLATE French_CI_AS, lotimm NVARCHAR(100) COLLATE French_CI_AS, lotfourn NVARCHAR(100) COLLATE French_CI_AS, qte_envoi INT)');
+        $this->addSql('DROP TABLE case_cochee_multiple');
+        $this->addSql('IF EXISTS (SELECT * FROM sysobjects WHERE name = \'[primary]\')
+            ALTER TABLE THYMUS_FORM_PATIENT DROP CONSTRAINT [primary]
+        ELSE
+            DROP INDEX [primary] ON THYMUS_FORM_PATIENT');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN id INT NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN prenom DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN nom DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ddn DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN sexe DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chirurgien_referent DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ps DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN mode_de_decouverte DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN mode_obt_his_pre_ope DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN histo_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN indication DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cons_neu_dep_mg_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN irm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tdm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN petscan DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chimio_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN reponse_chimio_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN x_tnm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_t DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_n DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_m DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tnm_stade_ctnm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN stade_masaoka_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN maladi_auto_imm_assoc DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN syndrome_paraneo DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN epp DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN anticorps_anti_rach DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN rcp_rythmique DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_date_ope DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_abord DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_thoracos DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_robo_assist DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_geste DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN insufflation_co2 DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN conversion DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_duree DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_sang DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN mortalite_par_ope DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_drainage DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_interv_interac DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN qualite_resection DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN anapath_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN pre_op_x_tnm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_t DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_n DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_m DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_tnm_stade_ctnm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN rea_usc_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_op_suites DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN post_op_date_sortie DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chimio_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN radiotherapie_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_der_nouvelles DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN recidive DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_recidive DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN deces DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cause_deces DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_diag_acp DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN id_acp DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tissu_congele DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN score_charlson DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_histo_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_mode_obt_his_pre_ope DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_cons_neu_dep_mg_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN trai_fond_myasthenie DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_trai_fond_myasthenie DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_irm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tdm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_petscan DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tnm_t DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tnm_n DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_tnm_m DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_stade DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_chir_geste DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_anapath_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_t DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_n DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_m DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_tnm_stade_ctnm DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_rea_usc_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN duree_rean DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_post_op_suites DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_chirurgien_referent DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN file_anapath_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN file_chirurgie DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_create DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN date_update DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN user_create DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN user_update DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN reste_riques DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN chir_txt_libre DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN lobectomie_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN wedge_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cancer_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN cardiopathie_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tabagisme_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN diag_acp_thymone VARCHAR(MAX) COLLATE French_CI_AS');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN masaoka_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN masaoko_koga DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ttt_pre_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_preop DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN complication_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ttt_post_op DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN co_chirurgie_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN co_diabete_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN co_respiratoire_txt DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN epp_autre DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN anticr_autre DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN tdm_autre DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN petscan_autre DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN ipp DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN service_adresseur DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN maladie_auto_immune_liste DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN service_adresseur_autre DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN autre_chir_abord DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN dossier_pre_preop DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN interv_convfor_rcp DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN dossier_pre_post DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN decision_con_rcp DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN patient_in_protocole DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN immuno_preop DATE');
+        $this->addSql('ALTER TABLE THYMUS_FORM_PATIENT ALTER COLUMN decomp_post DATE');
+        $this->addSql('IF EXISTS (SELECT * FROM sysobjects WHERE name = \'[primary]\')
+            ALTER TABLE THYMUS_JNX_USER DROP CONSTRAINT [primary]
+        ELSE
+            DROP INDEX [primary] ON THYMUS_JNX_USER');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN id INT NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN mail DATE');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN password DATE NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN roles VARCHAR(MAX) COLLATE French_CI_AS NOT NULL');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN date_con DATE');
+        $this->addSql('ALTER TABLE THYMUS_JNX_USER ALTER COLUMN name DATE');
+        $this->addSql('EXEC sp_dropextendedproperty N\'MS_Description\', N\'SCHEMA\', \'dbo\', N\'TABLE\', \'THYMUS_JNX_USER\', N\'COLUMN\', roles');
+    }
+}

@@ -16,5 +16,14 @@
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://SRV-POC-BO\POC_BO;database=IMM_DW</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="thymus_form_patient-rec@localhost" uuid="e5886899-0e97-43a2-a90d-9374a9d702db">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/thymus_form_patient-rec</jdbc-url>
+      <driver-properties>
+        <property name="serverTimezone" value="UTC" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
