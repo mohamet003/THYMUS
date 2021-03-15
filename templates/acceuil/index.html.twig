@@ -23,14 +23,24 @@
             border-radius: 2px;
             background-color: rgba(255,255,255,.9);
         }
+        .search{
+
+            display: block;
+            position: sticky;
+            height: 600px;
+            width: 340px;
+            overflow-y:scroll;
+        }
     </style>
 {% endblock %}
 
 {% block body %}
     <!-- BEGIN: Page Main-->
-    <div id="main" style="display: none">
+    <div id="main" style="display: none;margin-top: 10px">
         <div class="row">
+            <!--
             <div class="content-wrapper-before gradient-45deg-light-blue-cyan"></div>
+
             <div class="row">
                 <div class="col s12">
                     <div id="input-fields" class="card card-tabs">
@@ -51,7 +61,7 @@
                                         <div class="row">
                                             <div class="col m3">
                                                 <div class="input-field">
-                                                    <input type="text" value="" class="validate" id="search-ipp"  name="ipp">
+                                                    <input type="text" value="{{ recherche.ipp }}" class="validate" id="search-ipp"  name="ipp">
                                                     <label for="search-ipp">IPP  </label>
                                                 </div>
                                             </div>
@@ -126,60 +136,67 @@
                     </div>
                 </div>
             </div>
+ -->
+            <div class="row">
 
-            {% if patients|length != 0 %}
-            <div class="users-list-table">
-                <div class="card">
-                    <div class="card-content">
-                        <!-- datatable start -->
-                        <div class="responsive-table">
+                <div class="col s12 m4 l3"> <!-- Note that "m4 l3" was added -->
+                    {% include 'acceuil/search.html.twig' with {form : form} only %}
+                </div>
 
-                            <table id="data-table-simple" class="display">
-                                <thead>
-                                <tr>
-                                    <th class="center-align" >IPP</th>
-                                    <th class="center-align" >Prénom</th>
-                                    <th class="center-align" >Nom</th>
-                                    <th class="center-align" >Date de naissance</th>
-                                    <th class="center-align" >Date Chirurgie</th>
-                                    <th class="center-align" >Chirurgien référent</th>
-                                   <!-- <th>Dossier patient</th> -->
-                                    <th  class="center-align" >Visualiser la fiche du patient</th>
-                                    <th>Modifier</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for patient in patients %}
-                                    <tr>
-                                        <td class="center-align" >
-                                            {% if patient.isValideIpp %}
-                                                <span class="bold green-text">{{ patient.ipp }} </span>
-                                            {% else %}
-                                                <span class="bold red-text">{{ patient.ipp }} </span>
-                                            {% endif %}
+                <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+                    {% if patients|length != 0 %}
+                        <div class="users-list-table">
+                            <div class="card">
+                                <div class="card-content">
+                                    <!-- datatable start -->
+                                    <div class="responsive-table">
+
+                                        <table id="data-table-simple" class="display">
+                                            <thead>
+                                            <tr>
+                                                <th class="center-align" >IPP</th>
+                                                <th class="center-align" >Prénom</th>
+                                                <th class="center-align" >Nom</th>
+                                                <th class="center-align" >Date de naissance</th>
+                                                <th class="center-align" >Date Chirurgie</th>
+                                                <th class="center-align" >Chirurgien référent</th>
+                                                <!-- <th>Dossier patient</th> -->
+                                                <th  class="center-align" >Visualiser la fiche du patient</th>
+                                                <th>Modifier</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for patient in patients %}
+                                                <tr>
+                                                    <td class="center-align" style="width: 50px">
+                                                        {% if patient.isValideIpp %}
+                                                            <span class="bold green-text">{{ patient.ipp }} </span>
+                                                        {% else %}
+                                                            <span class="bold red-text">{{ patient.ipp }} </span>
+                                                        {% endif %}
 
 
-                                        </td>
-                                        <td class="center-align">{{ patient.prenom }}</td>
-                                        <td class="center-align">{{ patient.nom }}</td>
-                                        <td class="center-align">
-                                            {% if patient.ddn %}
-                                                {{ patient.ddn|date("d-m-Y") }}
-                                            {% endif %}
-                                        </td>
-                                        <td class="center-align">
-                                            {% if patient.chirDateOpe %}
-                                                {{ patient.chirDateOpe|date("d-m-Y") }}
-                                            {% endif %}
-                                        </td>
-                                        <td class="center-align">
-                                            {% if patient.chirurgienReferent != "Autre" %}
-                                                {{ patient.chirurgienReferent }}
-                                            {% else %}
-                                                {{ patient.autreChirurgienReferent }}
-                                            {% endif %}
-                                        </td>
-                                        <!--
+                                                    </td>
+                                                    <td class="center-align">{{ patient.prenom }}</td>
+                                                    <td class="center-align">{{ patient.nom }}</td>
+                                                    <td class="center-align" style="width: 150px">
+                                                        {% if patient.ddn %}
+                                                            {{ patient.ddn|date("Y / m / d") }}
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="center-align" style="width: 150px">
+                                                        {% if patient.chirDateOpe %}
+                                                            {{ patient.chirDateOpe|date("Y / m / d")}}
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="center-align" >
+                                                        {% if patient.chirurgienReferent != "Autre" %}
+                                                            {{ patient.chirurgienReferent }}
+                                                        {% else %}
+                                                            {{ patient.autreChirurgienReferent }}
+                                                        {% endif %}
+                                                    </td>
+                                                    <!--
                                         <td>
                                             {% if patient.isValideIpp %}
                                                 <a href="#modal1" class="modal-trigger">
@@ -188,20 +205,22 @@
                                             {% endif %}
                                         </td>
                                         -->
-                                        <td class="center-align"><a href="{{ path('formulaire.print', {'id': patient.id}) }}"><i class="material-icons">remove_red_eye</i></a></td>
-                                        <td class="center-align"><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">edit</i></a></td>
-                                    </tr>
-                                {% endfor %}
-                                </tbody>
-                            </table>
+                                                    <td class="center-align"><a href="{{ path('formulaire.print', {'id': patient.id}) }}"><i class="material-icons">remove_red_eye</i></a></td>
+                                                    <td class="center-align"><a href="{{ path('formulaire.edit', {'id': patient.id}) }}"><i class="material-icons">edit</i></a></td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
 
+                                    </div>
+                                    <!-- datatable ends -->
+                                </div>
+                            </div>
                         </div>
-                        <!-- datatable ends -->
-                    </div>
+
+                    {% endif %}
                 </div>
             </div>
-
-            {% endif %}
 
 
             <!-- Modal Structure -->
@@ -254,7 +273,7 @@
     <script src="../../../app-assets/vendors/quill/quill.min.js"></script>
     <script src="../../../app-assets/js/custom/custom-script.min.js"></script>
     <script src="../../../app-assets/js/scripts/app-email.min.js"></script>
-
+    <script src="//cdn.datatables.net/plug-ins/1.10.24/sorting/date-dd-MMM-yyyy.js"></script>
     <script src="{{ asset('app-assets/js/scripts/my_data_table.js') }}"></script>
 
 

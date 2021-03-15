@@ -3,10 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Patient;
+use App\Entity\PatientSearch;
 use App\Entity\Search;
 use App\Entity\User;
+use App\Form\FormPatientType;
+use App\Form\FormPatientTypeSearch;
 use App\Repository\PatientRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,13 +67,13 @@ class AcceuilController extends AbstractController
         $user = null;
         $us = new User();
          if ($security->getUser()){
-             $user = $security->getUser()->getExtraFields();
+             $user = $security->getUser();
              if ($user){
-                 $us->setName($user['name'])
-                     ->setMail($user['mail'])
-                     ->setRoles([$user['title']])
-                     ->setPassword("vide")
-                     ->setDateCon(new \DateTime());
+                 $us->setName($user->getUsername());
+                 $us->setMail($user->getUsername());
+                 $us->setRoles(['ROLE_USER'])
+                 ->setPassword("vide")
+                 ->setDateCon(new \DateTime());
              }
 
 
@@ -720,7 +724,10 @@ class AcceuilController extends AbstractController
         $patients = [];
         $inSearch = true;
         $this->recherche = new Search();
-
+        $patient  = new PatientSearch();
+        $form =  $this->createForm(FormPatientTypeSearch::class,$patient);
+        $form->handleRequest($request);
+/*
         if ($request->query->has('rechercher')){
 
             if ($request->query->has('nom') && $request->get('nom') ){
@@ -763,15 +770,18 @@ class AcceuilController extends AbstractController
                 $inSearch = true;
                 $this->recherche->setDateNaissance(new \DateTime($request->get('datenaissance')));
             }
-            if ($inSearch)
-                $patients = $repository->SearchPatient($this->recherche);
-        }
+            //if ($inSearch)
 
+            $patients = $repository->SearchPatient($this->recherche);
+        }
+*/
+        $patients = $repository->SearchPatient($this->recherche);
 
         return $this->render('acceuil/index.html.twig', [
             'controller_name' => 'AcceuilController',
             'patients' => $patients,
-            'recherche' => $this->recherche
+            'recherche' => $this->recherche,
+            'form' => $form->createView()
         ]);
     }
 

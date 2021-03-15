@@ -12,7 +12,6 @@ security:
                 base_dn: OU=Comptes,OU=IMM,DC=immdom,DC=local
                 search_dn: CN=immpacte service,OU=Comptes Techniques,OU=Utilisateurs,OU=Comptes,OU=IMM,DC=immdom,DC=local
                 search_password: ImmP@cte
-                extra_fields: [name,title,mail]
                 filter: ({uid_key}={username})
                 uid_key: sAMAccountName
                 default_roles: ROLE_LDAP_USER

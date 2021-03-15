@@ -2,36 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="133dbd8a-94c4-4d86-bd0d-276fc5c628cb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20210104131812.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/creation_script.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrationsOld/Version20201028124839.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrationsOld/Version20201113123152.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrationsOld/Version20201215113203.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrationsOld/Version20210104093728.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrationsOld/Version20210104123811.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/BaseThymusFinalll.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/baseThymusFinal.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bd_thymus_final.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/bdd_prod_v1.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/thymus_form_patient_rec_thymus_form_patient.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/PatientSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/FormPatientTypeSearch.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/acceuil/search.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201019110930.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrationsOld/Version20201019110930.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201021124213.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrationsOld/Version20201021124213.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/custom/custom-script.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/app-assets/js/scripts/my_data_table.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/app-assets/js/scripts/my_data_table.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AcceuilController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AcceuilController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FormulaireController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormulaireController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Patient.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Patient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FormPatientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormPatientType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/exemple.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/acceuil/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/acceuil/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formulaire/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formulaire/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formulaire/print.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formulaire/print.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,39 +35,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus_form_patient-rec@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus_form_patient-rec@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus_form_patient-rec@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="thymus_form_patient-rec: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="thymus_form_patient-rec@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="thymus_form_patient-rec: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="thymus_form_patient: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="Git.Settings">
@@ -228,29 +175,30 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="sqlserver&#10;mysql" />
+    <property name="DatabaseDriversLRU" value="mysql&#10;sqlserver" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Entity" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public" />
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Entity" />
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates\formulaire" />
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates\acceuil" />
-      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public\app-assets\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\makone\Documents\PROJETS\thymus" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\migrations\migrationsOld" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\public" />
       <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Entity" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\src\Form" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\public" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates\formulaire" />
+      <recent name="C:\Users\makone\Documents\PROJETS\thymus\templates\acceuil" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -365,6 +313,8 @@
       <workItem from="1611335724085" duration="1032000" />
       <workItem from="1613985089933" duration="10706000" />
       <workItem from="1614097404185" duration="64000" />
+      <workItem from="1614677665825" duration="58000" />
+      <workItem from="1615542012312" duration="21577000" />
     </task>
     <servers />
   </component>
@@ -375,10 +325,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="211" y="168" width="1176" height="685" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609840435692">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="158" y="139" width="1176" height="685" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615555092464">
+      <screen x="0" y="0" width="1440" height="860" />
     </state>
+    <state x="158" y="139" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1615555092464" />
     <state x="211" y="168" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1609840435692" />
+    <state x="513" y="145" key="#com.intellij.ide.util.MemberChooser" timestamp="1615660763846">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="513" y="145" key="#com.intellij.ide.util.MemberChooser/0.0.1440.860@0.0.1440.860" timestamp="1615660763846" />
     <state x="740" y="283" key="FileChooserDialogImpl" timestamp="1613991987751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

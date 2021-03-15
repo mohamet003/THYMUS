@@ -1,3 +1,5 @@
+
+
 $(function(){$("#data-table-simple").DataTable({
     responsive:false
     ,paging:true,
@@ -34,7 +36,8 @@ $(function(){$("#data-table-simple").DataTable({
     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Tout"]],
     ordering:true,
     info:true,
-    columnDefs:[{type: 'date-uk', targets: 4 }]
+    columnDefs:[{type: 'date-uk', targets: 3 },{type: 'date-uk', targets: 4 }],
+    order:[[2,"asc"]],
 
 });
 
